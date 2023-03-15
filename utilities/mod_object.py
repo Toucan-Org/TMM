@@ -1,0 +1,108 @@
+import requests, threading, json, datetime
+from bs4 import BeautifulSoup
+
+root_url = "https://spacedock.info"
+
+class ModObject():
+    def __init__(self, **kwargs):
+        self.enabled = kwargs.get("enabled", False)
+        self.installed = kwargs.get("installed", False)
+        self.name = kwargs.get("name", "Unknown Mod")
+        self.id = kwargs.get("id", "Unknown ID")
+        self.short_description = kwargs.get("short_description", "No summary provided.")
+        self.downloads = kwargs.get("downloads", 0)
+        self.followers = kwargs.get("followers", 0)
+        self.author = kwargs.get("author", "Unknown Author")
+        self.game_version = kwargs.get("game_version", "0.0.0")
+        self.website = kwargs.get("website", None)
+        self.donations = kwargs.get("donations", None)
+
+        self.filename = kwargs.get("filename", None)
+
+        if self.installed:
+            self.url = kwargs.get("url", "No modpage URL provided.")
+        else:
+            self.url = f'{root_url}{kwargs.get("url", "No modpage URL provided.")}'
+
+        self.download_url = kwargs.get("download_url", "No download URL provided.")
+
+        if self.donations == "":
+            self.donations = "No donation URL provided."
+
+        if self.website == "":
+            self.website = "No website URL provided."
+        self.versions = []
+        for version in kwargs.get("versions", []):
+            #check if url exists in version
+            if "url" not in version:
+                version["url"] = self.url
+
+            self.versions.append(VersionObject(**version))
+
+        self.game_version = self.get_newest_version().game_version
+
+    def get_newest_version(self):
+        # Get the newest version object
+        version = max(self.versions, key=lambda v: v.created)
+        return version
+
+    def __str__(self):
+        return f"{self.name} - {self.short_description} ({self.installed})"
+    
+    def __eq__(self, other):
+        return self.name.lower() == other.name.lower()
+    
+    def __lt__(self, other):
+        return self.name.lower() < other.name.lower()
+
+class ModObjectEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ModObject):
+            return obj.__dict__
+        
+        elif isinstance(obj, VersionObject):
+            return obj.__dict__
+        return json.JSONEncoder.default(self, obj)
+
+class VersionObject():
+    def __init__(self, **kwargs):
+        self.url = kwargs.get("url", "No modpage URL provided.")
+        self.installed = kwargs.get("installed", False)
+        self.friendly_version = kwargs.get("friendly_version", "Unknown Version")
+        self.game_version = kwargs.get("game_version", "0.0.0")
+        self.created = kwargs.get("created", "Unknown Date")
+        self.download_path = f'{root_url}{kwargs.get("download_path", "No download URL provided.")}'
+        self.downloads = kwargs.get("downloads", 0)
+        self.download_size = self.get_file_size()
+
+    def get_file_size(self):
+        def get_size():
+            try:
+                response = requests.get(self.url)
+                soup = BeautifulSoup(response.text, "html.parser")
+                download_link = soup.find("a", {"id": "download-link-primary"})
+                download_size = download_link.get_text(strip=True).split('(')[-1].split(')')[0]
+                self.download_size = download_size
+            
+            except Exception as e:
+                print(f"Failed to get file size for {self.friendly_version} of {self.url}!")
+                print(e)
+                self.download_size = "Unknown Size"
+        t = threading.Thread(target=get_size)
+        t.start()
+
+    def __str__(self):
+        return f"{self.friendly_version} - {self.game_version}"
+    
+    def __eq__(self, other):
+        return self.friendly_version.lower() == other.friendly_version.lower()
+    
+    def __lt__(self, other):
+        return self.friendly_version.lower() < other.friendly_version.lower()
+    
+
+# class VersionObjectEncoder(json.JSONEncoder):
+#     def default(self, obj):
+#         if isinstance(obj, VersionObject):
+#             return obj.__dict__
+#         return json.JSONEncoder.default(self, obj)
