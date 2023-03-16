@@ -70,9 +70,6 @@ class App(customtkinter.CTk):
             self.config_file["KSP2"]["InstallDirectory"] = ""
             self.config_file["KSP2"]["GameVersion"] = ""
 
-
-        self.config_file["KSP2"] = {}
-
 if __name__ == "__main__":
     app = App()
     app.mainloop()
