@@ -1,0 +1,440 @@
+{
+    "mods": [
+        {
+            "enabled": false,
+            "installed": true,
+            "name": "Space Warp + BepInEx",
+            "id": 3277,
+            "short_description": "A C# modding api on top of BepInEx for KSP2",
+            "downloads": 3073,
+            "followers": 31,
+            "author": "cheese3660",
+            "game_version": "0.1.0.0",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213036-space-warp/",
+            "donations": "No donation URL provided.",
+            "filename": "Space Warp + BepInEx_0.4.0.zip",
+            "url": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx",
+                    "installed": true,
+                    "friendly_version": "0.4.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-05T15:53:14.109911+00:00",
+                    "download_path": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx/download/0.4.0",
+                    "downloads": 1706,
+                    "download_size": "3.70 MiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx",
+                    "installed": false,
+                    "friendly_version": "0.3.1",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T01:51:56.364987+00:00",
+                    "download_path": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx/download/0.3.1",
+                    "downloads": 1228,
+                    "download_size": "3.70 MiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx",
+                    "installed": false,
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T00:50:29.397900+00:00",
+                    "download_path": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx/download/0.3.0",
+                    "downloads": 18,
+                    "download_size": "3.70 MiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx",
+                    "installed": false,
+                    "friendly_version": "0.2.5",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-28T14:20:04.238451+00:00",
+                    "download_path": "https://spacedock.info/mod/3277/Space%20Warp%20+%20BepInEx/download/0.2.5",
+                    "downloads": 121,
+                    "download_size": "3.70 MiB"
+                }
+            ]
+        },
+        {
+            "enabled": false,
+            "installed": true,
+            "name": "Stage Info",
+            "id": 3272,
+            "short_description": "Displays thrust-to-weight ratio per stage with situation settings",
+            "downloads": 4163,
+            "followers": 41,
+            "author": "natalia_simonova",
+            "game_version": "0.1.0.0",
+            "website": "No website URL provided.",
+            "donations": "No donation URL provided.",
+            "filename": "Stage Info_0.7.zip",
+            "url": "https://spacedock.info/mod/3272/Stage%20Info",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": true,
+                    "friendly_version": "0.7",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-10T04:37:27.931878+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.7",
+                    "downloads": 370,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.6",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-07T04:18:58.288226+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.6",
+                    "downloads": 602,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.5.1",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-06T04:23:41.619723+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.5.1",
+                    "downloads": 381,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.5",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-05T22:19:21.816876+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.5",
+                    "downloads": 116,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.4",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-04T20:49:10.641009+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.4",
+                    "downloads": 562,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.3",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-03T16:31:51.668286+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.3",
+                    "downloads": 1335,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.2",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-28T20:41:08.015607+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.2",
+                    "downloads": 501,
+                    "download_size": "314.53 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3272/Stage%20Info",
+                    "installed": false,
+                    "friendly_version": "0.1",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-27T19:03:25.524027+00:00",
+                    "download_path": "https://spacedock.info/mod/3272/Stage%20Info/download/0.1",
+                    "downloads": 296,
+                    "download_size": "314.53 KiB"
+                }
+            ]
+        },
+        {
+            "enabled": false,
+            "installed": true,
+            "name": "KerbalPatchProgram",
+            "id": 3278,
+            "short_description": "A collection of bug fixes for KSP2.",
+            "downloads": 1094,
+            "followers": 10,
+            "author": "miniroo321",
+            "game_version": "0.1.0.0",
+            "website": "No website URL provided.",
+            "donations": "No donation URL provided.",
+            "filename": "KerbalPatchProgram_0.1.0.zip",
+            "url": "https://spacedock.info/mod/3278/KerbalPatchProgram",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3278/KerbalPatchProgram",
+                    "installed": true,
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-28T21:43:54.303255+00:00",
+                    "download_path": "https://spacedock.info/mod/3278/KerbalPatchProgram/download/0.1.0",
+                    "downloads": 1094,
+                    "download_size": "4.09 KiB"
+                }
+            ]
+        },
+        {
+            "enabled": false,
+            "installed": true,
+            "name": "Maneuver Node Controller",
+            "id": 3270,
+            "short_description": "Provides an interface to finely tune maneuver nodes.",
+            "downloads": 4404,
+            "followers": 41,
+            "author": "XYZ3211",
+            "game_version": "0.1.0.0",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214244-maneuver-node-controller-003/",
+            "donations": "No donation URL provided.",
+            "filename": "Maneuver Node Controller_0.05.zip",
+            "url": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller",
+                    "installed": true,
+                    "friendly_version": "0.05",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-06T17:37:12.113062+00:00",
+                    "download_path": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller/download/0.05",
+                    "downloads": 1207,
+                    "download_size": "14.65 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller",
+                    "installed": false,
+                    "friendly_version": "0.04",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-06T17:25:31.055546+00:00",
+                    "download_path": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller/download/0.04",
+                    "downloads": 12,
+                    "download_size": "14.65 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller",
+                    "installed": false,
+                    "friendly_version": "0.03",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-02T20:24:37.234558+00:00",
+                    "download_path": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller/download/0.03",
+                    "downloads": 2481,
+                    "download_size": "14.65 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller",
+                    "installed": false,
+                    "friendly_version": "0.02",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-27T02:47:12.160520+00:00",
+                    "download_path": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller/download/0.02",
+                    "downloads": 701,
+                    "download_size": "14.65 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller",
+                    "installed": false,
+                    "friendly_version": "0.01",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-27T02:38:18.380578+00:00",
+                    "download_path": "https://spacedock.info/mod/3270/Maneuver%20Node%20Controller/download/0.01",
+                    "downloads": 3,
+                    "download_size": "14.65 KiB"
+                }
+            ]
+        },
+        {
+            "enabled": false,
+            "installed": true,
+            "name": "Micro Engineer",
+            "id": 3282,
+            "short_description": "Displays useful in-flight information about your vessel, your orbital trajectory and your maneuvers.",
+            "downloads": 3381,
+            "followers": 37,
+            "author": "Micrologist",
+            "game_version": "0.1.0.0",
+            "website": "No website URL provided.",
+            "donations": "No donation URL provided.",
+            "filename": "Micro Engineer_0.5.0.zip",
+            "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": true,
+                    "friendly_version": "0.5.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-05T22:08:43.346995+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.5.0",
+                    "downloads": 1117,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.4.1",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-04T21:44:23.766388+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.4.1",
+                    "downloads": 483,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.4.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-03T21:20:06.248377+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.4.0",
+                    "downloads": 989,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.9",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-03T00:22:44.818339+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.9",
+                    "downloads": 375,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.8",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-02T06:06:13.533807+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.8",
+                    "downloads": 124,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.7",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-02T05:51:52.585691+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.7",
+                    "downloads": 3,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.6",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T23:13:25.467352+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.6",
+                    "downloads": 75,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.5",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T06:06:38.213243+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.5",
+                    "downloads": 182,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.1",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T04:20:35.029552+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.1",
+                    "downloads": 25,
+                    "download_size": "18.04 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3282/Micro%20Engineer",
+                    "installed": false,
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T03:55:28.496637+00:00",
+                    "download_path": "https://spacedock.info/mod/3282/Micro%20Engineer/download/0.3.0",
+                    "downloads": 8,
+                    "download_size": "18.04 KiB"
+                }
+            ]
+        },
+        {
+            "enabled": false,
+            "installed": true,
+            "name": "TimeWarpUnlock",
+            "id": 3274,
+            "short_description": "Unlocks the time warp control to allow maximum timewarp at all times.",
+            "downloads": 701,
+            "followers": 9,
+            "author": "miniroo321",
+            "game_version": "0.1.0.0",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213854-timewarpunlock-unlock-your-timewarp-tool/",
+            "donations": "No donation URL provided.",
+            "filename": "TimeWarpUnlock_0.1.0.zip",
+            "url": "https://spacedock.info/mod/3274/TimeWarpUnlock",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3274/TimeWarpUnlock",
+                    "installed": true,
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-02-28T05:02:17.550292+00:00",
+                    "download_path": "https://spacedock.info/mod/3274/TimeWarpUnlock/download/0.1.0",
+                    "downloads": 701,
+                    "download_size": "3.50 KiB"
+                }
+            ]
+        },
+        {
+            "enabled": false,
+            "installed": false,
+            "name": "AtmoSwitch",
+            "id": 3285,
+            "short_description": "Allows switching vessels in atmosphere",
+            "downloads": 532,
+            "followers": 5,
+            "author": "munix",
+            "game_version": "0.1.0.0",
+            "website": "No website URL provided.",
+            "donations": "No donation URL provided.",
+            "filename": "AtmoSwitch_0.2.0.zip",
+            "url": "https://spacedock.info/mod/3285/AtmoSwitch",
+            "download_url": "No download URL provided.",
+            "versions": [
+                {
+                    "url": "https://spacedock.info/mod/3285/AtmoSwitch",
+                    "installed": true,
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-06T15:20:29.160260+00:00",
+                    "download_path": "https://spacedock.info/mod/3285/AtmoSwitch/download/0.2.0",
+                    "downloads": 195,
+                    "download_size": "4.58 KiB"
+                },
+                {
+                    "url": "https://spacedock.info/mod/3285/AtmoSwitch",
+                    "installed": false,
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "created": "2023-03-01T15:46:52.388919+00:00",
+                    "download_path": "https://spacedock.info/mod/3285/AtmoSwitch/download/0.1.0",
+                    "downloads": 337,
+                    "download_size": "4.58 KiB"
+                }
+            ]
+        }
+    ]
+}

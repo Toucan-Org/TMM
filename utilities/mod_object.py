@@ -1,4 +1,4 @@
-import requests, threading, json, datetime
+import requests, threading, json
 from bs4 import BeautifulSoup
 
 root_url = "https://spacedock.info"
@@ -19,6 +19,7 @@ class ModObject():
 
         self.filename = kwargs.get("filename", None)
 
+        # Check if the mod is installed and get its URL, otherwise craft the URL
         if self.installed:
             self.url = kwargs.get("url", "No modpage URL provided.")
         else:
@@ -31,9 +32,11 @@ class ModObject():
 
         if self.website == "":
             self.website = "No website URL provided."
+
         self.versions = []
+
         for version in kwargs.get("versions", []):
-            #check if url exists in version
+            # Check if url exists in version
             if "url" not in version:
                 version["url"] = self.url
 
@@ -42,7 +45,7 @@ class ModObject():
         self.game_version = self.get_newest_version().game_version
 
     def get_newest_version(self):
-        # Get the newest version object
+        """Returns the newest version of the mod."""
         version = max(self.versions, key=lambda v: v.created)
         return version
 
@@ -56,6 +59,7 @@ class ModObject():
         return self.name.lower() < other.name.lower()
 
 class ModObjectEncoder(json.JSONEncoder):
+    # This class is used to encode the ModObject class into JSON
     def default(self, obj):
         if isinstance(obj, ModObject):
             return obj.__dict__
@@ -75,6 +79,8 @@ class VersionObject():
         self.downloads = kwargs.get("downloads", 0)
         self.download_size = self.get_file_size()
 
+    # Spacedock API does not include file sizes so instead I have to get it from the modpage using BeautifulSoup and requests
+    # This is done in a separate thread to prevent the GUI from freezing
     def get_file_size(self):
         def get_size():
             try:
@@ -99,10 +105,3 @@ class VersionObject():
     
     def __lt__(self, other):
         return self.friendly_version.lower() < other.friendly_version.lower()
-    
-
-# class VersionObjectEncoder(json.JSONEncoder):
-#     def default(self, obj):
-#         if isinstance(obj, VersionObject):
-#             return obj.__dict__
-#         return json.JSONEncoder.default(self, obj)

@@ -1,0 +1,1565 @@
+{
+    "total": 33,
+    "count": 30,
+    "pages": 2,
+    "page": 1,
+    "result": [
+        {
+            "name": "Unnamed New AtomicTech Inc. Mod",
+            "id": 3253,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "CONTENT COMING SOON",
+            "downloads": 135,
+            "followers": 2,
+            "author": "AtomicTech",
+            "default_version_id": 19054,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/AtomicTech_61568/Unnamed_New_AtomicTech_Inc._Mod/Unnamed_New_AtomicTech_Inc._Mod-1677273746.png",
+            "bg_offset_y": -380,
+            "license": "CC-BY-SA",
+            "website": "",
+            "donations": "",
+            "source_code": "",
+            "url": "/mod/3253/Unnamed%20New%20AtomicTech%20Inc.%20Mod",
+            "versions": [
+                {
+                    "friendly_version": "0.0.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19054,
+                    "created": "2023-02-24T21:22:04.314892+00:00",
+                    "download_path": "/mod/3253/Unnamed%20New%20AtomicTech%20Inc.%20Mod/download/0.0.0",
+                    "changelog": null,
+                    "downloads": 135
+                }
+            ]
+        },
+        {
+            "name": "BepInEx for KSP 2",
+            "id": 3255,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Modloader for Unity games",
+            "downloads": 2250,
+            "followers": 24,
+            "author": "bbepis",
+            "default_version_id": 19057,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/bbepis_103678/BepInEx_for_KSP_2/BepInEx_for_KSP_2-1677289683.png",
+            "bg_offset_y": -238,
+            "license": "LGPL",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/212355-bepinex-for-ksp-2-adding-modding-support-to-the-game/",
+            "donations": "",
+            "source_code": "https://github.com/BepInEx/BepInEx",
+            "url": "/mod/3255/BepInEx%20for%20KSP%202",
+            "versions": [
+                {
+                    "friendly_version": "5.4.21",
+                    "game_version": "0.1.0.0",
+                    "id": 19057,
+                    "created": "2023-02-25T01:36:39.134009+00:00",
+                    "download_path": "/mod/3255/BepInEx%20for%20KSP%202/download/5.4.21",
+                    "changelog": null,
+                    "downloads": 2250
+                }
+            ]
+        },
+        {
+            "name": "LagRemover [SPACEWARP 0.2]",
+            "id": 3256,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A mod aimed at improving performance. Unfortunately KSP2 seems to have some heavy underlying issues so this only brings minor improvements at major Visual and Gameplay costs.",
+            "downloads": 553,
+            "followers": 1,
+            "author": "RadioArtz",
+            "default_version_id": 19067,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/RadioArtz_103706/LagRemover/LagRemover-1677353912.jpg",
+            "bg_offset_y": -5,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/RadioArtz/KSP2-PotatoMod",
+            "url": "/mod/3256/LagRemover%20%5BSPACEWARP%200.2%5D",
+            "versions": [
+                {
+                    "friendly_version": "0.2.6",
+                    "game_version": "0.1.0.0",
+                    "id": 19067,
+                    "created": "2023-02-25T18:48:56.230257+00:00",
+                    "download_path": "/mod/3256/LagRemover%20%5BSPACEWARP%200.2%5D/download/0.2.6",
+                    "changelog": "Updated Space Warp Version. you will NEED to update for this to function.\r\n[Update it here](https://spacedock.info/mod/3257/Space%20Warp#info)",
+                    "downloads": 470
+                },
+                {
+                    "friendly_version": "0.2.5",
+                    "game_version": "0.1.0.0",
+                    "id": 19065,
+                    "created": "2023-02-25T17:40:26.238588+00:00",
+                    "download_path": "/mod/3256/LagRemover%20%5BSPACEWARP%200.2%5D/download/0.2.5",
+                    "changelog": "-more things get disabled / removed now: mainly water though (THIS NO LONGER HAS PHYSICS COLLISION!!)\r\n-fixed lots of objects not getting disabled as intended\r\n-clouds are now fully gone and no longer spam the logs with errors\r\n-automatically overrides JOINT_RIGIDITY in physics settings, hopefully improving craft stability and performance",
+                    "downloads": 19
+                },
+                {
+                    "friendly_version": "0.1.5",
+                    "game_version": "0.1.0.0",
+                    "id": 19059,
+                    "created": "2023-02-25T09:39:47.013150+00:00",
+                    "download_path": "/mod/3256/LagRemover%20%5BSPACEWARP%200.2%5D/download/0.1.5",
+                    "changelog": null,
+                    "downloads": 64
+                }
+            ]
+        },
+        {
+            "name": "Space Warp",
+            "id": 3257,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A C# Modding API for KSP2",
+            "downloads": 5924,
+            "followers": 42,
+            "author": "cheese3660",
+            "default_version_id": 19195,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/cheese3660_103715/Space_Warp/Space_Warp-1677349287.png",
+            "bg_offset_y": -1,
+            "license": "MIT",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213036-space-warp/",
+            "donations": "",
+            "source_code": "https://github.com/SpaceWarpDev/SpaceWarp",
+            "url": "/mod/3257/Space%20Warp",
+            "versions": [
+                {
+                    "friendly_version": "0.4.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19195,
+                    "created": "2023-03-05T15:51:36.369408+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.4.0",
+                    "changelog": "1. Moved to being a KSP abstraction layer over BepInEx\r\n2. Added game state abstractions for mods to use\r\n3. Cleaned up the console UI\r\n4. Added feature that allows mods to add their own main menu buttons\r\n5. Added OAB app.bar support\r\n6. Cleaned up app.bar stuff somewhat\r\n7. Added BepInEx.ConfigurationManager as a dependency and added a button in the mods UI to open it\r\n8. Added colors to the debug console, with fancy options to change them\r\n9. Packaged all dependencies with the release, including the licenses\r\n10. Packaged a default configuration for BepInEx that fixes an issue with the manager object not persisting\r\n11. Likely a few more things I forgot",
+                    "downloads": 773
+                },
+                {
+                    "friendly_version": "0.3.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19126,
+                    "created": "2023-03-01T01:52:39.257441+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.3.2",
+                    "changelog": "",
+                    "downloads": 2197
+                },
+                {
+                    "friendly_version": "0.3.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19123,
+                    "created": "2023-03-01T01:50:55.229080+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.3.1",
+                    "changelog": "Fixed issue with new installation",
+                    "downloads": 20
+                },
+                {
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19120,
+                    "created": "2023-03-01T00:50:04.679080+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.3.0",
+                    "changelog": "Change Log\r\n- Added Roslyn Error Output\r\n- Added Addressables Loading System For Custom Parts\r\n- Added Localization Loading System For Custom Parts\r\n- Added Fancy UI Elements, which can be grabbed by SpaceWarpManager.Skin\r\n- Added AppBar Integration With A ToolBarWindow Class and a one liner for window registration\r\n- General Refactoring\r\n- A *Lot* of Bug Fixes",
+                    "downloads": 53
+                },
+                {
+                    "friendly_version": "0.2.5",
+                    "game_version": "0.1.0.0",
+                    "id": 19099,
+                    "created": "2023-02-27T04:36:28.318334+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.2.5",
+                    "changelog": "Roslyn support",
+                    "downloads": 1461
+                },
+                {
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19088,
+                    "created": "2023-02-26T20:48:43.725418+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.2.0",
+                    "changelog": "Changelog\r\n   - Added AssetBundle loading system (Documentation coming soon)\r\n   - Switched to HarmonyX\r\n   - Code Refactoring\r\nMod Breaking\r\n   - Mods that used the configuration system may break, but stuff like custom-flags-mod and lazyorbit have been tested w/o recompilation",
+                    "downloads": 548
+                },
+                {
+                    "friendly_version": "0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19079,
+                    "created": "2023-02-26T10:19:58.342852+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.1.1",
+                    "changelog": "Added License file",
+                    "downloads": 429
+                },
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19076,
+                    "created": "2023-02-26T04:56:08.848894+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.1.0",
+                    "changelog": "Changes\r\n\r\n- Mods folder has been moved to [KSP_ROOT]/SpaceWarp/Mods\r\n- Game no longer requires DLL patching, instead uses a preloader via doorstop\r\n- A console window has been added (alt-c)\r\n- Configuration sections have been added (ConfigurationSectionAttribute)\r\n\r\nInstallation\r\n\r\n- Drag the contents of space-warp-release-0.1.0.zip into the KSP root directory\r\n- Launch the game",
+                    "downloads": 118
+                },
+                {
+                    "friendly_version": "0.0.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19066,
+                    "created": "2023-02-25T18:25:30.575852+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.0.2",
+                    "changelog": "- Added configuration and mod UI (alt-m)\r\n- Fixed a few bugs\r\n- Did not fix bug with custom install locations",
+                    "downloads": 246
+                },
+                {
+                    "friendly_version": "0.0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19060,
+                    "created": "2023-02-25T14:35:17.333013+00:00",
+                    "download_path": "/mod/3257/Space%20Warp/download/0.0.1",
+                    "changelog": null,
+                    "downloads": 83
+                }
+            ]
+        },
+        {
+            "name": "Lazy Orbit",
+            "id": 3258,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Set a vessel's orbit, rendezvous and land using a simple menu opened with ALT+H.",
+            "downloads": 3580,
+            "followers": 28,
+            "author": "Halban",
+            "default_version_id": 19217,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/Halban_103632/Lazy_Orbit/Lazy_Orbit-1677636936.png",
+            "bg_offset_y": -135,
+            "license": "CC-BY-SA 4.0",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214571-lazy-orbit-v040-set-a-vessels-orbit-via-a-simple-menu/#comment-4253292",
+            "donations": "https://paypal.me/Halbann",
+            "source_code": "https://github.com/Halbann/LazyOrbit",
+            "url": "/mod/3258/Lazy%20Orbit",
+            "versions": [
+                {
+                    "friendly_version": "v0.4.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19217,
+                    "created": "2023-03-06T15:18:45.813934+00:00",
+                    "download_path": "/mod/3258/Lazy%20Orbit/download/v0.4.0",
+                    "changelog": "",
+                    "downloads": 215
+                },
+                {
+                    "friendly_version": "v0.3.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19128,
+                    "created": "2023-03-01T01:59:24.234643+00:00",
+                    "download_path": "/mod/3258/Lazy%20Orbit/download/v0.3.0",
+                    "changelog": "- Added a button in the app bar.\r\n- Changed the UI to match the style of KSP 2.\r\n- Fixed a bug that would cause to Lazy Orbit to stop working after going back to the main menu.\r\n- Built for Space Warp 0.3.0.",
+                    "downloads": 2226
+                },
+                {
+                    "friendly_version": "v0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19091,
+                    "created": "2023-02-26T21:19:51.723432+00:00",
+                    "download_path": "/mod/3258/Lazy%20Orbit/download/v0.2.0",
+                    "changelog": "- Added 'Advanced', 'Landing', and 'Rendezvous' modes. Advanced mode contributed by XYZ3211.\r\n- Built against Space Warp 0.2.0.",
+                    "downloads": 672
+                },
+                {
+                    "friendly_version": "v0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19068,
+                    "created": "2023-02-25T19:46:05.891573+00:00",
+                    "download_path": "/mod/3258/Lazy%20Orbit/download/v0.1.1",
+                    "changelog": "- Updated for Space Warp 0.0.2",
+                    "downloads": 335
+                },
+                {
+                    "friendly_version": "v0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19061,
+                    "created": "2023-02-25T15:39:40.262943+00:00",
+                    "download_path": "/mod/3258/Lazy%20Orbit/download/v0.1.0",
+                    "changelog": null,
+                    "downloads": 114
+                }
+            ]
+        },
+        {
+            "name": "FPS Limiter",
+            "id": 3259,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Limits your FPS!",
+            "downloads": 238,
+            "followers": 2,
+            "author": "innocuous",
+            "default_version_id": 19062,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/joshgreatuk/KSP-2-FPS-Limiter",
+            "url": "/mod/3259/FPS%20Limiter",
+            "versions": [
+                {
+                    "friendly_version": "1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19062,
+                    "created": "2023-02-25T15:48:16.379760+00:00",
+                    "download_path": "/mod/3259/FPS%20Limiter/download/1.0",
+                    "changelog": null,
+                    "downloads": 238
+                }
+            ]
+        },
+        {
+            "name": "Rendezvous Cheat",
+            "id": 3261,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A cheat dialog for KSP 2, for vessel rendezvous. Dialog toggled using ALT+R. Requires Space Warp mod loader.",
+            "downloads": 429,
+            "followers": 5,
+            "author": "ABritInSpace",
+            "default_version_id": 19199,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/ABritInSpace_103743/Rendezvous_Cheat/Rendezvous_Cheat-1677406872.png",
+            "bg_offset_y": -111,
+            "license": "CC-BY-SA 4.0",
+            "website": "https://github.com/ABritInSpace/RendezvousCheat-KSP2",
+            "donations": "",
+            "source_code": "https://github.com/ABritInSpace/RendezvousCheat-KSP2",
+            "url": "/mod/3261/Rendezvous%20Cheat",
+            "versions": [
+                {
+                    "friendly_version": "v0.1.3",
+                    "game_version": "0.1.0.0",
+                    "id": 19199,
+                    "created": "2023-03-05T18:54:46.520810+00:00",
+                    "download_path": "/mod/3261/Rendezvous%20Cheat/download/v0.1.3",
+                    "changelog": "REQUIRES NEW SPACEWARP VERSION + BEPINEX\r\n\r\nUpdated to work with SpaceWarp v0.4.0.",
+                    "downloads": 54
+                },
+                {
+                    "friendly_version": "v0.1.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19078,
+                    "created": "2023-02-26T10:18:13.101464+00:00",
+                    "download_path": "/mod/3261/Rendezvous%20Cheat/download/v0.1.2",
+                    "changelog": "Changelog:\r\n- Added a refresh button instead of grabbing all vessels in OnGUI.\r\n- Added readme.txt to the .zip.\r\n- Added red colour for active vessel (you can't rendesvous with yourself!).\r\n- Fixed GUI width issues and centering.\r\n- Updated SpaceWarp version to latest (v0.1.0).",
+                    "downloads": 301
+                },
+                {
+                    "friendly_version": "v0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19070,
+                    "created": "2023-02-25T23:07:25.194067+00:00",
+                    "download_path": "/mod/3261/Rendezvous%20Cheat/download/v0.1.1",
+                    "changelog": "Now works for SpaceWarp version 0.0.2",
+                    "downloads": 63
+                },
+                {
+                    "friendly_version": "v0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19069,
+                    "created": "2023-02-25T22:40:34.278783+00:00",
+                    "download_path": "/mod/3261/Rendezvous%20Cheat/download/v0.1.0",
+                    "changelog": null,
+                    "downloads": 11
+                }
+            ]
+        },
+        {
+            "name": "Custom Flags",
+            "id": 3262,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Adds the ability to add custom flags",
+            "downloads": 1959,
+            "followers": 18,
+            "author": "adamsogm",
+            "default_version_id": 19228,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/adamsong/custom-flags",
+            "url": "/mod/3262/Custom%20Flags",
+            "versions": [
+                {
+                    "friendly_version": "2.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19228,
+                    "created": "2023-03-07T00:33:58.512551+00:00",
+                    "download_path": "/mod/3262/Custom%20Flags/download/2.1",
+                    "changelog": "",
+                    "downloads": 6
+                },
+                {
+                    "friendly_version": "1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19071,
+                    "created": "2023-02-26T00:32:37.853962+00:00",
+                    "download_path": "/mod/3262/Custom%20Flags/download/1.0",
+                    "changelog": null,
+                    "downloads": 1953
+                }
+            ]
+        },
+        {
+            "name": "Small Debug Window",
+            "id": 3263,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A small debug window that provides some of KSP2's built-in debug functionality.",
+            "downloads": 358,
+            "followers": 6,
+            "author": "sea_x",
+            "default_version_id": 19084,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/sea_x_103755/Small_Debug_Window/Small_Debug_Window-1677430361.png",
+            "bg_offset_y": -223,
+            "license": "GPL-3.0",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/sea-ex/SmallDebugWindow",
+            "url": "/mod/3263/Small%20Debug%20Window",
+            "versions": [
+                {
+                    "friendly_version": "0.1.3",
+                    "game_version": "0.1.0.0",
+                    "id": 19084,
+                    "created": "2023-02-26T18:55:45.474705+00:00",
+                    "download_path": "/mod/3263/Small%20Debug%20Window/download/0.1.3",
+                    "changelog": "### New features\r\n\r\n- Dump VAB parts list into a CSV file\r\n  - Dump the full parts list from the VAB into a CSV in the game's folder\r\n- Enable Texture Streaming\r\n  - Toggle texture streaming on and off\r\n- Enable Post Processing\r\n  - Enable or disable post processing rendering\r\n- Enable Clouds\r\n  - Enable or disable volumetric clouds rendering\r\n\r\n### How to upgrade\r\nExtract the .zip contents into the Kerbal Space Program 2 directory, overwriting existing files.",
+                    "downloads": 243
+                },
+                {
+                    "friendly_version": "0.1.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19082,
+                    "created": "2023-02-26T16:51:39.883308+00:00",
+                    "download_path": "/mod/3263/Small%20Debug%20Window/download/0.1.2",
+                    "changelog": "## New\r\n- Add VFX test suite window\r\n\r\n## How to upgrade\r\nExtract the .zip contents into the Kerbal Space Program 2 directory, overwriting existing files.\r\n",
+                    "downloads": 18
+                },
+                {
+                    "friendly_version": "0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19073,
+                    "created": "2023-02-26T02:25:43.070379+00:00",
+                    "download_path": "/mod/3263/Small%20Debug%20Window/download/0.1.1",
+                    "changelog": "Fix old class names",
+                    "downloads": 93
+                },
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19072,
+                    "created": "2023-02-26T02:10:43.690615+00:00",
+                    "download_path": "/mod/3263/Small%20Debug%20Window/download/0.1.0",
+                    "changelog": null,
+                    "downloads": 4
+                }
+            ]
+        },
+        {
+            "name": "Sticky Orbit Markers",
+            "id": 3264,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Makes your Ap/Pe markers stick when using the maneuver tool",
+            "downloads": 3432,
+            "followers": 26,
+            "author": "munix",
+            "default_version_id": 19205,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/munix_103761/Sticky_Orbit_Markers/Sticky_Orbit_Markers-1677384937.png",
+            "bg_offset_y": -220,
+            "license": "MIT",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213117-sticky-orbit-markers-show-appe-during-maneuver-plotting/",
+            "donations": "",
+            "source_code": "https://github.com/jan-bures/StickyOrbitMarkers",
+            "url": "/mod/3264/Sticky%20Orbit%20Markers",
+            "versions": [
+                {
+                    "friendly_version": "0.2.1-deprecated",
+                    "game_version": "0.1.0.0",
+                    "id": 19205,
+                    "created": "2023-03-05T23:50:00.739514+00:00",
+                    "download_path": "/mod/3264/Sticky%20Orbit%20Markers/download/0.2.1-deprecated",
+                    "changelog": "Sticky Orbit Markers is now deprecated and the last version of SpaceWarp it works with is 0.3. It has been superseded by the Community Fixes mod which it is now a part of, in addition to other upcoming bugfixes.",
+                    "downloads": 278
+                },
+                {
+                    "friendly_version": "0.2.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19101,
+                    "created": "2023-02-27T15:42:00.559806+00:00",
+                    "download_path": "/mod/3264/Sticky%20Orbit%20Markers/download/0.2.1",
+                    "changelog": "Fixed Harmony double-patching issue",
+                    "downloads": 2673
+                },
+                {
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19100,
+                    "created": "2023-02-27T06:32:07.784603+00:00",
+                    "download_path": "/mod/3264/Sticky%20Orbit%20Markers/download/0.2.0",
+                    "changelog": "Switched mod loader to SpaceWarp 0.2.5",
+                    "downloads": 97
+                },
+                {
+                    "friendly_version": "0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19080,
+                    "created": "2023-02-26T10:32:52.075662+00:00",
+                    "download_path": "/mod/3264/Sticky%20Orbit%20Markers/download/0.1.1",
+                    "changelog": "Added LICENSE file into download bundle",
+                    "downloads": 328
+                },
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19075,
+                    "created": "2023-02-26T04:13:34.725591+00:00",
+                    "download_path": "/mod/3264/Sticky%20Orbit%20Markers/download/0.1.0",
+                    "changelog": null,
+                    "downloads": 56
+                }
+            ]
+        },
+        {
+            "name": "SpaceWarp loader for BepInEx",
+            "id": 3265,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Loads SpaceWarp mods through BepInEx",
+            "downloads": 618,
+            "followers": 9,
+            "author": "bbepis",
+            "default_version_id": 19077,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "",
+            "url": "/mod/3265/SpaceWarp%20loader%20for%20BepInEx",
+            "versions": [
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19077,
+                    "created": "2023-02-26T05:46:30.830966+00:00",
+                    "download_path": "/mod/3265/SpaceWarp%20loader%20for%20BepInEx/download/0.1.0",
+                    "changelog": null,
+                    "downloads": 618
+                }
+            ]
+        },
+        {
+            "name": "Cheats Menu",
+            "id": 3266,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "This mod allows you to use cheats in ksp2",
+            "downloads": 2233,
+            "followers": 17,
+            "author": "ShadowDev",
+            "default_version_id": 19198,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/ShadowDev_103785/Cheats_Menu/Cheats_Menu-1677688540.png",
+            "bg_offset_y": -271,
+            "license": "CC-BY-NC-ND",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214242-cheat-menu/",
+            "donations": "",
+            "source_code": "https://github.com/Bit-Studios/CheatMenu",
+            "url": "/mod/3266/Cheats%20Menu",
+            "versions": [
+                {
+                    "friendly_version": "0.3.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19198,
+                    "created": "2023-03-05T18:50:15.177088+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.3.1",
+                    "changelog": "Adds kerbal cheats - add and remove \r\n\r\nupdated to spacewarp 0.4.0",
+                    "downloads": 303
+                },
+                {
+                    "friendly_version": "0.2.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19141,
+                    "created": "2023-03-01T16:32:58.768249+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.2.1",
+                    "changelog": "Added vessel mode.\r\n\r\nSet All resources to max\r\n\r\nSet Specific part resource to value",
+                    "downloads": 1221
+                },
+                {
+                    "friendly_version": "0.1.4.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19131,
+                    "created": "2023-03-01T03:04:32.916849+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.1.4.1",
+                    "changelog": "for hatbat\r\n\r\nnow has M",
+                    "downloads": 53
+                },
+                {
+                    "friendly_version": "0.1.4",
+                    "game_version": "0.1.0.0",
+                    "id": 19130,
+                    "created": "2023-03-01T03:01:28.762151+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.1.4",
+                    "changelog": "Updated to the app.bar",
+                    "downloads": 4
+                },
+                {
+                    "friendly_version": "0.1.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19122,
+                    "created": "2023-03-01T01:04:42.510586+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.1.2",
+                    "changelog": "Added support for spacewarp 0.3.0",
+                    "downloads": 18
+                },
+                {
+                    "friendly_version": "0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19105,
+                    "created": "2023-02-27T22:00:24.698868+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.1.1",
+                    "changelog": "Fixed the bug where some cheats are turned on by default.",
+                    "downloads": 154
+                },
+                {
+                    "friendly_version": "0.0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19081,
+                    "created": "2023-02-26T15:01:51.716803+00:00",
+                    "download_path": "/mod/3266/Cheats%20Menu/download/0.0.1",
+                    "changelog": null,
+                    "downloads": 480
+                }
+            ]
+        },
+        {
+            "name": "Less Wobbly",
+            "id": 3267,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "This mod will let you change the JOINT_RIGIDITY setting, which may help the wobbliness of rockets",
+            "downloads": 1052,
+            "followers": 6,
+            "author": "linuxgurugamer",
+            "default_version_id": 19104,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213302-010-less-wobbly-making-rockets-less-wobbly-maybe/",
+            "donations": "https://www.patreon.com/linuxgurugamer",
+            "source_code": "https://github.com/linuxgurugamer/KSP2-LessWobbly",
+            "url": "/mod/3267/Less%20Wobbly",
+            "versions": [
+                {
+                    "friendly_version": "0.0.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19104,
+                    "created": "2023-02-27T19:15:31.212969+00:00",
+                    "download_path": "/mod/3267/Less%20Wobbly/download/0.0.2",
+                    "changelog": "\tFixed title\r\n\tAdded JointBreakForceFactor\r\n\tAdded Reset button\r\n\tAdded automatic saving/loading of entered data",
+                    "downloads": 768
+                },
+                {
+                    "friendly_version": "0.0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19087,
+                    "created": "2023-02-26T20:43:14.346102+00:00",
+                    "download_path": "/mod/3267/Less%20Wobbly/download/0.0.1.1",
+                    "changelog": "Fixed nullref",
+                    "downloads": 241
+                },
+                {
+                    "friendly_version": "0.0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19083,
+                    "created": "2023-02-26T18:39:04.963899+00:00",
+                    "download_path": "/mod/3267/Less%20Wobbly/download/0.0.1",
+                    "changelog": null,
+                    "downloads": 43
+                }
+            ]
+        },
+        {
+            "name": "Unity Explorer for Space Warp",
+            "id": 3268,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Adds unity explorer for space warp",
+            "downloads": 140,
+            "followers": 1,
+            "author": "cheese3660",
+            "default_version_id": 19085,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/cheese3660/KSP2-SpaceWarp-Unity-Explorer",
+            "url": "/mod/3268/Unity%20Explorer%20for%20Space%20Warp",
+            "versions": [
+                {
+                    "friendly_version": "1.0.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19085,
+                    "created": "2023-02-26T20:33:41.035195+00:00",
+                    "download_path": "/mod/3268/Unity%20Explorer%20for%20Space%20Warp/download/1.0.0",
+                    "changelog": null,
+                    "downloads": 140
+                }
+            ]
+        },
+        {
+            "name": "IVA Mod (BepInEx or SpaceWarp)",
+            "id": 3269,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Adds back IVA to KSP 2",
+            "downloads": 1009,
+            "followers": 8,
+            "author": "Mudkip909",
+            "default_version_id": 19116,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/Mudkip909_14942/IVA_Mod_BepInEx/IVA_Mod_BepInEx-1677545075.png",
+            "bg_offset_y": -216,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/Mudkip909/KSP2-IVA",
+            "url": "/mod/3269/IVA%20Mod%20(BepInEx%20or%20SpaceWarp)",
+            "versions": [
+                {
+                    "friendly_version": "0.2.6.1ALL",
+                    "game_version": "0.1.0.0",
+                    "id": 19116,
+                    "created": "2023-02-28T21:37:26.535854+00:00",
+                    "download_path": "/mod/3269/IVA%20Mod%20(BepInEx%20or%20SpaceWarp)/download/0.2.6.1ALL",
+                    "changelog": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\r\nNOTE TO SELF! CREDIT ISAQUEST AND REMOVE THIS PART OF THE CHANGELOG !\r\n\r\n\r\n\r\nAdded SpaceWarp Support ",
+                    "downloads": 726
+                },
+                {
+                    "friendly_version": "0.2.6.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19108,
+                    "created": "2023-02-28T00:44:16.262056+00:00",
+                    "download_path": "/mod/3269/IVA%20Mod%20(BepInEx%20or%20SpaceWarp)/download/0.2.6.1",
+                    "changelog": "near clip plane fixed",
+                    "downloads": 123
+                }
+            ]
+        },
+        {
+            "name": "Maneuver Node Controller",
+            "id": 3270,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Provides an interface to finely tune maneuver nodes.",
+            "downloads": 3362,
+            "followers": 29,
+            "author": "XYZ3211",
+            "default_version_id": 19226,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/XYZ3211_103810/Maneuver_Node_Controller/Maneuver_Node_Controller-1677788948.png",
+            "bg_offset_y": -41,
+            "license": "CC-BY-NC-SA",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214244-maneuver-node-controller-003/",
+            "donations": "",
+            "source_code": "https://github.com/XYZ3211/ManeuverNodeController",
+            "url": "/mod/3270/Maneuver%20Node%20Controller",
+            "versions": [
+                {
+                    "friendly_version": "0.05",
+                    "game_version": "0.1.0.0",
+                    "id": 19226,
+                    "created": "2023-03-06T17:37:12.113062+00:00",
+                    "download_path": "/mod/3270/Maneuver%20Node%20Controller/download/0.05",
+                    "changelog": "",
+                    "downloads": 184
+                },
+                {
+                    "friendly_version": "0.04",
+                    "game_version": "0.1.0.0",
+                    "id": 19221,
+                    "created": "2023-03-06T17:25:31.055546+00:00",
+                    "download_path": "/mod/3270/Maneuver%20Node%20Controller/download/0.04",
+                    "changelog": "",
+                    "downloads": 10
+                },
+                {
+                    "friendly_version": "0.03",
+                    "game_version": "0.1.0.0",
+                    "id": 19165,
+                    "created": "2023-03-02T20:24:37.234558+00:00",
+                    "download_path": "/mod/3270/Maneuver%20Node%20Controller/download/0.03",
+                    "changelog": "- Can now be accessed from the tool bar\r\n- Updated to Space Warp GUI\r\n- Added orbit controls\r\n- Added large time step",
+                    "downloads": 2465
+                },
+                {
+                    "friendly_version": "0.02",
+                    "game_version": "0.1.0.0",
+                    "id": 19098,
+                    "created": "2023-02-27T02:47:12.160520+00:00",
+                    "download_path": "/mod/3270/Maneuver%20Node%20Controller/download/0.02",
+                    "changelog": "",
+                    "downloads": 700
+                },
+                {
+                    "friendly_version": "0.01",
+                    "game_version": "0.1.0.0",
+                    "id": 19097,
+                    "created": "2023-02-27T02:38:18.380578+00:00",
+                    "download_path": "/mod/3270/Maneuver%20Node%20Controller/download/0.01",
+                    "changelog": null,
+                    "downloads": 3
+                }
+            ]
+        },
+        {
+            "name": "Stage Info",
+            "id": 3272,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Popup window that displays staging information",
+            "downloads": 3132,
+            "followers": 29,
+            "author": "natalia_simonova",
+            "default_version_id": 19211,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/natalia_simonova_99724/Stage_Info/Stage_Info-1677962986.png",
+            "bg_offset_y": 0,
+            "license": "Other",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/natalia-simonova/StageInfo",
+            "url": "/mod/3272/Stage%20Info",
+            "versions": [
+                {
+                    "friendly_version": "0.5.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19211,
+                    "created": "2023-03-06T04:23:41.619723+00:00",
+                    "download_path": "/mod/3272/Stage%20Info/download/0.5.1",
+                    "changelog": "* some adjustments to celestial altitude sliders\r\n* twr color thresholds now customizable via mod settings\r\n* fixed some minor UI issues\r\n* returned plugin to spacewarp\r\n* restored in-flight app bar button + UI",
+                    "downloads": 331
+                },
+                {
+                    "friendly_version": "0.5",
+                    "game_version": "0.1.0.0",
+                    "id": 19202,
+                    "created": "2023-03-05T22:19:21.816876+00:00",
+                    "download_path": "/mod/3272/Stage%20Info/download/0.5",
+                    "changelog": "- added atmospheric data\r\n- disabled flight mode\r\n- updated for spaceWarp 0.4\r\n- switched plugin to use BepInEx",
+                    "downloads": 116
+                },
+                {
+                    "friendly_version": "0.4",
+                    "game_version": "0.1.0.0",
+                    "id": 19192,
+                    "created": "2023-03-04T20:49:10.641009+00:00",
+                    "download_path": "/mod/3272/Stage%20Info/download/0.4",
+                    "changelog": "* hid zeroed out empty stage data when all stages shown\r\n* changed celestial selection to expanded area below stage list\r\n* added altitude slider to set altitude above sea level\r\n* showed gravity for the selected altitude\r\n* recalculated TWR based on gravity at the selected altitude (for increased accuracy)",
+                    "downloads": 559
+                },
+                {
+                    "friendly_version": "0.3",
+                    "game_version": "0.1.0.0",
+                    "id": 19173,
+                    "created": "2023-03-03T16:31:51.668286+00:00",
+                    "download_path": "/mod/3272/Stage%20Info/download/0.3",
+                    "changelog": "- added planet selection\r\n- fixed and improved UI\r\n- added flight mode update interval\r\n- added button to clear data\r\n",
+                    "downloads": 1332
+                },
+                {
+                    "friendly_version": "0.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19115,
+                    "created": "2023-02-28T20:41:08.015607+00:00",
+                    "download_path": "/mod/3272/Stage%20Info/download/0.2",
+                    "changelog": "**Note: Requires update to SpaceWarp v0.3**\r\n\r\n* Improved UI using SpaceWarp GUI style\r\n* Removed hotkey function\r\n* VAB window accessed from stock engineer report toolbar button\r\n* Flight window accessed from custom toolbar button\r\n* Added remaining burn time to flight mode\r\n* Empty stages can be hidden in VAB mode\r\n* Future stages can be hidden in flight mode\r\n* Fixed console log spam during flight",
+                    "downloads": 498
+                },
+                {
+                    "friendly_version": "0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19103,
+                    "created": "2023-02-27T19:03:25.524027+00:00",
+                    "download_path": "/mod/3272/Stage%20Info/download/0.1",
+                    "changelog": null,
+                    "downloads": 296
+                }
+            ]
+        },
+        {
+            "name": "TimeWarpUnlock",
+            "id": 3274,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Unlocks the time warp control to allow maximum timewarp at all times.",
+            "downloads": 534,
+            "followers": 5,
+            "author": "miniroo321",
+            "default_version_id": 19110,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/miniroo321_103963/TimeWarpUnlock_BepInEx/TimeWarpUnlock_BepInEx-1677562298.jpg",
+            "bg_offset_y": -1029,
+            "license": "MIT",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213854-timewarpunlock-unlock-your-timewarp-tool/",
+            "donations": "",
+            "source_code": "https://github.com/WilliamLCobb/TimeWarpUnlock",
+            "url": "/mod/3274/TimeWarpUnlock",
+            "versions": [
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19110,
+                    "created": "2023-02-28T05:02:17.550292+00:00",
+                    "download_path": "/mod/3274/TimeWarpUnlock/download/0.1.0",
+                    "changelog": null,
+                    "downloads": 534
+                }
+            ]
+        },
+        {
+            "name": "WASD For VAB",
+            "id": 3276,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Control the VAB camera using WASD",
+            "downloads": 1122,
+            "followers": 8,
+            "author": "ArchLinus",
+            "default_version_id": 19216,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/ArchLinus/WASDForVAB",
+            "url": "/mod/3276/WASD%20For%20VAB",
+            "versions": [
+                {
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19216,
+                    "created": "2023-03-06T15:18:29.065921+00:00",
+                    "download_path": "/mod/3276/WASD%20For%20VAB/download/0.3.0",
+                    "changelog": "",
+                    "downloads": 62
+                },
+                {
+                    "friendly_version": "0.2.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19174,
+                    "created": "2023-03-03T18:26:51.080110+00:00",
+                    "download_path": "/mod/3276/WASD%20For%20VAB/download/0.2.1",
+                    "changelog": "* Add keybinds to mod configuration (thanks to Falki!)\r\n* Add an optional slow toggle keybind",
+                    "downloads": 790
+                },
+                {
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19146,
+                    "created": "2023-03-01T20:41:23.111535+00:00",
+                    "download_path": "/mod/3276/WASD%20For%20VAB/download/0.2.0",
+                    "changelog": "* Port the mod to use SpaceWarp instead of BepInEx\r\n* Add camera configuration options\r\n* Fix mod breaking after quitting to main menu and returning to VAB",
+                    "downloads": 129
+                },
+                {
+                    "friendly_version": "0.1.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19127,
+                    "created": "2023-03-01T01:58:48.780822+00:00",
+                    "download_path": "/mod/3276/WASD%20For%20VAB/download/0.1.2",
+                    "changelog": "* Fixed mod loading issues on new saves\r\n* Added a way to toggle the mod on/off using alt+w\r\n* Fixed conflict with ctrl+a binding",
+                    "downloads": 62
+                },
+                {
+                    "friendly_version": "0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19118,
+                    "created": "2023-02-28T22:06:06.500620+00:00",
+                    "download_path": "/mod/3276/WASD%20For%20VAB/download/0.1.1",
+                    "changelog": "",
+                    "downloads": 31
+                },
+                {
+                    "friendly_version": "0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19113,
+                    "created": "2023-02-28T14:11:17.962168+00:00",
+                    "download_path": "/mod/3276/WASD%20For%20VAB/download/0.1",
+                    "changelog": null,
+                    "downloads": 48
+                }
+            ]
+        },
+        {
+            "name": "Space Warp + BepInEx",
+            "id": 3277,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A plugin to load Space Warp mods with BepInEx maintained by the Space Warp developers",
+            "downloads": 2088,
+            "followers": 23,
+            "author": "cheese3660",
+            "default_version_id": 19196,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/213036-space-warp/",
+            "donations": "",
+            "source_code": "https://github.com/SpaceWarpDev/SpaceWarp",
+            "url": "/mod/3277/Space%20Warp%20+%20BepInEx",
+            "versions": [
+                {
+                    "friendly_version": "0.4.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19196,
+                    "created": "2023-03-05T15:53:14.109911+00:00",
+                    "download_path": "/mod/3277/Space%20Warp%20+%20BepInEx/download/0.4.0",
+                    "changelog": "Instead changed to package space warp + bepinex for ease of installation for new users",
+                    "downloads": 724
+                },
+                {
+                    "friendly_version": "0.3.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19125,
+                    "created": "2023-03-01T01:51:56.364987+00:00",
+                    "download_path": "/mod/3277/Space%20Warp%20+%20BepInEx/download/0.3.1",
+                    "changelog": "Fixed new installation issue",
+                    "downloads": 1225
+                },
+                {
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19121,
+                    "created": "2023-03-01T00:50:29.397900+00:00",
+                    "download_path": "/mod/3277/Space%20Warp%20+%20BepInEx/download/0.3.0",
+                    "changelog": "Change Log\r\n- Added Roslyn Error Output\r\n- Added Addressables Loading System For Custom Parts\r\n- Added Localization Loading System For Custom Parts\r\n- Added Fancy UI Elements, which can be grabbed by SpaceWarpManager.Skin\r\n- Added AppBar Integration With A ToolBarWindow Class and a one liner for window registration\r\n- General Refactoring\r\n- A *Lot* of Bug Fixes",
+                    "downloads": 18
+                },
+                {
+                    "friendly_version": "0.2.5",
+                    "game_version": "0.1.0.0",
+                    "id": 19114,
+                    "created": "2023-02-28T14:20:04.238451+00:00",
+                    "download_path": "/mod/3277/Space%20Warp%20+%20BepInEx/download/0.2.5",
+                    "changelog": null,
+                    "downloads": 121
+                }
+            ]
+        },
+        {
+            "name": "KerbalPatchProgram",
+            "id": 3278,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A collection of bug fixes for KSP2.",
+            "downloads": 865,
+            "followers": 8,
+            "author": "miniroo321",
+            "default_version_id": 19117,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/miniroo321_103963/KerbalPatchProgram/KerbalPatchProgram-1677620667.jpg",
+            "bg_offset_y": -292,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "",
+            "url": "/mod/3278/KerbalPatchProgram",
+            "versions": [
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19117,
+                    "created": "2023-02-28T21:43:54.303255+00:00",
+                    "download_path": "/mod/3278/KerbalPatchProgram/download/0.1.0",
+                    "changelog": null,
+                    "downloads": 865
+                }
+            ]
+        },
+        {
+            "name": "P.A.I.G.E-B-Gone",
+            "id": 3280,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Disables Tutorial by default and mutes P.A.I.G.E",
+            "downloads": 470,
+            "followers": 6,
+            "author": "amahlaka",
+            "default_version_id": 19154,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/amahlaka_104120/P.A.I.G.E-B-Gone/P.A.I.G.E-B-Gone-1677735878.png",
+            "bg_offset_y": -1737,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/amahlaka/P.A.I.G.E-B-Gone",
+            "url": "/mod/3280/P.A.I.G.E-B-Gone",
+            "versions": [
+                {
+                    "friendly_version": "0.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19154,
+                    "created": "2023-03-02T05:34:24.001962+00:00",
+                    "download_path": "/mod/3280/P.A.I.G.E-B-Gone/download/0.2",
+                    "changelog": "Now also disables the P.A.I.G.E popups when doing stuff for the first time",
+                    "downloads": 405
+                },
+                {
+                    "friendly_version": "0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19124,
+                    "created": "2023-03-01T01:51:22.491406+00:00",
+                    "download_path": "/mod/3280/P.A.I.G.E-B-Gone/download/0.1",
+                    "changelog": null,
+                    "downloads": 65
+                }
+            ]
+        },
+        {
+            "name": "Micro Engineer",
+            "id": 3282,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Displays useful in-flight information about your vessel, your orbital trajectory and your maneuvers.",
+            "downloads": 2639,
+            "followers": 25,
+            "author": "Micrologist",
+            "default_version_id": 19200,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/Micrologist_104134/Micro_Engineer/Micro_Engineer-1677878164.png",
+            "bg_offset_y": -9,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/Micrologist/MicroEngineer",
+            "url": "/mod/3282/Micro%20Engineer",
+            "versions": [
+                {
+                    "friendly_version": "0.5.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19200,
+                    "created": "2023-03-05T22:08:43.346995+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.5.0",
+                    "changelog": "- conversion to Space Warp 0.4.0 (Thanks `@AdmiralRadish`)\r\n- add layout save/load feature (Thanks `@Falki`)\r\n- add latitude / longitude readout (surface)",
+                    "downloads": 379
+                },
+                {
+                    "friendly_version": "0.4.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19193,
+                    "created": "2023-03-04T21:44:23.766388+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.4.1",
+                    "changelog": "- tweak stage section layout to accommodate large TWR / burn time values\r\n- add orbital: time to soi transition\r\n- add surface: biome\r\n- bunch of unit / precision tweaks",
+                    "downloads": 480
+                },
+                {
+                    "friendly_version": "0.4.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19175,
+                    "created": "2023-03-03T21:20:06.248377+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.4.0",
+                    "changelog": "- reworked ui/layout\r\n- add: stage info (dv, twr, burn time)\r\n- add: flight drag & lift stats (might be expensive)\r\n- add: surface alt msl/agl distinction\r\n\r\nThis will be the last release before the SpaceWarp BepinEx conversion.",
+                    "downloads": 989
+                },
+                {
+                    "friendly_version": "0.3.9",
+                    "game_version": "0.1.0.0",
+                    "id": 19167,
+                    "created": "2023-03-03T00:22:44.818339+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.9",
+                    "changelog": "- add: tgt ap / pe\r\n- ui: slimmed out",
+                    "downloads": 375
+                },
+                {
+                    "friendly_version": "0.3.8",
+                    "game_version": "0.1.0.0",
+                    "id": 19156,
+                    "created": "2023-03-02T06:06:13.533807+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.8",
+                    "changelog": "- fix: tgt & man popout windows showing empty squares",
+                    "downloads": 124
+                },
+                {
+                    "friendly_version": "0.3.7",
+                    "game_version": "0.1.0.0",
+                    "id": 19155,
+                    "created": "2023-03-02T05:51:52.585691+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.7",
+                    "changelog": "- feat: popout windows\r\n- add: (atmospheric) flight section",
+                    "downloads": 3
+                },
+                {
+                    "friendly_version": "0.3.6",
+                    "game_version": "0.1.0.0",
+                    "id": 19149,
+                    "created": "2023-03-01T23:13:25.467352+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.6",
+                    "changelog": "- reduced line spacing\r\n- fix: terrain alt\r\n- add: maneuver projected ap/pe\r\n- changed close button",
+                    "downloads": 75
+                },
+                {
+                    "friendly_version": "0.3.5",
+                    "game_version": "0.1.0.0",
+                    "id": 19134,
+                    "created": "2023-03-01T06:06:38.213243+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.5",
+                    "changelog": "- add orbital period information\r\n- add target information",
+                    "downloads": 182
+                },
+                {
+                    "friendly_version": "0.3.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19133,
+                    "created": "2023-03-01T04:20:35.029552+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.1",
+                    "changelog": "fixed missing folder leading to stuck configuration window",
+                    "downloads": 24
+                },
+                {
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19132,
+                    "created": "2023-03-01T03:55:28.496637+00:00",
+                    "download_path": "/mod/3282/Micro%20Engineer/download/0.3.0",
+                    "changelog": null,
+                    "downloads": 8
+                }
+            ]
+        },
+        {
+            "name": "KSP2Dev LogConsole",
+            "id": 3283,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Advanced console to access the in-game logs",
+            "downloads": 56,
+            "followers": 1,
+            "author": "ihsoft",
+            "default_version_id": 19135,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/ihsoft_20222/KSP2Dev_LogConsole/KSP2Dev_LogConsole-1677661638.jpg",
+            "bg_offset_y": -133,
+            "license": "Public Domain",
+            "website": "",
+            "donations": "https://www.patreon.com/ihsoft",
+            "source_code": "https://github.com/ihsoft/KSP2Dev_LogConsole",
+            "url": "/mod/3283/KSP2Dev%20LogConsole",
+            "versions": [
+                {
+                    "friendly_version": "1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19135,
+                    "created": "2023-03-01T09:00:14.839494+00:00",
+                    "download_path": "/mod/3283/KSP2Dev%20LogConsole/download/1.0",
+                    "changelog": "* Initial KSP2 version.",
+                    "downloads": 56
+                }
+            ]
+        },
+        {
+            "name": "AtmoSwitch",
+            "id": 3285,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Allows switching vessels in atmosphere",
+            "downloads": 362,
+            "followers": 4,
+            "author": "munix",
+            "default_version_id": 19218,
+            "shared_authors": [],
+            "background": null,
+            "bg_offset_y": null,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/jan-bures/atmoswitch",
+            "url": "/mod/3285/AtmoSwitch",
+            "versions": [
+                {
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19218,
+                    "created": "2023-03-06T15:20:29.160260+00:00",
+                    "download_path": "/mod/3285/AtmoSwitch/download/0.2.0",
+                    "changelog": "SpaceWarp 0.4 support",
+                    "downloads": 26
+                },
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19140,
+                    "created": "2023-03-01T15:46:52.388919+00:00",
+                    "download_path": "/mod/3285/AtmoSwitch/download/0.1.0",
+                    "changelog": null,
+                    "downloads": 336
+                }
+            ]
+        },
+        {
+            "name": "KerbalView",
+            "id": 3286,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Enables First Person View in KSP2",
+            "downloads": 364,
+            "followers": 3,
+            "author": "EloxZ",
+            "default_version_id": 19215,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/EloxZ_104235/KerbalView/KerbalView-1677693479.jpeg",
+            "bg_offset_y": -677,
+            "license": "MIT",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214326-kerbalview/",
+            "donations": "",
+            "source_code": "https://github.com/EloxZ/KerbalView",
+            "url": "/mod/3286/KerbalView",
+            "versions": [
+                {
+                    "friendly_version": "1.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19215,
+                    "created": "2023-03-06T15:14:26.452468+00:00",
+                    "download_path": "/mod/3286/KerbalView/download/1.1.0",
+                    "changelog": "",
+                    "downloads": 32
+                },
+                {
+                    "friendly_version": "1.0.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19176,
+                    "created": "2023-03-03T21:58:45.587400+00:00",
+                    "download_path": "/mod/3286/KerbalView/download/1.0.2",
+                    "changelog": "- EVA Lights",
+                    "downloads": 209
+                },
+                {
+                    "friendly_version": "1.0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19145,
+                    "created": "2023-03-01T20:28:59.022863+00:00",
+                    "download_path": "/mod/3286/KerbalView/download/1.0.1",
+                    "changelog": "- Minor adjustments",
+                    "downloads": 110
+                },
+                {
+                    "friendly_version": "1.0.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19142,
+                    "created": "2023-03-01T17:54:46.386790+00:00",
+                    "download_path": "/mod/3286/KerbalView/download/1.0.0",
+                    "changelog": null,
+                    "downloads": 13
+                }
+            ]
+        },
+        {
+            "name": "Draft Your Viewers 2",
+            "id": 3289,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Don't want to strand Jeb in space? Strand your viewers instead!",
+            "downloads": 43,
+            "followers": 1,
+            "author": "Nifty255",
+            "default_version_id": 19212,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/Nifty255_1127/Draft_Your_Viewers_2/Draft_Your_Viewers_2-1677707573.png",
+            "bg_offset_y": -113,
+            "license": "GPL-3.0",
+            "website": "https://github.com/Nifty255/DraftYourViewers2",
+            "donations": "",
+            "source_code": "https://github.com/Nifty255/DraftYourViewers2",
+            "url": "/mod/3289/Draft%20Your%20Viewers%202",
+            "versions": [
+                {
+                    "friendly_version": "0.3.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19212,
+                    "created": "2023-03-06T07:05:00.210489+00:00",
+                    "download_path": "/mod/3289/Draft%20Your%20Viewers%202/download/0.3.0",
+                    "changelog": "- Add \"Draft into Active Craft\" feature. Works in the VAB and on the launchpads/runways.\r\n- Fix broken mod save location due to bad KSP campaign names using workaround.\r\n- Improve text typer animation.\r\n- Improved name-in-use checking.",
+                    "downloads": 2
+                },
+                {
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19157,
+                    "created": "2023-03-02T06:20:55.342461+00:00",
+                    "download_path": "/mod/3289/Draft%20Your%20Viewers%202/download/0.2.0",
+                    "changelog": "- Implemented Collapse feature.\r\n- Fixed incorrect asset bundle name.",
+                    "downloads": 32
+                },
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19147,
+                    "created": "2023-03-01T21:45:51.194827+00:00",
+                    "download_path": "/mod/3289/Draft%20Your%20Viewers%202/download/0.1.0",
+                    "changelog": "Initial Release",
+                    "downloads": 9
+                }
+            ]
+        },
+        {
+            "name": "Celestial Teleport Rendezvous",
+            "id": 3290,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "A cheat menu for KSP2, written in Lua",
+            "downloads": 274,
+            "followers": 4,
+            "author": "Dudekahedron",
+            "default_version_id": 19150,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/Dudekahedron_104314/Celestial_Teleport_Rendezvous/Celestial_Teleport_Rendezvous-1677891771.png",
+            "bg_offset_y": -277,
+            "license": "MIT",
+            "website": "",
+            "donations": "",
+            "source_code": "https://github.com/StanleyDudek/CelestialTeleportRendezvous",
+            "url": "/mod/3290/Celestial%20Teleport%20Rendezvous",
+            "versions": [
+                {
+                    "friendly_version": "0.0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19150,
+                    "created": "2023-03-02T01:00:26.951932+00:00",
+                    "download_path": "/mod/3290/Celestial%20Teleport%20Rendezvous/download/0.0.1",
+                    "changelog": null,
+                    "downloads": 274
+                }
+            ]
+        },
+        {
+            "name": "UI Scaler",
+            "id": 3291,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Change the size of the game's user interface via a slider in the settings menu.",
+            "downloads": 1129,
+            "followers": 13,
+            "author": "Halban",
+            "default_version_id": 19220,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/Halban_103632/UI_Scaler/UI_Scaler-1677724741.jpg",
+            "bg_offset_y": -647,
+            "license": "CC-BY-SA",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214573-ui-scaler-v011-change-the-size-of-the-games-user-interface/#comment-4253305",
+            "donations": "https://www.paypal.com/paypalme/Halbann",
+            "source_code": "https://github.com/Halbann/UIScaler",
+            "url": "/mod/3291/UI%20Scaler",
+            "versions": [
+                {
+                    "friendly_version": "v0.1.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19220,
+                    "created": "2023-03-06T17:25:01.631928+00:00",
+                    "download_path": "/mod/3291/UI%20Scaler/download/v0.1.1",
+                    "changelog": "",
+                    "downloads": 72
+                },
+                {
+                    "friendly_version": "v0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19151,
+                    "created": "2023-03-02T02:25:37.211705+00:00",
+                    "download_path": "/mod/3291/UI%20Scaler/download/v0.1.0",
+                    "changelog": null,
+                    "downloads": 1057
+                }
+            ]
+        },
+        {
+            "name": "Better Parts Manager",
+            "id": 3292,
+            "game": "Kerbal Space Program 2",
+            "game_id": 22407,
+            "short_description": "Do you hate the ingame parts manager and want a ksp 1 style parts manager? this is for you",
+            "downloads": 1302,
+            "followers": 12,
+            "author": "ShadowDev",
+            "default_version_id": 19203,
+            "shared_authors": [],
+            "background": "https://spacedock.info/content/ShadowDev_103785/Better_Parts_Manager/Better_Parts_Manager-1677728820.png",
+            "bg_offset_y": null,
+            "license": "CC-BY-NC-ND",
+            "website": "https://forum.kerbalspaceprogram.com/index.php?/topic/214227-better-part-manager/",
+            "donations": "",
+            "source_code": "https://github.com/Bit-Studios/KerbalPartManager",
+            "url": "/mod/3292/Better%20Parts%20Manager",
+            "versions": [
+                {
+                    "friendly_version": "1.0.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19203,
+                    "created": "2023-03-05T22:42:28.297361+00:00",
+                    "download_path": "/mod/3292/Better%20Parts%20Manager/download/1.0.0",
+                    "changelog": "Sliders n stuff Part 2\r\n\r\nAll part types are now implemented. \r\nif something is missing DM me on discord or create an issue on the repo and I will get it added.",
+                    "downloads": 210
+                },
+                {
+                    "friendly_version": "0.2.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19181,
+                    "created": "2023-03-04T03:08:55.518032+00:00",
+                    "download_path": "/mod/3292/Better%20Parts%20Manager/download/0.2.0",
+                    "changelog": "Sliders n stuff Part 1\r\n\r\nThis update adds in sliders for most parts \r\n\r\nResources have also been added ",
+                    "downloads": 622
+                },
+                {
+                    "friendly_version": "0.1.0",
+                    "game_version": "0.1.0.0",
+                    "id": 19162,
+                    "created": "2023-03-02T18:05:47.819777+00:00",
+                    "download_path": "/mod/3292/Better%20Parts%20Manager/download/0.1.0",
+                    "changelog": "Works in OAB\r\n\r\nMade the decision that the ingame parts manager should just be deleted outright.\r\n\r\nNext version will remove the Part manager button",
+                    "downloads": 399
+                },
+                {
+                    "friendly_version": "0.0.2",
+                    "game_version": "0.1.0.0",
+                    "id": 19158,
+                    "created": "2023-03-02T12:58:40.514922+00:00",
+                    "download_path": "/mod/3292/Better%20Parts%20Manager/download/0.0.2",
+                    "changelog": "The buttons now do stuff.\r\n\r\nstill need to get working in the OAB and need to reenable the ingame parts manager.",
+                    "downloads": 38
+                },
+                {
+                    "friendly_version": "0.0.1",
+                    "game_version": "0.1.0.0",
+                    "id": 19153,
+                    "created": "2023-03-02T03:46:18.322121+00:00",
+                    "download_path": "/mod/3292/Better%20Parts%20Manager/download/0.0.1",
+                    "changelog": null,
+                    "downloads": 33
+                }
+            ]
+        }
+    ]
+}

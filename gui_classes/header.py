@@ -31,7 +31,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.install_available_switch.set("Available")
 
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self, values=["Light", "Dark"],
-                                                                       command=self.change_appearance_mode_event, width=50)
+                                                                       command=self.change_appearance, width=50)
         self.appearance_mode_optionemenu.grid(row=0, rowspan=2, column=6, padx=10, pady=10)
 
         self.scaling_optionemenu = customtkinter.CTkOptionMenu(self, values=["80%", "90%", "100%", "120%", "140%"],
@@ -41,7 +41,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
 
-    def change_appearance_mode_event(self, new_appearance_mode: str):
+    def change_appearance(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
         self.modlist_frame.update_appearance()
         self.footer_frame.update_appearance()
@@ -50,7 +50,9 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
-    def on_install_available_switch_selected(self, event):
+    def on_install_available_switch_selected(self):
+        """Called when the user selects the Installed/Available switch in the header."""
+        
         if self.install_available_switch.get() == "Installed":
             installed_mods = util.get_installed_mods()
             installed_mods.sort()

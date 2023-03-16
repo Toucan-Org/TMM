@@ -2,19 +2,25 @@ import customtkinter, datetime
 import utilities.utility as util
 from tkinter import IntVar
 
+
+
+# The top button frame that contains the install/remove/update buttons
 class ControlPanelButtonFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master)
 
+
+        # Initialize the buttons and label
         self.label = customtkinter.CTkLabel(self, text="Select a mod to view more details...", font=customtkinter.CTkFont(size=12), bg_color="lightblue" if customtkinter.get_appearance_mode() == "Light" else "gray9", padx=10, anchor="w")
         self.label.grid(row=0, column=0, pady=(10, 0), padx=10, sticky="w")
 
         self.cp_button1 = customtkinter.CTkButton(self, text="", width=70, height=30, fg_color="green", hover_color="darkgreen")
         self.cp_button2 = customtkinter.CTkButton(self, text="", width=70, height=30, fg_color="red", hover_color="darkred")
 
+        # Getting the control panel frame so we can access the selected mod (I dont like passing the entire object, but it works for now)
         self.control_panel_frame = kwargs.get("control_panel_frame", None)
 
-
+    # Updates the appearance of the buttons and label based on the selected mod
     def update_appearance(self):
         if self.control_panel_frame.selected_mod is not None:
             self.label.grid_remove()
@@ -28,6 +34,8 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
                 self.cp_button1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
                 self.cp_button2.grid_remove()
 
+    # The functions that are called when the buttons are pressed
+
     def install_mod(self):
         print("Installing mod")
         if util.download_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config["KSP2"]["install_path"]):
@@ -36,22 +44,28 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
             self.set_install_status()
             self.control_panel_frame.modlist_frame.update_appearance()        
 
+            # The mod has been installed, so we can now update the buttons and label
             self.update_appearance()
 
+
     def set_install_status(self):
+        """Sets the install status of the selected mod to installed in the modlist frame"""
         for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):
             if mod == self.control_panel_frame.selected_mod:
                 widget_set[5].configure(text="Installed")
                 break
 
+
     def remove_mod(self):
         print("Removing mod")
         if util.uninstall_mod_ksp2(self.control_panel_frame.selected_mod, self.control_panel_frame.config["KSP2"]["install_path"]):
             self.control_panel_frame.selected_mod.installed = False
+
             for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):
                 if mod == self.control_panel_frame.selected_mod:
                     widget_set[5].configure(text="")
                     break
+
             self.control_panel_frame.modlist_frame.update_appearance()
 
         else:
@@ -59,13 +73,17 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
         
         self.update_appearance()
 
+
     def update_mod(self):
         print("Updating mod")
+        # TODO: Implement this
+
 
     def toggle_install_button_state(self, state):
+        """Toggles the state of the install button between normal and disabled"""
         self.cp_button1.configure(state=state)
 
-
+# The main control panel frame
 class ControlPanelFrame(customtkinter.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master)
@@ -77,8 +95,7 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         self.cp_button_frame = kwargs.get("cp_button_frame", None)
         self.modlist_frame = kwargs.get("modlist_frame", None)
 
-        # self.cp_button_frame = ControlPanelButtonFrame(self)
-        # self.cp_button_frame.grid(row=0, column=0, columnspan=4, sticky="ew", padx=10, pady=10)
+        # Init the labels and textboxes
 
         self.cp_mod_name_label = customtkinter.CTkLabel(self, text="Mod Name:", font=customtkinter.CTkFont(size=12, weight="bold", underline=True))
         self.cp_mod_name_label.grid(row=0, column=0, padx=20, pady=10, sticky="w")
@@ -125,7 +142,6 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         self.cp_url = customtkinter.CTkTextbox(self, height=10, font=customtkinter.CTkFont(size=12), wrap="none", state="disabled")
         self.cp_url.grid(row=7, column=1, columnspan=3, padx=20, pady=10, sticky="nsew")
 
-
         self.cp_website_url_label = customtkinter.CTkLabel(self, text="Website:", font=customtkinter.CTkFont(size=12, weight="bold", underline=True))
         self.cp_website_url_label.grid(row=8, column=2, padx=20, pady=10, sticky="w")
         self.cp_website_url = customtkinter.CTkTextbox(self, height=10, font=customtkinter.CTkFont(size=12), wrap="none", state="disabled")
@@ -136,38 +152,42 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         self.cp_donations_url = customtkinter.CTkTextbox(self, height=10, font=customtkinter.CTkFont(size=12), wrap="none", state="disabled")
         self.cp_donations_url.grid(row=9, column=0, columnspan=2, padx=20, pady=10, sticky="nsew")
 
-        #Versions submenu
+        #Versions submenu (see VersionFrame class)
         self.version_label = customtkinter.CTkLabel(self, text="Versions", font=customtkinter.CTkFont(size=12, weight="bold", underline=True))
         self.version_label.grid(row=10, column=0, columnspan=4, padx=20, pady=20, sticky="w")
         self.version_frame = VersionFrame(self, fg_color="gray7")
         self.version_frame.grid(row=11, column=0, columnspan=4, padx=20, pady=10, sticky="nsew")
 
 
-    def set_mod(self, item):
-        self.selected_mod = item
+    def set_mod(self, mod):
+        """Called when a mod is selected in the modlist. 
+        Updates the mod info and the version list in the control panel."""
+
+        self.selected_mod = mod
         self.cp_button_frame.update_appearance()
 
-        newest_version = item.get_newest_version()
+        newest_version = mod.get_newest_version()
 
-        util.set_textbox_text(self.cp_mod_name, item.name)
-        util.set_textbox_text(self.cp_mod_summary, item.short_description)
+        util.set_textbox_text(self.cp_mod_name, mod.name)
+        util.set_textbox_text(self.cp_mod_summary, mod.short_description)
         util.set_textbox_text(self.cp_game_version, newest_version.game_version)
         util.set_textbox_text(self.cp_mod_version, newest_version.friendly_version)
-        util.set_textbox_text(self.cp_download_count, str(item.downloads))
+        util.set_textbox_text(self.cp_download_count, str(mod.downloads))
         util.set_textbox_text(self.cp_download_size, newest_version.download_size)
-        util.set_textbox_text(self.cp_mod_author, item.author)
-        util.set_textbox_text(self.cp_url, item.url)
-        util.set_textbox_text(self.cp_mod_id, item.id)
-        util.set_textbox_text(self.cp_website_url, item.website)
-        util.set_textbox_text(self.cp_donations_url, item.donations)
+        util.set_textbox_text(self.cp_mod_author, mod.author)
+        util.set_textbox_text(self.cp_url, mod.url)
+        util.set_textbox_text(self.cp_mod_id, mod.id)
+        util.set_textbox_text(self.cp_website_url, mod.website)
+        util.set_textbox_text(self.cp_donations_url, mod.donations)
 
-        self.version_frame.populate_version_list(item)
+        self.version_frame.populate_version_list(mod)
 
+# This frame contains a list of versions for a selected mod
 class VersionFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
         self.grid_columnconfigure((1,2,3,4,5), weight=1)
-        self.radio_var = IntVar(self, 0)
+        self.radio_var = IntVar(self, 0) # This tracks which version radio button is selected
 
         self.selected_label = customtkinter.CTkLabel(self, text="Selected", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.selected_label.grid(row=0, column=0, padx=5, pady=10, sticky="w")
@@ -187,12 +207,15 @@ class VersionFrame(customtkinter.CTkFrame):
         self.created_label = customtkinter.CTkLabel(self, text="Created", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.created_label.grid(row=0, column=5, padx=5, pady=5, sticky="w")
 
+
     def populate_version_list(self, mod):
+        """Populates the version list with the versions of the selected mod."""
         self.clear_version_list()
         if mod.versions:
             self.selected_version = mod.versions[0]
 
         def radiobutton_event():
+            """Called when a version radio button is selected."""
             self.selected_version = mod.versions[self.radio_var.get()]
             print(f"Selected version number: {self.selected_version}")
 
@@ -201,6 +224,7 @@ class VersionFrame(customtkinter.CTkFrame):
             self.selected = customtkinter.CTkRadioButton(self, width=10, variable=self.radio_var, value=i, text="", command=radiobutton_event)
             self.selected.grid(row=i+1, column=0, padx=10, pady=10, sticky="w")
 
+            # Select the radio button if the version is installed already
             if version.installed:
                 self.selected.select()
 
@@ -225,7 +249,9 @@ class VersionFrame(customtkinter.CTkFrame):
             date_format = datetime.datetime.fromisoformat(version.created).strftime("%d %b %Y")
             util.set_textbox_text(self.created, date_format)
 
+
     def clear_version_list(self):
+        """Clears the version list."""
         for widget in self.winfo_children():
             if isinstance(widget, (customtkinter.CTkRadioButton, customtkinter.CTkTextbox)):
                 widget.destroy()

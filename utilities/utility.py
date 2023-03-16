@@ -5,6 +5,7 @@ from utilities.mod_object import ModObjectEncoder, ModObject
 
 def scan_common_ksp2_installs():
     """Scan common places for KSP 2 installs"""
+
     print("Scanning for KSP 2 installs")
     common_paths = ["C:\\Program Files (x86)\\Steam\\steamapps\\common\\Kerbal Space Program 2",
                     "C:\\Program Files\\Steam\\steamapps\\common\\Kerbal Space Program 2"]
@@ -18,11 +19,13 @@ def scan_common_ksp2_installs():
 
 
 def detect_game_version(path):
-    #check if KSP_x64.exe exists
+    # Check if KSP2_x64.exe exists
     if not os.path.exists(os.path.join(path, "KSP2_x64.exe")):
         print("Could not find KSP2_x64.exe")
         return None
-    # use pefile to get the version info from the exe
+    
+    # Use pefile to get the version info from the exe
+    # (This took way too long to get working)
     pe = pefile.PE(os.path.join(path, "KSP2_x64.exe"))
     for fileinfo in pe.FileInfo:
         for info in fileinfo:
@@ -38,6 +41,7 @@ def detect_game_version(path):
 
 def create_modlist_json():
     """Create a modlist.json file"""
+
     with open("modlist.json", "w") as f:
         json.dump({"mods": []}, f, indent=4)
 
@@ -142,7 +146,7 @@ def download_mod(mod, version, installdir):
         mod.filename = f"{mod.name}_{version.friendly_version}.zip"
         if os.path.exists(f"data/cache/{mod.filename}"):
             print(f"Found {mod.filename} in cache")
-            install_mod_ksp2(mod, installdir)
+            install_mod(mod, installdir)
         
         else:
             print(f"Downloading {mod.name} ({mod.id})")
@@ -165,7 +169,7 @@ def download_mod(mod, version, installdir):
 
 
 
-def install_mod_ksp2(mod: ModObject, installdir: str) -> bool:
+def install_mod(mod: ModObject, installdir: str) -> bool:
     """Install a mod and check if it was successful"""
 
     print(f"Installing {mod.name} ({mod.id})")
@@ -178,7 +182,7 @@ def install_mod_ksp2(mod: ModObject, installdir: str) -> bool:
     return False
 
 
-def uninstall_mod_ksp2(mod, installdir):
+def uninstall_mod(mod, installdir):
     print(f"Uninstalling {mod.name} ({mod.id})")
 
     remove_mod_from_json(mod) # Remove the mod from the json file
@@ -228,6 +232,7 @@ def extract_zip(zip_path: str, destination_path: str) -> bool:
     return False
 
 def set_textbox_text(textbox, text):
+    """Set the text of a textbox"""
     textbox.configure(state="normal")
     textbox.delete("0.0", "end")  # delete all text
     textbox.insert("end", text)  # insert at the end of the textbox

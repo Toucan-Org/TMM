@@ -69,6 +69,8 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
         self.header_text_frame.configure(text=text)
 
     def toggle_available_mods_menu(self, val):
+        """Toggles the available mods menu from appearing"""
+
         if val:
             self.available_mods_menu.grid_remove()
         else:
@@ -102,6 +104,8 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         self.modlist = []
 
     def add_item(self, item):
+        """Adds a mod item to the mod list"""
+
         row_frame = customtkinter.CTkFrame(self, fg_color="lightgray" if customtkinter.get_appearance_mode() == "Light" else "black", cursor="hand2")
         
         name_label = customtkinter.CTkLabel(row_frame, text=item.name, font=customtkinter.CTkFont(size=14, weight="bold"), bg_color="lightblue" if customtkinter.get_appearance_mode() == "Light" else "gray9", padx=10, anchor="w")
@@ -129,19 +133,23 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         self.item_widgets.append((row_frame, name_label, author_label, summary_label, game_version_label, installed_label))
 
         # Bind mod_select_event to button click event
-        row_frame.bind("<Button-1>", lambda event: self.click_event_modlist_select(item))
+        row_frame.bind("<Button-1>", lambda event: self.modlist_select(item))
 
-        #on row_frame hover, change cursor to hand2 and bg color to gray9
+        # On row_frame hover, do something
         row_frame.bind("<Enter>", lambda event, frame=row_frame: self.on_frame_hover(event, frame, name_label))
         row_frame.bind("<Leave>", lambda event, frame=row_frame: self.on_frame_leave(event, frame, name_label))
 
+
     def clear_modlist(self):
+        """Clears the mod list"""
+
         self.modlist = []
         for widget_set in self.item_widgets:
             widget_set[0].destroy()
         self.item_widgets.clear()
 
-    def populate_modlist(self, mods):        
+    def populate_modlist(self, mods):     
+        """Populates the mod list with the given mods"""   
         self.clear_modlist()
 
         for i in range(len(mods)):
@@ -151,6 +159,8 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         self.loading_screen_frame.hide()
 
     def update_appearance(self):
+        """Updates the appearance of the mod list based on darkmode or lightmode selection"""
+
         for widget_set in self.item_widgets:
             widget_set[0].configure(fg_color="lightgray" if customtkinter.get_appearance_mode() == "Light" else "black")
             widget_set[1].configure(bg_color="lightblue" if customtkinter.get_appearance_mode() == "Light" else "gray9")
@@ -163,7 +173,7 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         frame.configure(fg_color="lightgray" if customtkinter.get_appearance_mode() == "Light" else "black")
         name_label.configure(bg_color="lightblue" if customtkinter.get_appearance_mode() == "Light" else "gray9")
     
-    def click_event_modlist_select(self, item):
+    def modlist_select(self, item):
         """Event handler for when a mod is selected in the mod list.
         loads the mod's info into the control panel"""
 
