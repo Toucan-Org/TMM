@@ -138,8 +138,8 @@ def get_installed_mods():
     return [ModObject(**item) for item in data["mods"]]
 
 
-def download_mod(mod, version, installdir):
-    """Download a mod"""
+def download_install_mod(mod, version, installdir):
+    """Download and install a mod"""
 
     try:
         #Check if it exists in cache
@@ -154,11 +154,10 @@ def download_mod(mod, version, installdir):
             
             urllib.request.urlretrieve(version.download_path, f"data/cache/{mod.filename}") # Download the mod
 
-        
-
         # Add the mod to the json file
         add_mod_to_json(mod)
         version.installed = True
+        print("Installed mod!")
         return True
     
     except Exception as e:

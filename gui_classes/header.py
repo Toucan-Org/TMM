@@ -50,7 +50,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
-    def on_install_available_switch_selected(self):
+    def on_install_available_switch_selected(self, event):
         """Called when the user selects the Installed/Available switch in the header."""
         
         if self.install_available_switch.get() == "Installed":
