@@ -38,7 +38,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
     def install_mod(self):
         print("Installing mod")
-        if util.download_install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config["KSP2"]["install_path"]):
+        if util.download_install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config["KSP2"]["InstallDirectory"]):
             self.control_panel_frame.selected_mod.installed = True
             # Set the modlist entry to installed
             self.set_install_status()
@@ -58,7 +58,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
     def remove_mod(self):
         print("Removing mod")
-        if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config["KSP2"]["install_path"]):
+        if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config["KSP2"]["InstallDirectory"]):
             self.control_panel_frame.selected_mod.installed = False
 
             for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):

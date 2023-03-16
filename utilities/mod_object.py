@@ -75,7 +75,7 @@ class VersionObject():
         self.friendly_version = kwargs.get("friendly_version", "Unknown Version")
         self.game_version = kwargs.get("game_version", "0.0.0")
         self.created = kwargs.get("created", "Unknown Date")
-        self.download_path = f'{root_url}{kwargs.get("download_path", "No download URL provided.")}'
+        self.download_path = kwargs.get("download_path", "No download URL provided.")
         self.downloads = kwargs.get("downloads", 0)
         self.download_size = self.get_file_size()
 

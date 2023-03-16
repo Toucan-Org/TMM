@@ -100,8 +100,8 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
 
     def save_config(self):
         """Saves the install path and game version to the config file"""
-        self.config_file["KSP2"]["install_path"] = str(self.install_path)
-        self.config_file["KSP2"]["game_version"] = str(self.game_version)
+        self.config_file["KSP2"]["InstallDirectory"] = str(self.install_path)
+        self.config_file["KSP2"]["GameVersion"] = str(self.game_version)
         with open("config.ini", "w") as config_file:
             self.config_file.write(config_file)
 
@@ -127,10 +127,10 @@ class LaunchButton(customtkinter.CTkFrame):
         self.launch_button.bind("<Enter>", self.on_enter)
         self.launch_button.bind("<Leave>", self.on_leave)
 
-    def on_enter(self):
+    def on_enter(self, event):
         self.launch_button.configure(image=self.launch_image_hover)
     
-    def on_leave(self):
+    def on_leave(self, event):
         self.launch_button.configure(image=self.launch_image)
 
     def launch(self):
