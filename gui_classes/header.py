@@ -58,7 +58,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.modlist_header_frame.toggle_available_mods_menu(False)
         
 
-    def on_install_available_switch_selected(self, event):
+    def on_install_available_switch_selected(self, event=None):
         """Called when the user selects the Installed/Available switch in the header."""
         
         if self.install_available_switch.get() == "Installed":

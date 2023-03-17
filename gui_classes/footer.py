@@ -56,7 +56,7 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
             print("Found GameVersion in config file")
             self.game_version = self.config_file['KSP2']['GameVersion']
             self.set_game_version_label(f"Game Version: ({self.game_version}) detected!")
-            
+
         else:
             self.game_version = util.detect_game_version(self.install_path)
             print(f"Version: {self.game_version}")
@@ -197,7 +197,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.search_button.grid(row=1, column=1, padx=(10, 30), sticky="ew")
 
 
-    def search_mods(self, event):
+    def search_mods(self, event=None):
         """Searches the modlist for the query in the search bar. 
         If the query is not found in the modlist, it will search the API for the query"""
         
@@ -224,5 +224,10 @@ class SearchBarFrame(customtkinter.CTkFrame):
             # Search the API
             found_mods = sdapi.search_mod(self.search_bar.get())
             self.modlist_frame.clear_modlist()
-            for mod in found_mods:
-                self.modlist_frame.add_item(mod)
+
+            if len(found_mods) == 0:
+                self.modlist_frame.loading_screen_frame.show("No mods found")
+
+            else:
+                for mod in found_mods:
+                    self.modlist_frame.add_item(mod)
