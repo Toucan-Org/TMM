@@ -1,6 +1,18 @@
-import os, pefile, json, urllib.request, zipfile, shutil, threading
+import os, pefile, json, urllib.request, zipfile, shutil, requests
 from utilities.mod_object import ModObjectEncoder, ModObject
 
+
+def get_latest_version():
+    """Check if a newer version of 2KAN is available"""
+    url = f"https://api.github.com/repos/Loki-Lokster/2KAN/releases/latest"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        latest_version = data["tag_name"]
+        return latest_version
+    
+    return None
 
 
 def scan_common_ksp2_installs():
@@ -165,7 +177,7 @@ def download_install_mod(mod, version, installdir):
         # Add the mod to the json file
         version.installed = True
         mod.installed = True
-        
+
         add_mod_to_json(mod)
         print("Installed mod!")
         return True
