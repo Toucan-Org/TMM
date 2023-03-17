@@ -160,7 +160,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.search_button.grid(row=1, column=1, padx=(10, 30), sticky="ew")
 
 
-    def search_mods(self):
+    def search_mods(self, event):
         """Searches the modlist for the query in the search bar. 
         If the query is not found in the modlist, it will search the API for the query"""
         

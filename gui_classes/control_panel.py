@@ -39,8 +39,6 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
     def install_mod(self):
         print("Installing mod")
         if util.download_install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config["KSP2"]["InstallDirectory"]):
-            self.control_panel_frame.selected_mod.installed = True
-            # Set the modlist entry to installed
             self.set_install_status()
             self.control_panel_frame.modlist_frame.update_appearance()        
 

@@ -1,4 +1,4 @@
-import os, pefile, json, urllib.request, zipfile, shutil
+import os, pefile, json, urllib.request, zipfile, shutil, threading
 from utilities.mod_object import ModObjectEncoder, ModObject
 
 
@@ -138,13 +138,20 @@ def get_installed_mods():
     return [ModObject(**item) for item in data["mods"]]
 
 
+# This is giving some strange errors, so I'm commenting it out for now
+# def install_mod_threaded(mod, version, installdir):
+#     t = threading.Thread(target=download_install_mod, args=(mod, version, installdir))
+#     t.start()
+#     return t
+
+
 def download_install_mod(mod, version, installdir):
     """Download and install a mod"""
 
     try:
         #Check if it exists in cache
-        mod.filename = f"{mod.name}_{version.friendly_version}.zip"
-        if os.path.exists(f"data/cache/{mod.filename}"):
+        mod.filename = f"{mod.name}_{version.friendly_version}"
+        if os.path.exists(f"data/cache/{mod.filename}.zip"):
             print(f"Found {mod.filename} in cache")
             install_mod(mod, installdir)
         
@@ -152,28 +159,32 @@ def download_install_mod(mod, version, installdir):
             print(f"Downloading {mod.name} ({mod.id})")
             print(f"Downloading from {version.download_path}")
             
-            urllib.request.urlretrieve(version.download_path, f"data/cache/{mod.filename}") # Download the mod
+            urllib.request.urlretrieve(version.download_path, f"data/cache/{mod.filename}.zip") # Download the mod
+            install_mod(mod, installdir)
 
         # Add the mod to the json file
-        add_mod_to_json(mod)
         version.installed = True
+        mod.installed = True
+        
+        add_mod_to_json(mod)
         print("Installed mod!")
         return True
     
     except Exception as e:
-        print(f"Error downloading {mod.name} ({mod.id})")
+        print(f"Error installing {mod.name} ({mod.id})")
         print(e)
 
     return False
 
 
-
 def install_mod(mod: ModObject, installdir: str) -> bool:
     """Install a mod and check if it was successful"""
-
     print(f"Installing {mod.name} ({mod.id})")
 
-    if extract_zip(f"data/cache/{mod.filename}", installdir):
+    installed_files = []
+    if extract_zip(f"data/cache/{mod.filename}.zip", installdir, installed_files):
+        # Save the list of installed files to a JSON file
+        set_installed_files(mod, installed_files)
         print(f"Installed {mod.name} ({mod.id})")
         return True
 
@@ -182,47 +193,52 @@ def install_mod(mod: ModObject, installdir: str) -> bool:
 
 
 def uninstall_mod(mod, installdir):
+    excluded_dirs = ["BepInEx/", "BepInEx/plugins/", "BepInEx/config/"]
     print(f"Uninstalling {mod.name} ({mod.id})")
 
-    remove_mod_from_json(mod) # Remove the mod from the json file
+    # Load the list of installed files from the JSON file
+    installed_files = get_installed_files(mod)
 
-    success = False
-    # Try and remove the mod from the BepInEx/plugins folder
-    try:
-        bp_plugins_dir = os.path.join(installdir, "BepInEx", "plugins", mod.name)
-        shutil.rmtree(bp_plugins_dir, ignore_errors=False)
-        print(f"Removed {bp_plugins_dir}")
-        success = True
-    
-    except FileNotFoundError:
-        print(f"Could not find {bp_plugins_dir}")
+    for filename in installed_files:
+        filepath = os.path.join(installdir, filename)
 
-    
-    # Try and remove the mod from the SpaceWarp/plugins folder
-    try:
-        sw_plugins_dir = os.path.join(installdir, "SpaceWarp", "plugins", mod.name)
-        shutil.rmtree(sw_plugins_dir, ignore_errors=False)
-        print(f"Removed {sw_plugins_dir}")
-        success = True
-    
-    except FileNotFoundError:
-        print(f"Could not find {sw_plugins_dir}")
+        # Check if the file exists
+        if os.path.isfile(filepath):
+            os.remove(filepath)
+            print(f"Removed file {filepath}")
 
-    if not success:
-        print(f"Could not uninstall {mod.name} ({mod.id})")
-        print("Removing from list anyway!")
-        remove_mod_from_json(mod)
+        # Else check if the directory exists
+        elif os.path.isdir(filepath):
+            # Check if the directory is excluded
+            if any(filepath.endswith(excluded_dir) for excluded_dir in excluded_dirs):
+                print(f"Skipping {filepath}")
+            else:
+                shutil.rmtree(filepath, ignore_errors=True)
+                print(f"Removed directory {filepath}")
+        else:
+            print(f"Could not find {filepath}")
 
-    return success
-    
+    # Remove the mod from the JSON file
+    remove_mod_from_json(mod)
+
+    # Delete the JSON file containing the list of installed files
+    os.remove(os.path.join("data", "logs", "install_logs", f"{mod.filename}.json"))
+    print(f"Removed {mod.filename}.json")
+
+    return True
 
 
-def extract_zip(zip_path: str, destination_path: str) -> bool:
+def extract_zip(zip_path: str, destination_path: str, installed_files: list) -> bool:
     """Extract a zip file to destination path"""
     try:
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(destination_path)
             print(f"Extracted {zip_path} to {destination_path}")
+            # Append the paths of the extracted files and folders to the list
+            for name in zip_ref.namelist():
+                installed_files.append(name)
+
+            print(f"Installed files: {installed_files}")
             return True
 
     except zipfile.BadZipFile:
@@ -230,11 +246,32 @@ def extract_zip(zip_path: str, destination_path: str) -> bool:
 
     return False
 
+
+def get_installed_files(mod: ModObject) -> dict:
+    """
+    Load the paths of all installed files and folders.
+    Returns a dictionary where keys are the filenames
+    and values are the paths to the installed files.
+    """
+    try:
+        with open(f"data/logs/install_logs/{mod.filename}.json", "r") as f:
+            installed_files = json.load(f)
+    except FileNotFoundError:
+        print(f"Could not find {mod.filename}.json")
+        installed_files = {}
+    return installed_files
+
+
+def set_installed_files(mod: ModObject, installed_files: dict):
+    """Save the paths of all installed files and folders to a JSON file"""
+    with open(f"data/logs/install_logs/{mod.filename}.json", "w") as f:
+        json.dump(installed_files, f, indent=4)
+
+
 def set_textbox_text(textbox, text):
     """Set the text of a textbox"""
     textbox.configure(state="normal")
     textbox.delete("0.0", "end")  # delete all text
     textbox.insert("end", text)  # insert at the end of the textbox
     textbox.configure(state="disabled")
-
     

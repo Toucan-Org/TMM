@@ -25,8 +25,6 @@ class ModObject():
         else:
             self.url = f'{root_url}{kwargs.get("url", "No modpage URL provided.")}'
 
-        self.download_url = kwargs.get("download_url", "No download URL provided.")
-
         if self.donations == "":
             self.donations = "No donation URL provided."
 
@@ -75,9 +73,14 @@ class VersionObject():
         self.friendly_version = kwargs.get("friendly_version", "Unknown Version")
         self.game_version = kwargs.get("game_version", "0.0.0")
         self.created = kwargs.get("created", "Unknown Date")
-        self.download_path = kwargs.get("download_path", "No download URL provided.")
         self.downloads = kwargs.get("downloads", 0)
         self.download_size = self.get_file_size()
+
+        if self.installed:
+            self.download_path = kwargs.get("download_path", "No download URL provided.")
+
+        else:
+            self.download_path = f"{root_url}{kwargs.get('download_path', 'No download URL provided.')}"
 
     # Spacedock API does not include file sizes so instead I have to get it from the modpage using BeautifulSoup and requests
     # This is done in a separate thread to prevent the GUI from freezing
