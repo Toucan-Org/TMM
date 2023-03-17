@@ -19,6 +19,7 @@ class App(customtkinter.CTk):
         self.program_logo = "./data/images/2kan_logo.png"  
 
         self.load_config()
+        print(self.config_file.items())
 
         # Configure window
         self.title(f"{self.program_title} - v{self.program_version}")
@@ -36,7 +37,7 @@ class App(customtkinter.CTk):
         self.cp_button_frame = ControlPanelButtonFrame(master=self)
         self.cp_button_frame.grid(row=1, column=2, columnspan=2, padx=20, pady=(20, 5), sticky="nsew")
         
-        self.control_panel_frame = ControlPanelFrame(master=self, cp_button_frame=self.cp_button_frame, config=self.config_file)
+        self.control_panel_frame = ControlPanelFrame(master=self, cp_button_frame=self.cp_button_frame, config_file=self.config_file)
         self.control_panel_frame.grid(row=2, rowspan=2, column=2, columnspan=2, padx=20, pady=20, sticky="nsew")
 
         self.cp_button_frame.control_panel_frame = self.control_panel_frame
@@ -49,7 +50,7 @@ class App(customtkinter.CTk):
         self.modlist_header = ModListHeaderFrame(master=self, modlist_frame=self.modlist_frame)
         self.modlist_header.grid(row=1, column=0, columnspan=2, padx=20, pady=(20,5), sticky="nsew")
 
-        self.footer_frame = FooterFrame(master=self, modlist_frame=self.modlist_frame, config=self.config_file)
+        self.footer_frame = FooterFrame(master=self, modlist_frame=self.modlist_frame, config_file=self.config_file)
         self.footer_frame.install_directory_frame.cp_button_frame = self.cp_button_frame
 
         self.footer_frame.grid(row=4, column=0, columnspan=4, sticky="nsew")
@@ -66,6 +67,7 @@ class App(customtkinter.CTk):
         if os.path.isfile("config.ini"):
             print("Config file found")
             self.config_file.read("config.ini")
+
         else:
             print("Config file not found")
             self.config_file["KSP2"] = {}

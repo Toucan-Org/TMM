@@ -34,11 +34,12 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
                 self.cp_button1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
                 self.cp_button2.grid_remove()
 
+
     # The functions that are called when the buttons are pressed
 
     def install_mod(self):
         print("Installing mod")
-        if util.download_install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config["KSP2"]["InstallDirectory"]):
+        if util.download_install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
             self.set_install_status()
             self.control_panel_frame.modlist_frame.update_appearance()        
 
@@ -56,7 +57,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
     def remove_mod(self):
         print("Removing mod")
-        if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config["KSP2"]["InstallDirectory"]):
+        if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
             self.control_panel_frame.selected_mod.installed = False
 
             for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):
@@ -88,7 +89,7 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         
         self.grid_columnconfigure((0,1,2,3), weight=1)
         self.selected_mod = None
-        self.config = kwargs.get("config", None)
+        self.config_file = kwargs.get("config_file", None)
 
         self.cp_button_frame = kwargs.get("cp_button_frame", None)
         self.modlist_frame = kwargs.get("modlist_frame", None)

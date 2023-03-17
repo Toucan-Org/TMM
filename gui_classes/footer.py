@@ -12,14 +12,14 @@ class FooterFrame(customtkinter.CTkFrame):
         self.grid_columnconfigure((0,1,2,3), weight=1)
         self.configure(fg_color="gray13")
 
-        self.config_file = kwargs.get("config", None)
+        self.config_file = kwargs.get("config_file", None)
 
         self.modlist_frame = kwargs.get("modlist_frame", None)
 
         self.search_bar_frame = SearchBarFrame(master=self, modlist_frame=self.modlist_frame)
         self.search_bar_frame.grid(row=0, column=0, columnspan=2, padx=20, sticky="nsew")
 
-        self.install_directory_frame = InstallDirectoryFrame(master=self, config=self.config_file)
+        self.install_directory_frame = InstallDirectoryFrame(master=self, config_file=self.config_file)
         self.install_directory_frame.grid(row=0, column=2, padx=20, sticky="nsew")
 
         self.launch_button = LaunchButton(master=self)
@@ -39,20 +39,24 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master)
         self.grid_columnconfigure(0, weight=1)
-        self.config_file = kwargs.get("config", None)
+        self.config_file = kwargs.get("config_file", None)
         self.cp_button_frame = kwargs.get("cp_button_frame", None)
 
         self.detected_label = customtkinter.CTkLabel(self, text="", font=customtkinter.CTkFont(size=11, weight="bold"), text_color="green")
         self.detected_label.grid(row=2, column=0, columnspan=2, pady=10, sticky="w")
 
         # Check if an InstallDirectory is saved in the config file
-        if self.config_file.has_section('InstallDirectory'):
-            self.install_path = self.config_file.get('InstallDirectory', None)
+        if self.config_file['KSP2']['InstallDirectory'] != "":
+            print("Found InstallDirectory in config file")
+            self.install_path = self.config_file['KSP2']['InstallDirectory']
         else:
             self.install_path = util.scan_common_ksp2_installs()
 
-        if self.config_file.has_section('GameVersion'):
-            self.game_version = self.config_file.get('GameVersion', None)
+        if self.config_file['KSP2']['GameVersion'] != "":
+            print("Found GameVersion in config file")
+            self.game_version = self.config_file['KSP2']['GameVersion']
+            self.set_game_version_label(f"Game Version: ({self.game_version}) detected!")
+            
         else:
             self.game_version = util.detect_game_version(self.install_path)
             print(f"Version: {self.game_version}")

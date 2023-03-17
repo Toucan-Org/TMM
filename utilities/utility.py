@@ -28,8 +28,6 @@ def format_time(seconds):
     return f"{formatted_hours}h {minutes:02d}m {seconds:02d}s"
 
 
-
-
 def scan_common_ksp2_installs():
     """Scan common places for KSP 2 installs"""
 

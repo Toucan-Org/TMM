@@ -24,7 +24,7 @@ class AvailableModMenu(customtkinter.CTkFrame):
     def get_available_mods_category(self, category):
         print("Fetching available mods")
         self.modlist_frame.clear_modlist()   
-        self.modlist_frame.loading_screen_frame.show() 
+        self.modlist_frame.loading_screen_frame.show("Retrieving mod data from spacedock.info...") 
         t = threading.Thread(target=self.fetch_mods, args=(category,))
         t.start()
 
@@ -81,10 +81,11 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
 class LoadingScreenFrame(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
-        self.loading_label = customtkinter.CTkLabel(self, text="Retrieving mod data from spacedock.info...", font=customtkinter.CTkFont(size=12, weight="bold"))
+        self.loading_label = customtkinter.CTkLabel(self, text="", font=customtkinter.CTkFont(size=12, weight="bold"), bg_color="lightblue" if customtkinter.get_appearance_mode() == "Light" else "gray9", padx=20, pady=20, corner_radius=40)
         self.loading_label.pack(pady=30)
 
-    def show(self):
+    def show(self, text):
+        self.loading_label.configure(text=text)
         self.grid(row=0, column=0, sticky="nsew")
 
     def hide(self):
@@ -157,6 +158,9 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
             self.modlist.append(mods[i])
 
         self.loading_screen_frame.hide()
+
+        if len(mods) == 0:
+            self.loading_screen_frame.show("No mods found")
 
     def update_appearance(self):
         """Updates the appearance of the mod list based on darkmode or lightmode selection"""
