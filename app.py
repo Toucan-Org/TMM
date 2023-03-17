@@ -24,7 +24,7 @@ class App(customtkinter.CTk):
         # Configure window
         self.title(f"{self.program_title} - v{self.program_version}")
         self.geometry(f"{1300}x{1000}")
-
+        
         # Set window icon
         self.wm_iconbitmap(self.program_icon)
 
