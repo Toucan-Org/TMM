@@ -1,4 +1,4 @@
-import customtkinter
+import customtkinter, threading
 import utilities.utility as util
 import api.spacedock_api as sdapi
 from PIL import Image
@@ -50,6 +50,14 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
+    def update_available_mods_threaded(self):
+        self.modlist_header_frame.set_header_text("Available Mods > All")
+        self.modlist_frame.loading_screen_frame.show()
+        mods = sdapi.get_mods("")
+        self.modlist_frame.populate_modlist(mods)
+        self.modlist_header_frame.toggle_available_mods_menu(False)
+        
+
     def on_install_available_switch_selected(self, event):
         """Called when the user selects the Installed/Available switch in the header."""
         
@@ -61,7 +69,5 @@ class MainHeaderFrame(customtkinter.CTkFrame):
             self.modlist_header_frame.toggle_available_mods_menu(True)
 
         elif self.install_available_switch.get() == "Available":
-            mods = sdapi.get_mods("")
-            self.modlist_frame.populate_modlist(mods)
-            self.modlist_header_frame.set_header_text("Available Mods > All")
-            self.modlist_header_frame.toggle_available_mods_menu(False)
+            thread = threading.Thread(target=self.update_available_mods_threaded)
+            thread.start()

@@ -1,4 +1,4 @@
-import customtkinter, subprocess
+import customtkinter, subprocess, time
 import utilities.utility as util
 import api.spacedock_api as sdapi
 import tkinter as tk
@@ -116,16 +116,24 @@ class LaunchButton(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
         self.config_file = self.master.config_file
-
-        self.launch_image = customtkinter.CTkImage(Image.open("./data/images/launch_button/launch_button.png"), size=(200, 80))
-        self.launch_image_hover = customtkinter.CTkImage(Image.open("./data/images/launch_button/launch_button_hover.png"), size=(200, 80))
         self.grid_columnconfigure(0, weight=1)
 
+        self.label = customtkinter.CTkLabel(self, text="Time Played ", font=customtkinter.CTkFont(size=12, weight="bold"))
+        self.label.grid(row=0, column=1, sticky="w", pady=(10, 0), padx=10)
+
+        self.launch_image = customtkinter.CTkImage(Image.open("./data/images/launch_button/launch_button.png"), size=(200, 60))
+        self.launch_image_hover = customtkinter.CTkImage(Image.open("./data/images/launch_button/launch_button_hover.png"), size=(200, 60))
+
         self.launch_button = customtkinter.CTkButton(self, image=self.launch_image, fg_color="transparent", text="", bg_color="transparent", command=self.launch, hover=False)
-        self.launch_button.grid(row=0, column=0, sticky="e", pady=20, padx=20 )
+        self.launch_button.grid(row=1, column=1, columnspan=2, sticky="nsew")
 
         self.launch_button.bind("<Enter>", self.on_enter)
         self.launch_button.bind("<Leave>", self.on_leave)
+
+        self.time_played_label = customtkinter.CTkLabel(self, text="", font=customtkinter.CTkFont(size=12), text_color="gray")
+        self.time_played_label.grid(row=0, column=2, sticky="w", pady=(10, 0))
+
+        self.update_time_played_label()
 
     def on_enter(self, event):
         self.launch_button.configure(image=self.launch_image_hover)
@@ -133,14 +141,39 @@ class LaunchButton(customtkinter.CTkFrame):
     def on_leave(self, event):
         self.launch_button.configure(image=self.launch_image)
 
+    def save_config(self, execution_time):
+        """Saves the install path and game version to the config file"""
+        game_time_log = self.config_file.getint('KSP2', 'GameTimeLog', fallback=0)
+        game_time_log += int(execution_time)
+        self.config_file['KSP2']['GameTimeLog'] = str(game_time_log)
+        with open("config.ini", "w") as config_file:
+            self.config_file.write(config_file)
+
+    def update_time_played_label(self):
+        game_time_seconds = self.config_file.getint('KSP2', 'GameTimeLog', fallback=0)
+        self.time_played_label.configure(text=f"{util.format_time(game_time_seconds)}")
+
     def launch(self):
         print("Launching KSP2...")
         #Launch the exe found in the config file
-        if self.config_file["KSP2"]["install_path"]:
+        if self.config_file["KSP2"]["InstallDirectory"]:
             try:
-                subprocess.Popen(f"{self.config_file['KSP2']['install_path']}\\KSP2_x64.exe")
+                start_time = time.time()
+                process = subprocess.Popen(f"{self.config_file['KSP2']['InstallDirectory']}\\KSP2_x64.exe")
+                # track process while it is running
+                while process.poll() is None:
+                    time.sleep(1)
+                end_time = time.time()
+                execution_time = int(round(end_time - start_time))
+                # store game time log in config file
+                print(f"KSP2 process was open for {execution_time} seconds.")
+                self.save_config(execution_time)
+                self.update_time_played_label()
+                
+                
             except FileNotFoundError:
                 print("Could not find KSP2_x64.exe")
+
 
 class SearchBarFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):

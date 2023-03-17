@@ -64,14 +64,14 @@ class App(customtkinter.CTk):
         self.config_file = configparser.ConfigParser()
 
         if os.path.isfile("config.ini"):
+            print("Config file found")
             self.config_file.read("config.ini")
         else:
+            print("Config file not found")
             self.config_file["KSP2"] = {}
             self.config_file["KSP2"]["InstallDirectory"] = ""
             self.config_file["KSP2"]["GameVersion"] = ""
-
-
-        self.config_file["KSP2"] = {}
+            self.config_file["KSP2"]["GameTimeLog"] = "0"
 
 if __name__ == "__main__":
     app = App()

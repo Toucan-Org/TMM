@@ -15,6 +15,21 @@ def get_latest_version():
     return None
 
 
+def format_time(seconds):
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    seconds = seconds % 60
+
+    if hours >= 1000:
+        formatted_hours = "{:,}".format(hours)
+    else:
+        formatted_hours = f"{hours:02d}"
+
+    return f"{formatted_hours}h {minutes:02d}m {seconds:02d}s"
+
+
+
+
 def scan_common_ksp2_installs():
     """Scan common places for KSP 2 installs"""
 

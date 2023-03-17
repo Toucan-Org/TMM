@@ -29,5 +29,5 @@ Here are just a few things i can think of that need to be fixed/added for now:
 
 
 #### Contributions:
-- Huge thanks to `@calebh210` for all the 
+- Huge thanks to `@calebh210` for all the work and help on this project. 
 - Shoutout to `IcyEcho249` for the name 2KAN and inspiration for our logo.
