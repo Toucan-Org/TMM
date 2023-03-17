@@ -77,7 +77,7 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
             modlist_frame=self.modlist_frame,
             header_text_frame=self.header_text_frame)
         self.available_mods_menu.grid(row=0,
-                                      column=1,
+                                      column=2,
                                       sticky="e",
                                       padx=10,
                                       pady=10)
@@ -90,10 +90,10 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
             variable=self.switch_var,
             onvalue="on",
             offvalue="off")
-        self.compact_switch.grid(row=0, column=2, sticky="e", padx=10, pady=10)
+        self.compact_switch.grid(row=0, column=1, sticky="e", padx=10, pady=10)
 
     def set_compact_modlist(self):
-        self.modlist_frame.toggle_compact()
+        self.modlist_frame.toggle_compact(self.modlist_frame.is_compact)
 
     def set_header_text(self, text):
         self.header_text_frame.configure(text=text)
@@ -139,6 +139,7 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         self.loading_screen_frame = LoadingScreenFrame(self)
         self.item_widgets = []
         self.modlist = []
+        self.is_compact = False
 
     def add_item(self, item):
         """Adds a mod item to the mod list"""
@@ -216,13 +217,35 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
                        lambda event, frame=row_frame: self.on_frame_leave(
                            event, frame, name_label))
 
-    def toggle_compact(self):
-        for item in self.item_widgets:
-            item[1].grid(row=0, column=0, pady=(0, 0), padx=0, sticky="w")
-            item[2].grid(row=0, column=3, padx=10, sticky="e")
-            item[3].grid_remove()
-            item[4].grid_remove()
-            item[5].grid_remove()
+
+#There are 100% prettier ways to implement this, but it works for now
+
+    def toggle_compact(self, is_compact):
+
+        if (not is_compact):
+            for item in self.item_widgets:
+                item[1].grid(row=0, column=0, pady=(0, 0), padx=0, sticky="w")
+                item[4].grid(row=0, column=3, padx=10, sticky="e")
+                item[3].grid_remove()
+                item[2].grid_remove()
+                item[5].grid_remove()
+            self.is_compact = True
+        elif (is_compact):
+            for item in self.item_widgets:
+                item[1].grid(row=0,
+                             column=0,
+                             pady=(10, 0),
+                             padx=10,
+                             sticky="w")
+                item[2].grid(row=1, column=0, padx=10, sticky="w")
+                item[3].grid(row=2,
+                             column=0,
+                             pady=(0, 10),
+                             padx=10,
+                             sticky="w")
+                item[4].grid(row=2, column=4, padx=10, sticky="w")
+                item[5].grid(row=1, column=4, padx=10, sticky="e")
+            self.is_compact = False
 
     def clear_modlist(self):
         """Clears the mod list"""
