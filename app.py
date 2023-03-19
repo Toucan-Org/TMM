@@ -1,9 +1,11 @@
 import customtkinter, configparser, os
 
+from utilities.utility import check_bepinex_installed
 from gui_classes.header import MainHeaderFrame
 from gui_classes.control_panel import ControlPanelButtonFrame, ControlPanelFrame
 from gui_classes.modlist import ModListFrame, ModListHeaderFrame
 from gui_classes.footer import FooterFrame
+from gui_classes.dialog import InstallModDialogFrame
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -59,6 +61,14 @@ class App(customtkinter.CTk):
         self.main_header.grid(row=0, column=0, columnspan=4, sticky="nsew")
 
         self.modlist_header.available_mods_menu.optionmenu_callback("All")
+        self.install_mod_dialog = None
+
+        if not check_bepinex_installed():
+            if self.install_mod_dialog is None or not self.install_mod_dialog.winfo_exists():
+                self.install_mod_dialog = InstallModDialogFrame(master=self, control_panel_frame=self.control_panel_frame)
+            else:
+                self.install_mod_dialog.focus()
+            
 
 
     def load_config(self):

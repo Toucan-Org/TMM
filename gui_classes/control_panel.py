@@ -1,5 +1,6 @@
 import customtkinter, datetime
 import utilities.utility as util
+import api.spacedock_api as sdapi
 from tkinter import IntVar
 
 
@@ -30,16 +31,16 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
                 self.cp_button2.configure(text="Remove Mod", fg_color="red", hover_color="darkred", command=self.remove_mod)
                 self.cp_button2.grid(row=0, column=1, padx=10, pady=10, sticky="w")
             else:
-                self.cp_button1.configure(text="Install Mod", fg_color="green", hover_color="darkgreen", command=self.install_mod)
+                self.cp_button1.configure(text="Install Mod", fg_color="green", hover_color="darkgreen", command=lambda: self.install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version))
                 self.cp_button1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
                 self.cp_button2.grid_remove()
 
 
     # The functions that are called when the buttons are pressed
 
-    def install_mod(self):
+    def install_mod(self, mod, version):
         print("Installing mod")
-        if util.download_install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version, installdir=self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
+        if util.download_install_mod(mod, version, installdir=self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
             self.set_install_status()
             self.control_panel_frame.modlist_frame.update_appearance()        
 
@@ -180,6 +181,14 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         util.set_textbox_text(self.cp_donations_url, mod.donations)
 
         self.version_frame.populate_version_list(mod)
+
+
+    def install_bepinex(self):
+        mod = sdapi.search_mod(mod_name=None, mod_id=3277)
+        version = mod.get_newest_version()
+        self.selected_mod = mod
+        self.cp_button_frame.install_mod(mod, version)
+
 
 # This frame contains a list of versions for a selected mod
 class VersionFrame(customtkinter.CTkFrame):

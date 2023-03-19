@@ -115,7 +115,7 @@ def remove_mod_from_json(mod):
     with open("modlist.json", "w") as f:
         json.dump(data, f, indent=4, cls=ModObjectEncoder)
 
-def check_mod_in_json(mod):
+def check_mod_in_json(mod_id):
     """Check if a mod is in the json file"""
 
     if not os.path.exists("modlist.json"):
@@ -127,7 +127,7 @@ def check_mod_in_json(mod):
         data = json.load(f)
 
     for item in data["mods"]:
-        if item["id"] == mod.id:
+        if item["id"] == mod_id:
             return True
         
     return False
@@ -300,3 +300,11 @@ def set_textbox_text(textbox, text):
     textbox.insert("end", text)  # insert at the end of the textbox
     textbox.configure(state="disabled")
     
+
+def check_bepinex_installed():
+    """Check if Space Warp + BepInEx is installed"""
+    internal_mod_id = 3277
+    if check_mod_in_json(internal_mod_id):
+        return True
+    
+    return False

@@ -52,10 +52,11 @@ class MainHeaderFrame(customtkinter.CTkFrame):
 
     def update_available_mods_threaded(self):
         self.modlist_header_frame.set_header_text("Available Mods > All")
+        self.modlist_header_frame.toggle_available_mods_menu(False)
         self.modlist_frame.loading_screen_frame.show("Retrieving mod data from spacedock.info...")
         mods = sdapi.get_mods("")
         self.modlist_frame.populate_modlist(mods)
-        self.modlist_header_frame.toggle_available_mods_menu(False)
+        
         
 
     def on_install_available_switch_selected(self, event=None):

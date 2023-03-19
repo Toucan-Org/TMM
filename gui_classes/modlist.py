@@ -105,7 +105,7 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
             self.available_mods_menu.grid_remove()
         else:
             self.available_mods_menu.grid(row=0,
-                                          column=1,
+                                          column=2,
                                           sticky="e",
                                           padx=10,
                                           pady=10)

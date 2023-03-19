@@ -22,7 +22,7 @@ def get_mods(category=""):
                     #check if the mod is in the installed list
                     mod = ModObject(**item)
 
-                    if util.check_mod_in_json(mod):
+                    if util.check_mod_in_json(mod.id):
                         print(f"{mod.name} ({mod.id}) is installed in the list")
                         mod = util.get_mod_from_json(mod)
                     
@@ -34,7 +34,7 @@ def get_mods(category=""):
                 if item["game_id"] == spacedock_internal_id:
                     mod = ModObject(**item)
 
-                    if util.check_mod_in_json(mod):
+                    if util.check_mod_in_json(mod.id):
                         print(f"{mod.name} ({mod.id}) is installed in the list")
                         mod = util.get_mod_from_json(mod)
 
@@ -45,30 +45,48 @@ def get_mods(category=""):
 
 
 
-def search_mod(mod_name):
-    print(f"Searching for {mod_name}")
-    query = mod_name.replace(" ", "%20")
-    url = f'https://spacedock.info/api/search/mod?query={query}'
-    response = requests.get(url)
-    data = response.json()
+def search_mod(mod_name, mod_id=None):
+    if mod_id:
+        print(f"Searching for {mod_id}")
+        url = f"https://spacedock.info/api/mod/{mod_id}"
+        response = requests.get(url)
+        data = response.json()
 
-    _mods = []
+        if data["game_id"] == spacedock_internal_id:
+            mod = ModObject(**data)
 
-    for item in data:
-        if item["game_id"] == spacedock_internal_id:
-            mod = ModObject(**item)
-
-            if util.check_mod_in_json(mod):
+            if util.check_mod_in_json(mod.id):
                 print(f"{mod.name} ({mod.id}) is installed in the list")
                 mod = util.get_mod_from_json(mod)
-                
-            _mods.append(mod)        
 
-    if len(_mods) == 0:
-        print("No mods found")
-    
-    _mods.sort()
-    return _mods
+            print(mod)
+
+            return mod
+        
+    else:
+        print(f"Searching for {mod_name}")
+        query = mod_name.replace(" ", "%20")
+        url = f'https://spacedock.info/api/search/mod?query={query}'
+        response = requests.get(url)
+        data = response.json()
+
+        _mods = []
+
+        for item in data:
+            if item["game_id"] == spacedock_internal_id:
+                mod = ModObject(**item)
+
+                if util.check_mod_in_json(mod.id):
+                    print(f"{mod.name} ({mod.id}) is installed in the list")
+                    mod = util.get_mod_from_json(mod)
+                    
+                _mods.append(mod)        
+
+        if len(_mods) == 0:
+            print("No mods found")
+        
+        _mods.sort()
+        return _mods
 
         
 
