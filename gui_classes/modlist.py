@@ -1,5 +1,6 @@
 import customtkinter, threading
 import api.spacedock_api as sdapi
+import utilities.utility as util
 
 
 class AvailableModMenu(customtkinter.CTkFrame):

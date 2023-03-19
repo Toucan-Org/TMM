@@ -299,7 +299,10 @@ def set_textbox_text(textbox, text):
     textbox.delete("0.0", "end")  # delete all text
     textbox.insert("end", text)  # insert at the end of the textbox
     textbox.configure(state="disabled")
-    
+
+def set_label_color(label, color):
+    """Sets the color of the game version label."""
+    label.configure(text_color=color)
 
 def check_bepinex_installed():
     """Check if Space Warp + BepInEx is installed"""

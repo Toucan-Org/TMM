@@ -155,7 +155,7 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         #Versions submenu (see VersionFrame class)
         self.version_label = customtkinter.CTkLabel(self, text="Versions", font=customtkinter.CTkFont(size=12, weight="bold", underline=True))
         self.version_label.grid(row=10, column=0, columnspan=4, padx=20, pady=20, sticky="w")
-        self.version_frame = VersionFrame(self, fg_color="gray7")
+        self.version_frame = VersionFrame(self, config_file=self.config_file)
         self.version_frame.grid(row=11, column=0, columnspan=4, padx=20, pady=10, sticky="nsew")
 
 
@@ -193,9 +193,10 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
 # This frame contains a list of versions for a selected mod
 class VersionFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
+        super().__init__(master, fg_color="gray8")
         self.grid_columnconfigure((1,2,3,4,5), weight=1)
         self.radio_var = IntVar(self, 0) # This tracks which version radio button is selected
+        self.config_file = kwargs.get("config_file", None)
 
         self.selected_label = customtkinter.CTkLabel(self, text="Selected", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.selected_label.grid(row=0, column=0, padx=5, pady=10, sticky="w")
@@ -240,9 +241,16 @@ class VersionFrame(customtkinter.CTkFrame):
             self.version.grid(row=i+1, column=1, padx=5, pady=10, sticky="w")
             util.set_textbox_text(self.version, version.friendly_version)
 
+
             self.game_version = customtkinter.CTkTextbox(self, height=15, font=customtkinter.CTkFont(size=12), wrap="none", state="disabled")
             self.game_version.grid(row=i+1, column=2, padx=5, pady=10, sticky="w")
             util.set_textbox_text(self.game_version, version.game_version)
+
+            # Set the color of the mod game version text to green if it matches the current game version
+            if version.game_version.strip() == self.config_file['KSP2']['GameVersion'].strip():
+                util.set_label_color(self.game_version, "green")
+            else:
+                util.set_label_color(self.game_version, "red")
 
             self.downloads = customtkinter.CTkTextbox(self, height=15, font=customtkinter.CTkFont(size=12), wrap="none", state="disabled")
             self.downloads.grid(row=i+1, column=3, padx=5, pady=10, sticky="w")
@@ -256,7 +264,6 @@ class VersionFrame(customtkinter.CTkFrame):
             self.created.grid(row=i+1, column=5, padx=5, pady=10, sticky="w")
             date_format = datetime.datetime.fromisoformat(version.created).strftime("%d %b %Y")
             util.set_textbox_text(self.created, date_format)
-
 
     def clear_version_list(self):
         """Clears the version list."""
