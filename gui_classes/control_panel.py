@@ -9,6 +9,7 @@ from tkinter import IntVar
 class ControlPanelButtonFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master)
+        self.grid_columnconfigure(2, weight=1)
 
 
         # Initialize the buttons and label
@@ -18,6 +19,8 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
         self.cp_button1 = customtkinter.CTkButton(self, text="", width=70, height=30, fg_color="green", hover_color="darkgreen")
         self.cp_button2 = customtkinter.CTkButton(self, text="", width=70, height=30, fg_color="red", hover_color="darkred")
 
+        self.status_label = customtkinter.CTkLabel(self, text="", font=customtkinter.CTkFont(size=10), bg_color="lightblue" if customtkinter.get_appearance_mode() == "Light" else "gray9", padx=10, anchor="e")
+        self.status_label.grid(row=0, column=3, pady=(10, 0), padx=10, sticky="e")
         # Getting the control panel frame so we can access the selected mod (I dont like passing the entire object, but it works for now)
         self.control_panel_frame = kwargs.get("control_panel_frame", None)
 
@@ -30,10 +33,14 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
                 self.cp_button1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
                 self.cp_button2.configure(text="Remove Mod", fg_color="red", hover_color="darkred", command=self.remove_mod)
                 self.cp_button2.grid(row=0, column=1, padx=10, pady=10, sticky="w")
+
+                self.status_label.configure(text=f"Installed ({self.control_panel_frame.selected_mod.get_installed_version().friendly_version})")
             else:
                 self.cp_button1.configure(text="Install Mod", fg_color="green", hover_color="darkgreen", command=lambda: self.install_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.version_frame.selected_version))
                 self.cp_button1.grid(row=0, column=0, padx=10, pady=10, sticky="w")
                 self.cp_button2.grid_remove()
+
+                self.status_label.configure(text="Not Installed")
 
 
     # The functions that are called when the buttons are pressed
@@ -42,8 +49,9 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
         print("Installing mod")
         if util.download_install_mod(mod, version, installdir=self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
             self.set_install_status()
-            self.control_panel_frame.modlist_frame.update_appearance()        
-
+            self.control_panel_frame.selected_mod.installed = True
+            self.control_panel_frame.selected_mod.set_installed_version(version)
+            self.control_panel_frame.modlist_frame.update_appearance()
             # The mod has been installed, so we can now update the buttons and label
             self.update_appearance()
 
@@ -76,7 +84,22 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
     def update_mod(self):
         print("Updating mod")
-        # TODO: Implement this
+        update_version = sdapi.check_mod_update(self.control_panel_frame.selected_mod)
+        
+
+        if update_version is not None:
+            print(f"Installed version was: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
+            # Remove the mod and then install the newest version
+            self.remove_mod()
+            self.install_mod(self.control_panel_frame.selected_mod, update_version)
+            print(f"New version is: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
+            self.status_label.configure(text=f"Version Updated to ({self.control_panel_frame.selected_mod.get_installed_version().friendly_version})")
+            # Update the version radio button to the newest version
+            self.control_panel_frame.version_frame.update_version_radiobuttons(update_version)
+
+        else:
+            print("No update available")
+            self.status_label.configure(text=f"Version is Latest ({self.control_panel_frame.selected_mod.get_installed_version().friendly_version})")
 
 
     def toggle_install_button_state(self, state):
@@ -90,6 +113,7 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         
         self.grid_columnconfigure((0,1,2,3), weight=1)
         self.selected_mod = None
+        self.install_version = None
         self.config_file = kwargs.get("config_file", None)
 
         self.cp_button_frame = kwargs.get("cp_button_frame", None)
@@ -270,3 +294,11 @@ class VersionFrame(customtkinter.CTkFrame):
         for widget in self.winfo_children():
             if isinstance(widget, (customtkinter.CTkRadioButton, customtkinter.CTkTextbox)):
                 widget.destroy()
+
+    def update_version_radiobuttons(self):
+        """Updates the version radio buttons to reflect the installed status of the version."""
+        for i, version in enumerate(self.selected_mod.versions):
+            if version.installed:
+                self.selected.select()
+            else:
+                self.selected.deselect()

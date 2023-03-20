@@ -187,9 +187,8 @@ def download_install_mod(mod, version, installdir):
             urllib.request.urlretrieve(version.download_path, f"data/cache/{mod.filename}.zip") # Download the mod
             install_mod(mod, installdir)
 
-        # Add the mod to the json file
-        version.installed = True
         mod.installed = True
+        mod.set_installed_version(version)
 
         add_mod_to_json(mod)
         print("Installed mod!")

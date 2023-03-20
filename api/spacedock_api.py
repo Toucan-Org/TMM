@@ -1,6 +1,6 @@
 import requests
 
-from utilities.mod_object import ModObject
+from utilities.mod_object import ModObject, VersionObject
 import utilities.utility as util
 
 spacedock_internal_id = 22407
@@ -87,18 +87,30 @@ def search_mod(mod_name, mod_id=None):
         
         _mods.sort()
         return _mods
-
-        
-
     
 
+def check_mod_update(mod):
+    url = f"https://spacedock.info/api/mod/{mod.id}"
+    response = requests.get(url)
+    data = response.json()
 
+    if data["game_id"] == spacedock_internal_id:
+        latest_version_data = data["versions"][0]
+        latest_version = VersionObject(
+            url=mod.url,
+            installed=True,
+            friendly_version=latest_version_data["friendly_version"],
+            game_version=latest_version_data["game_version"],
+            created=latest_version_data["created"],
+            downloads=latest_version_data["downloads"],
+            download_path=latest_version_data["download_path"],
+        )
 
-if __name__ == "__main__":
-    # search_results = search_mod("Community Fixes")
+        if latest_version.friendly_version != mod.get_installed_version().friendly_version:
+            print(f"{mod.name} has an update available! Latest version: {latest_version.friendly_version}")
+            return latest_version
+        
+    print(f"{mod.name} is up to date")
+    return None
 
-    # for mod in search_results:
-    #     print(mod)
-
-    get_mods("/new")
 
