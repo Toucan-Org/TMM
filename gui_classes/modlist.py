@@ -20,9 +20,6 @@ class AvailableModMenu(customtkinter.CTkFrame):
 
     def fetch_mods(self, category):
         """Fetches the available mods from the website and populates the mod list"""
-
-        print("Fetching available mods")
-
         mods = []
         mods = sdapi.get_mods(category)
         self.modlist_frame.populate_modlist(mods)

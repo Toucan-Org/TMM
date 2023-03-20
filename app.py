@@ -1,6 +1,6 @@
 import customtkinter, configparser, os
 
-from utilities.utility import check_bepinex_installed
+import utilities.utility as util
 from gui_classes.header import MainHeaderFrame
 from gui_classes.control_panel import ControlPanelButtonFrame, ControlPanelFrame
 from gui_classes.modlist import ModListFrame, ModListHeaderFrame
@@ -14,6 +14,8 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()    
+
+        util.build_directories()
         self.program_version = "0.1.1"
         self.program_title = "2KAN"
         self.program_label = "Kerbal Space Program 2 Mod Manager"
@@ -21,7 +23,6 @@ class App(customtkinter.CTk):
         self.program_logo = "./data/images/2kan_logo.png"  
 
         self.load_config()
-        print(self.config_file.items())
 
         # Configure window
         self.title(f"{self.program_title} - v{self.program_version}")
@@ -63,12 +64,11 @@ class App(customtkinter.CTk):
         self.modlist_header.available_mods_menu.optionmenu_callback("All")
         self.install_mod_dialog = None
 
-        if not check_bepinex_installed():
+        if not util.check_bepinex_installed():
             if self.install_mod_dialog is None or not self.install_mod_dialog.winfo_exists():
                 self.install_mod_dialog = InstallModDialogFrame(master=self, control_panel_frame=self.control_panel_frame)
             else:
-                self.install_mod_dialog.focus()
-            
+                self.install_mod_dialog.focus()            
 
 
     def load_config(self):

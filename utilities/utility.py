@@ -311,3 +311,18 @@ def check_bepinex_installed():
         return True
     
     return False
+
+def build_directories():
+    """Build the directory"""
+    if not os.path.exists("data"):
+        os.mkdir("data")
+        print("Created data directory")
+    if not os.path.exists("data/cache"):
+        os.mkdir("data/cache")
+        print("Created cache directory")
+    if not os.path.exists("data/logs"):
+        os.mkdir("data/logs")
+        print("Created logs directory")
+    if not os.path.exists("data/logs/install_logs"):
+        os.mkdir("data/logs/install_logs")
+        print("Created install_logs directory")

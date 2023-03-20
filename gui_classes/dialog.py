@@ -22,10 +22,18 @@ class InstallModDialogFrame(customtkinter.CTkToplevel):
         self.no_button = customtkinter.CTkButton(self.button_frame, text="No", command=self.no_button_clicked)
         self.no_button.grid(row=0, column=1, padx=10, pady=10)
 
+        self.center_window()
+
     def yes_button_clicked(self):
         self.control_panel_frame.install_bepinex()
         self.destroy()
     
     def no_button_clicked(self):
         self.destroy()
+
+    def center_window(self):
+        self.update_idletasks()
+        self.width = self.winfo_width() + 230
+        self.height = self.winfo_height()
+        self.geometry(f'{self.width}x{self.height}+650+500')
 
