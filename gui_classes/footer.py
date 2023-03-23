@@ -2,7 +2,8 @@ import customtkinter, subprocess, time
 import utilities.utility as util
 import api.spacedock_api as sdapi
 import tkinter as tk
-
+from ttkwidgets.autocomplete import AutocompleteEntry
+from tkinter import ttk
 from PIL import Image
 
 
@@ -181,7 +182,7 @@ class LaunchButton(customtkinter.CTkFrame):
 
 class SearchBarFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master)
+        super(SearchBarFrame, self).__init__(master)
         self.grid_columnconfigure(0, weight=1)
 
         self.modlist_frame = kwargs.get("modlist_frame", None)
@@ -189,7 +190,20 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.label = customtkinter.CTkLabel(self, text="Search Mods", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.label.grid(row=0, column=0, pady=10, sticky="w")
 
-        self.search_bar = customtkinter.CTkEntry(self, font=customtkinter.CTkFont(size=12), width=250)
+        # self.search_bar = customtkinter.CTkEntry(self, font=customtkinter.CTkFont(size=12), width=250)
+        # self.search_bar.grid(row=1, column=0, sticky="ew")
+        # self.search_bar.bind("<Return>", self.search_mods)
+
+        autocomplete_mods = []
+        self.all_mods = sdapi.get_mods("")
+        for mod in self.all_mods:
+            autocomplete_mods.append(mod.name)
+
+        style= ttk.Style()
+        style.theme_use('clam')
+        style.configure("TCombobox", fieldbackground= "gray13", background= "gray13")
+
+        self.search_bar = AutocompleteEntry(self, font=customtkinter.CTkFont(size=12), width=50, completevalues = autocomplete_mods)
         self.search_bar.grid(row=1, column=0, sticky="ew")
         self.search_bar.bind("<Return>", self.search_mods)
 
@@ -201,11 +215,12 @@ class SearchBarFrame(customtkinter.CTkFrame):
         """Searches the modlist for the query in the search bar. 
         If the query is not found in the modlist, it will search the API for the query"""
         
+        print(self.modlist_frame.modlist)
+
         query = self.search_bar.get()
 
         if query == "":
-            mods = sdapi.get_mods("")
-            self.modlist_frame.populate_modlist(mods)
+            self.modlist_frame.populate_modlist(self.all_mods)
             return
         
         found_mods = []
@@ -231,3 +246,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
             else:
                 for mod in found_mods:
                     self.modlist_frame.add_item(mod)
+
+
+
+
