@@ -33,7 +33,7 @@ class InstallModDialogFrame(customtkinter.CTkToplevel):
 
     def center_window(self):
         self.update_idletasks()
-        self.width = self.winfo_width() + 230
+        self.width = self.winfo_width() + 240
         self.height = self.winfo_height()
         self.geometry(f'{self.width}x{self.height}+650+500')
 

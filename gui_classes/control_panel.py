@@ -60,7 +60,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
         """Sets the install status of the selected mod to installed in the modlist frame"""
         for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):
             if mod == self.control_panel_frame.selected_mod:
-                widget_set[5].configure(text="Installed")
+                widget_set[6].configure(text="Installed")
                 break
 
 
@@ -71,10 +71,14 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
             for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):
                 if mod == self.control_panel_frame.selected_mod:
-                    widget_set[5].configure(text="")
+                    widget_set[6].configure(text="")
                     break
+            
+            installed_mods = util.get_installed_mods()
+            installed_mods.sort()
 
             self.control_panel_frame.modlist_frame.update_appearance()
+            self.control_panel_frame.modlist_frame.populate_modlist(installed_mods)
 
         else:
             print("Failed to remove mod")
@@ -194,7 +198,13 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
 
         util.set_textbox_text(self.cp_mod_name, mod.name)
         util.set_textbox_text(self.cp_mod_summary, mod.short_description)
-        util.set_textbox_text(self.cp_game_version, newest_version.game_version)
+        print(type(self.config_file['KSP2']['GameVersion']))
+
+        if str(newest_version.game_version) < self.config_file['KSP2']['GameVersion']:
+            util.set_textbox_text(self.cp_game_version, newest_version.game_version + " (May be incompatible)", color="red")
+        else:
+            util.set_textbox_text(self.cp_game_version, newest_version.game_version)
+
         util.set_textbox_text(self.cp_mod_version, newest_version.friendly_version)
         util.set_textbox_text(self.cp_download_count, str(mod.downloads))
         util.set_textbox_text(self.cp_download_size, newest_version.download_size)
