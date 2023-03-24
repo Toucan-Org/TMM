@@ -2,7 +2,7 @@
 # 2KAN (ALPHA v0.1.1)
 ### A mod manager for Kerbal Space Program 2.
 
-image.png
+![image](https://user-images.githubusercontent.com/1657477/227397662-ec802cfe-63e0-4fc5-a77f-b922a81c9243.png)
 
 #### Description
 This current version is the ALPHA release, what you see now is essentially a prototype which we will use to get player feedback. It utilises Python with the customtkinter and tkinter GUI frameworks. Due to limitations of this framework and the current codebase design, we will be abandoning this version and rewriting it in C# armed with the knowledge and feedback gained from this initial release.
