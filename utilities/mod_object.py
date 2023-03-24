@@ -46,6 +46,25 @@ class ModObject():
         """Returns the newest version of the mod."""
         version = max(self.versions, key=lambda v: v.created)
         return version
+    
+    def get_installed_version(self):
+        """Returns the installed version of the mod."""
+        version = max(self.versions, key=lambda v: v.installed)
+        return version
+    
+    def set_installed_version(self, new_version):
+        """Sets the installed version of the mod if it already exists,
+        otherwise adds it to the versions list."""
+
+        # Set all versions to not installed
+        for version in self.versions:
+            version.installed = False
+        
+        if new_version in self.versions:
+            self.versions[self.versions.index(new_version)].installed = True
+        else:
+            new_version.installed = True
+            self.versions.append(new_version)
 
     def __str__(self):
         return f"{self.name} - {self.short_description} ({self.installed})"

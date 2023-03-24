@@ -43,7 +43,7 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
         self.cp_button_frame = kwargs.get("cp_button_frame", None)
 
         self.detected_label = customtkinter.CTkLabel(self, text="", font=customtkinter.CTkFont(size=11, weight="bold"), text_color="green")
-        self.detected_label.grid(row=2, column=0, columnspan=2, pady=10, sticky="w")
+        self.detected_label.grid(row=0, column=0, columnspan=2, pady=10, sticky="ne")
 
         # Check if an InstallDirectory is saved in the config file
         if self.config_file['KSP2']['InstallDirectory'] != "":
@@ -55,14 +55,14 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
         if self.config_file['KSP2']['GameVersion'] != "":
             print("Found GameVersion in config file")
             self.game_version = self.config_file['KSP2']['GameVersion']
-            self.set_game_version_label(f"Game Version: ({self.game_version}) detected!")
+            self.set_game_version_label(f"Detected version: {self.game_version}")
 
         else:
             self.game_version = util.detect_game_version(self.install_path)
             print(f"Version: {self.game_version}")
 
             if self.game_version:
-                self.set_game_version_label(f"Game Version: ({self.game_version}) detected!")
+                self.set_game_version_label(f"Detected version: {self.game_version}")
                 self.save_config()
 
             else:
@@ -92,7 +92,7 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
 
             if self.game_version:
                 # If the game version is detected, save the install path and game version to the config file and enable the install button
-                self.set_game_version_label(f"Game Version: ({self.game_version}) detected!")
+                self.set_game_version_label(f"Detected version: {self.game_version}")
                 self.cp_button_frame.toggle_install_button_state("normal")
                 self.save_config()
 
@@ -121,6 +121,7 @@ class LaunchButton(customtkinter.CTkFrame):
         super().__init__(master, **kwargs)
         self.config_file = self.master.config_file
         self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(2, weight=1)
 
         self.label = customtkinter.CTkLabel(self, text="Time Played ", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.label.grid(row=0, column=1, sticky="w", pady=(10, 0), padx=10)
@@ -185,6 +186,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.grid_columnconfigure(0, weight=1)
 
         self.modlist_frame = kwargs.get("modlist_frame", None)
+        self.config_file = self.master.config_file
 
         self.label = customtkinter.CTkLabel(self, text="Search Mods", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.label.grid(row=0, column=0, pady=10, sticky="w")
@@ -204,7 +206,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         query = self.search_bar.get()
 
         if query == "":
-            mods = sdapi.get_mods("")
+            mods = sdapi.get_mods("", self.config_file)
             self.modlist_frame.populate_modlist(mods)
             return
         
@@ -222,7 +224,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         else:
             print("Not found in modlist")
             # Search the API
-            found_mods = sdapi.search_mod(self.search_bar.get())
+            found_mods = sdapi.search_mod(self.search_bar.get(), self.config_file)
             self.modlist_frame.clear_modlist()
 
             if len(found_mods) == 0:
