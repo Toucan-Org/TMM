@@ -1,7 +1,7 @@
 import os, pefile, json, urllib.request, zipfile, shutil, requests
 from utilities.mod_object import ModObjectEncoder, ModObject
 
-modlist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modlist.json")
+#modlist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modlist.json")
 
 def get_latest_version():
     """Check if a newer version of 2KAN is available"""
@@ -65,19 +65,19 @@ def detect_game_version(path):
     print("Could not find KSP 2 version")
     return None
 
-def create_modlist_json():
+def create_modlist_json(modlist_path):
     """Create a modlist.json file"""
 
     with open(modlist_path, "w") as f:
         json.dump({"mods": []}, f, indent=4)
 
 
-def add_mod_to_json(mod):
+def add_mod_to_json(mod, modlist_path):
     """Add a mod to the json file"""
 
     # Check if modlist.json exists
     if not os.path.exists(modlist_path):
-        create_modlist_json()
+        create_modlist_json(modlist_path)
 
     # Load json file
     with open(modlist_path, "r") as f:
@@ -95,7 +95,7 @@ def add_mod_to_json(mod):
         json.dump(data, f, indent=4, cls=ModObjectEncoder)
 
 
-def remove_mod_from_json(mod):
+def remove_mod_from_json(mod, modlist_path):
     """Remove a mod from the json file"""
 
     if not os.path.exists(modlist_path):
@@ -116,12 +116,12 @@ def remove_mod_from_json(mod):
     with open(modlist_path, "w") as f:
         json.dump(data, f, indent=4, cls=ModObjectEncoder)
 
-def check_mod_in_json(mod_id):
+def check_mod_in_json(mod_id, modlist_path):
     """Check if a mod is in the json file"""
 
     if not os.path.exists(modlist_path):
         print("No modlist.json file found")
-        create_modlist_json()
+        create_modlist_json(modlist_path)
         return False
 
     with open(modlist_path, "r") as f:
@@ -133,12 +133,12 @@ def check_mod_in_json(mod_id):
         
     return False
 
-def get_mod_from_json(mod):
+def get_mod_from_json(mod, modlist_path):
     """Get a mod from the json file"""
 
     if not os.path.exists(modlist_path):
         print("No modlist.json file found")
-        create_modlist_json()
+        create_modlist_json(modlist_path)
         return None
 
     with open(modlist_path, "r") as f:
@@ -151,7 +151,7 @@ def get_mod_from_json(mod):
     return None
 
 
-def get_installed_mods():
+def get_installed_mods(modlist_path):
     """Get a list of installed mods"""
 
     if not os.path.exists(modlist_path):
@@ -171,7 +171,7 @@ def get_installed_mods():
 #     return t
 
 
-def download_install_mod(mod, version, installdir):
+def download_install_mod(mod, version, config_file):
     """Download and install a mod"""
 
     try:
@@ -179,19 +179,19 @@ def download_install_mod(mod, version, installdir):
         mod.filename = f"{mod.name}_{version.friendly_version}"
         if os.path.exists(f"data/cache/{mod.filename}.zip"):
             print(f"Found {mod.filename} in cache")
-            install_mod(mod, installdir)
+            install_mod(mod, config_file["KSP2"]["InstallDirectory"])
         
         else:
             print(f"Downloading {mod.name} ({mod.id})")
             print(f"Downloading from {version.download_path}")
             
             urllib.request.urlretrieve(version.download_path, f"data/cache/{mod.filename}.zip") # Download the mod
-            install_mod(mod, installdir)
+            install_mod(mod, config_file["KSP2"]["InstallDirectory"])
 
         mod.installed = True
         mod.set_installed_version(version)
 
-        add_mod_to_json(mod)
+        add_mod_to_json(mod, config_file["KSP2"]["ModlistPath"])
         print("Installed mod!")
         return True
     
@@ -216,7 +216,7 @@ def install_mod(mod: ModObject, installdir: str) -> bool:
     return False
 
 
-def uninstall_mod(mod, installdir):
+def uninstall_mod(mod, config_file):
     excluded_dirs = ["BepInEx/", "BepInEx/plugins/", "BepInEx/config/"]
     print(f"Uninstalling {mod.name} ({mod.id})")
 
@@ -224,7 +224,7 @@ def uninstall_mod(mod, installdir):
     installed_files = get_installed_files(mod)
 
     for filename in installed_files:
-        filepath = os.path.join(installdir, filename)
+        filepath = os.path.join(config_file["KSP2"]["InstallDirectory"], filename)
 
         # Check if the file exists
         if os.path.isfile(filepath):
@@ -243,7 +243,7 @@ def uninstall_mod(mod, installdir):
             print(f"Could not find {filepath}")
 
     # Remove the mod from the JSON file
-    remove_mod_from_json(mod)
+    remove_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
 
     # Delete the JSON file containing the list of installed files
     os.remove(os.path.join("data", "logs", "install_logs", f"{mod.filename}.json"))
@@ -265,7 +265,6 @@ def extract_zip(zip_path: str, destination_path: str) -> bool:
                     has_bepinex = True
                     break
 
-            print(f"Has BepInEx: {has_bepinex}")
             if has_bepinex:
                 print("First directory is BepInEx")
                 # Extract the zip file directly to the destination_path directory
@@ -322,10 +321,10 @@ def set_label_color(label, color):
     """Sets the color of the game version label."""
     label.configure(text_color=color)
 
-def check_bepinex_installed():
+def check_bepinex_installed(config_file):
     """Check if Space Warp + BepInEx is installed"""
     internal_mod_id = 3277
-    if check_mod_in_json(internal_mod_id):
+    if check_mod_in_json(internal_mod_id, config_file["KSP2"]["ModlistPath"]):
         return True
     
     return False

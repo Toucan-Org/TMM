@@ -7,7 +7,7 @@ spacedock_internal_id = 22407
 categories = ["/featured", "/top", "/new"]
 
 
-def get_mods(category=""):
+def get_mods(config_file, category="",):
     _mods = []
 
     url = f"https://spacedock.info/api/browse{category}?&game_id={spacedock_internal_id}"
@@ -22,9 +22,9 @@ def get_mods(category=""):
                     #check if the mod is in the installed list
                     mod = ModObject(**item)
 
-                    if util.check_mod_in_json(mod.id):
+                    if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
                         print(f"{mod.name} ({mod.id}) is installed in the list")
-                        mod = util.get_mod_from_json(mod)
+                        mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
                     
                     _mods.append(mod)
     else:
@@ -34,9 +34,9 @@ def get_mods(category=""):
                 if item["game_id"] == spacedock_internal_id:
                     mod = ModObject(**item)
 
-                    if util.check_mod_in_json(mod.id):
+                    if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
                         print(f"{mod.name} ({mod.id}) is installed in the list")
-                        mod = util.get_mod_from_json(mod)
+                        mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
 
                     _mods.append(mod)
 
@@ -45,7 +45,7 @@ def get_mods(category=""):
 
 
 
-def search_mod(mod_name, mod_id=None):
+def search_mod(mod_name, config_file, mod_id=None):
     if mod_id:
         print(f"Searching for {mod_id}")
         url = f"https://spacedock.info/api/mod/{mod_id}"
@@ -55,9 +55,9 @@ def search_mod(mod_name, mod_id=None):
         if data["game_id"] == spacedock_internal_id:
             mod = ModObject(**data)
 
-            if util.check_mod_in_json(mod.id):
+            if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
                 print(f"{mod.name} ({mod.id}) is installed in the list")
-                mod = util.get_mod_from_json(mod)
+                mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
 
             print(mod)
 
@@ -76,9 +76,9 @@ def search_mod(mod_name, mod_id=None):
             if item["game_id"] == spacedock_internal_id:
                 mod = ModObject(**item)
 
-                if util.check_mod_in_json(mod.id):
+                if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
                     print(f"{mod.name} ({mod.id}) is installed in the list")
-                    mod = util.get_mod_from_json(mod)
+                    mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
                     
                 _mods.append(mod)        
 

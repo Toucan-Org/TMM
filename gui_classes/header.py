@@ -11,6 +11,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.modlist_frame = kwargs.get("modlist_frame", None)
         self.modlist_header_frame = kwargs.get("modlist_header_frame", None)
         self.footer_frame = kwargs.get("footer_frame", None)
+        self.config_file = kwargs.get("config_file", None)
 
         self.grid_rowconfigure(6, weight=1)
         self.columnconfigure((2,4), weight=1)
@@ -54,7 +55,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.modlist_header_frame.set_header_text("Available Mods > All")
         self.modlist_header_frame.toggle_available_mods_menu(False)
         self.modlist_frame.loading_screen_frame.show("Retrieving mod data from spacedock.info...")
-        mods = sdapi.get_mods("")
+        mods = sdapi.get_mods(self.config_file)
         self.modlist_frame.populate_modlist(mods)
         
         
@@ -64,7 +65,7 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         
         if self.install_available_switch.get() == "Installed":
             self.modlist_frame.loading_screen_frame.show("Retrieving installed mods...")
-            installed_mods = util.get_installed_mods()
+            installed_mods = util.get_installed_mods(self.config_file["KSP2"]["ModlistPath"])
             installed_mods.sort()
             self.modlist_frame.populate_modlist(installed_mods)
             self.modlist_header_frame.set_header_text("Installed Mods")

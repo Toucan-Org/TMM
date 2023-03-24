@@ -10,6 +10,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master)
         self.grid_columnconfigure(2, weight=1)
+        self.config_file = kwargs.get("config_file", None)
 
 
         # Initialize the buttons and label
@@ -47,7 +48,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
     def install_mod(self, mod, version):
         print("Installing mod")
-        if util.download_install_mod(mod, version, installdir=self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
+        if util.download_install_mod(mod, version, config_file=self.control_panel_frame.config_file):
             self.set_install_status()
             self.control_panel_frame.selected_mod.installed = True
             self.control_panel_frame.selected_mod.set_installed_version(version)
@@ -66,7 +67,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
     def remove_mod(self):
         print("Removing mod")
-        if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config_file["KSP2"]["InstallDirectory"]):
+        if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config_file):
             self.control_panel_frame.selected_mod.installed = False
 
             for widget_set, mod in zip(self.control_panel_frame.modlist_frame.item_widgets, self.control_panel_frame.modlist_frame.modlist):
@@ -74,7 +75,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
                     widget_set[6].configure(text="")
                     break
             
-            installed_mods = util.get_installed_mods()
+            installed_mods = util.get_installed_mods(self.config_file["KSP2"]["ModlistPath"])
             installed_mods.sort()
 
             self.control_panel_frame.modlist_frame.update_appearance()
@@ -99,7 +100,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
             print(f"New version is: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
             self.status_label.configure(text=f"Version Updated to ({self.control_panel_frame.selected_mod.get_installed_version().friendly_version})")
             # Update the version radio button to the newest version
-            self.control_panel_frame.version_frame.update_version_radiobuttons(update_version)
+            #self.control_panel_frame.version_frame.update_version_radiobuttons()
 
         else:
             print("No update available")
@@ -198,7 +199,6 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
 
         util.set_textbox_text(self.cp_mod_name, mod.name)
         util.set_textbox_text(self.cp_mod_summary, mod.short_description)
-        print(type(self.config_file['KSP2']['GameVersion']))
 
         if str(newest_version.game_version) < self.config_file['KSP2']['GameVersion']:
             util.set_textbox_text(self.cp_game_version, newest_version.game_version + " (May be incompatible)", color="red")
@@ -218,7 +218,7 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
 
 
     def install_bepinex(self):
-        mod = sdapi.search_mod(mod_name=None, mod_id=3277)
+        mod = sdapi.search_mod(mod_name=None, config_file=self.config_file, mod_id=3277)
         version = mod.get_newest_version()
         self.selected_mod = mod
         self.cp_button_frame.install_mod(mod, version)

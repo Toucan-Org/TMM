@@ -9,6 +9,7 @@ class AvailableModMenu(customtkinter.CTkFrame):
         super().__init__(master)
         self.modlist_frame = kwargs.get("modlist_frame", None)
         self.header_text_frame = kwargs.get("header_text_frame", None)
+        self.config_file = kwargs.get("config_file", None)
 
         self.available_mods_menu = customtkinter.CTkOptionMenu(
             self,
@@ -21,7 +22,7 @@ class AvailableModMenu(customtkinter.CTkFrame):
     def fetch_mods(self, category):
         """Fetches the available mods from the website and populates the mod list"""
         mods = []
-        mods = sdapi.get_mods(category)
+        mods = sdapi.get_mods(self.config_file, category)
         self.modlist_frame.populate_modlist(mods)
 
     def get_available_mods_category(self, category):
@@ -58,6 +59,7 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
 
     def __init__(self, master, **kwargs):
         super().__init__(master)
+        self.config_file = kwargs.get("config_file", None)
 
         self.grid_columnconfigure(0, weight=1)
         self.modlist_frame = kwargs.get("modlist_frame", None)
@@ -73,7 +75,8 @@ class ModListHeaderFrame(customtkinter.CTkFrame):
         self.available_mods_menu = AvailableModMenu(
             self,
             modlist_frame=self.modlist_frame,
-            header_text_frame=self.header_text_frame)
+            header_text_frame=self.header_text_frame,
+            config_file=self.config_file)
         self.available_mods_menu.grid(row=0,
                                       column=2,
                                       sticky="e",

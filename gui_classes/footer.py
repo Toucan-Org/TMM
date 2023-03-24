@@ -186,6 +186,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.grid_columnconfigure(0, weight=1)
 
         self.modlist_frame = kwargs.get("modlist_frame", None)
+        self.config_file = self.master.config_file
 
         self.label = customtkinter.CTkLabel(self, text="Search Mods", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.label.grid(row=0, column=0, pady=10, sticky="w")
@@ -205,7 +206,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         query = self.search_bar.get()
 
         if query == "":
-            mods = sdapi.get_mods("")
+            mods = sdapi.get_mods("", self.config_file)
             self.modlist_frame.populate_modlist(mods)
             return
         
@@ -223,7 +224,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         else:
             print("Not found in modlist")
             # Search the API
-            found_mods = sdapi.search_mod(self.search_bar.get())
+            found_mods = sdapi.search_mod(self.search_bar.get(), self.config_file)
             self.modlist_frame.clear_modlist()
 
             if len(found_mods) == 0:
