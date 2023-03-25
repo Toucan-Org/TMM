@@ -183,9 +183,8 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         game_version_label = customtkinter.CTkLabel(
             row_frame,
             text=f"Game Version: {item.game_version}",
-            font=customtkinter.CTkFont(size=10),
-            padx=10)
-        game_version_label.grid(row=2, column=4, padx=10, sticky="w")
+            font=customtkinter.CTkFont(size=10))
+        game_version_label.grid(row=2, column=4, padx=(10,7), sticky="w")
 
         downloads_label = customtkinter.CTkLabel(
             row_frame,
@@ -198,9 +197,8 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
             row_frame,
             text="Installed" if item.installed else "",
             font=customtkinter.CTkFont(size=12),
-            text_color="green",
-            padx=10)
-        installed_label.grid(row=0, column=4, padx=10, sticky="e")
+            text_color="green")
+        installed_label.grid(row=0, column=4, padx=(0, 10), sticky="e")
 
         row_frame.grid(sticky="ew", padx=5, pady=5)
         row_frame.columnconfigure(2, weight=1)
