@@ -3,7 +3,7 @@ from utilities.mod_object import ModObjectEncoder, ModObject
 
 #modlist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modlist.json")
 
-def get_latest_version():
+def get_latest_2kan_version():
     """Check if a newer version of 2KAN is available"""
     url = f"https://api.github.com/repos/Loki-Lokster/2KAN/releases/latest"
     response = requests.get(url)
@@ -11,8 +11,10 @@ def get_latest_version():
     if response.status_code == 200:
         data = response.json()
         latest_version = data["tag_name"]
+        print(f"Latest 2KAN version: {latest_version}")
         return latest_version
     
+    print("Could not get latest 2KAN version")
     return None
 
 
