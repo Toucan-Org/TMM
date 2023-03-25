@@ -190,10 +190,6 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.label = customtkinter.CTkLabel(self, text="Search Mods", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.label.grid(row=0, column=0, pady=10, sticky="w")
 
-        # self.search_bar = customtkinter.CTkEntry(self, font=customtkinter.CTkFont(size=12), width=250)
-        # self.search_bar.grid(row=1, column=0, sticky="ew")
-        # self.search_bar.bind("<Return>", self.search_mods)
-
         autocomplete_mods = []
         self.all_mods = sdapi.get_mods("")
         for mod in self.all_mods:
@@ -201,9 +197,9 @@ class SearchBarFrame(customtkinter.CTkFrame):
 
         style= ttk.Style()
         style.theme_use('clam')
-        style.configure("TCombobox", fieldbackground= "gray13", background= "gray13")
+        style.configure("TEntry", fieldbackground="gray20", background="gray12", padding=5, foreground="white")
 
-        self.search_bar = AutocompleteEntry(self, font=customtkinter.CTkFont(size=12), width=50, completevalues = autocomplete_mods)
+        self.search_bar = AutocompleteEntry(self, font=customtkinter.CTkFont(size=12), width=50, completevalues = autocomplete_mods, )
         self.search_bar.grid(row=1, column=0, sticky="ew")
         self.search_bar.bind("<Return>", self.search_mods)
 
@@ -214,8 +210,6 @@ class SearchBarFrame(customtkinter.CTkFrame):
     def search_mods(self, event=None):
         """Searches the modlist for the query in the search bar. 
         If the query is not found in the modlist, it will search the API for the query"""
-        
-        print(self.modlist_frame.modlist)
 
         query = self.search_bar.get()
 
@@ -238,6 +232,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
             print("Not found in modlist")
             # Search the API
             found_mods = sdapi.search_mod(self.search_bar.get())
+            print(found_mods)
             self.modlist_frame.clear_modlist()
 
             if len(found_mods) == 0:
