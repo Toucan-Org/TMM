@@ -4,10 +4,10 @@ from utilities.mod_object import ModObject, VersionObject
 import utilities.utility as util
 
 spacedock_internal_id = 22407
-categories = ["/featured", "/top", "/new"]
+categories = ["/featured", "/new"]
 
 
-def get_mods(config_file, category="",):
+def get_mods(config_file, category=""):
     _mods = []
 
     url = f"https://spacedock.info/api/browse{category}?&game_id={spacedock_internal_id}"
@@ -16,28 +16,25 @@ def get_mods(config_file, category="",):
 
     if category == "":        
         print("Getting all mods")
-        if data:
-            for item in data["result"]:
-                if item["game_id"] == spacedock_internal_id:
-                    #check if the mod is in the installed list
-                    mod = ModObject(**item)
-
-                    if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                        print(f"{mod.name} ({mod.id}) is installed in the list")
-                        mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
-                    
-                    _mods.append(mod)
     else:
         print(f"Getting mods from {category}")
-        if data:
-            for item in data:
+
+    if data:
+        total_pages = data["pages"]
+        for page in range(1, total_pages + 1):
+            page_url = f"{url}&page={page}"
+            page_response = requests.get(page_url)
+            page_data = page_response.json()
+            if category == "":
+                mods = page_data["result"]
+            else:
+                mods = page_data
+            for item in mods:
                 if item["game_id"] == spacedock_internal_id:
                     mod = ModObject(**item)
-
                     if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
                         print(f"{mod.name} ({mod.id}) is installed in the list")
                         mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
-
                     _mods.append(mod)
 
     _mods.sort()

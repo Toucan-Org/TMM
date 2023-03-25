@@ -20,7 +20,7 @@ class App(customtkinter.CTk):
         self.program_title = "2KAN"
         self.program_label = "Kerbal Space Program 2 Mod Manager"
         self.program_icon = "./data/images/icon.ico"
-        self.program_logo = "./data/images/2kan_logo.png"  
+        self.program_logo = "./data/images/2kan_logo2.png"  
 
         self.load_config()
         self.load_modlist()

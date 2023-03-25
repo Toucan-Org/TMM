@@ -16,21 +16,21 @@ class MainHeaderFrame(customtkinter.CTkFrame):
 
         self.columnconfigure((2,3,4), weight=1)
 
-        self.logo_image = customtkinter.CTkImage(Image.open(program_logo), size=(70, 70))
+        self.logo_image = customtkinter.CTkImage(Image.open(program_logo), size=(120, 120))
 
         self.logo_image_label = customtkinter.CTkLabel(self, image=self.logo_image, text="")
         self.logo_image_label.grid(row=0, rowspan=4, column=0, padx=10, pady=10)
 
         self.logo_label = customtkinter.CTkLabel(self, text=program_title, font=customtkinter.CTkFont(size=20, weight="bold"))
-        self.logo_label.grid(row=1, column=1, padx=20, pady=(20, 10))
+        self.logo_label.grid(row=1, rowspan=2, column=1, padx=20, pady=(20, 0))
 
         self.version_label = customtkinter.CTkLabel(self, text=f"v{program_version}", font=customtkinter.CTkFont(size=10, weight="bold"))
-        self.version_label.grid(row=2, column=1, padx=20, pady=(0, 10))
+        self.version_label.grid(row=3, column=1, padx=20, pady=(0, 10))
 
         self.install_available_switch_label_left = customtkinter.CTkLabel(self, text="")
         self.install_available_switch_label_left.grid(row=1, column=2, padx=(0, 10), sticky="e")
         self.install_available_switch = customtkinter.CTkSegmentedButton(self, font=customtkinter.CTkFont(size=16), values=["Installed", "Available"], command=self.on_install_available_switch_selected)
-        self.install_available_switch.grid(row=1, rowspan=2, column=3, padx=10, pady=10, sticky="nsew")
+        self.install_available_switch.grid(row=0, rowspan=4, column=3, padx=10, pady=10, sticky="nsew")
         self.install_available_switch.set("Available")
         self.install_available_switch_label_right = customtkinter.CTkLabel(self, text="")
         self.install_available_switch_label_right.grid(row=1, column=4, padx=(10, 0), sticky="w")

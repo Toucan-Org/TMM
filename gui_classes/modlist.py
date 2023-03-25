@@ -13,7 +13,7 @@ class AvailableModMenu(customtkinter.CTkFrame):
 
         self.available_mods_menu = customtkinter.CTkOptionMenu(
             self,
-            values=["All", "Featured", "Top", "New"],
+            values=["All", "Featured", "New"],
             command=self.optionmenu_callback,
             width=100)
         self.available_mods_menu.grid(row=0, column=0)
@@ -41,10 +41,6 @@ class AvailableModMenu(customtkinter.CTkFrame):
         elif choice == "Featured":
             self.get_available_mods_category("/featured")
             self.set_header_text("Available Mods > Featured")
-
-        elif choice == "Top":
-            self.get_available_mods_category("/top")
-            self.set_header_text("Available Mods > Top")
 
         elif choice == "New":
 
