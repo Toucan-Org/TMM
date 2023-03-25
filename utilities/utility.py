@@ -1,7 +1,7 @@
-import os, pefile, json, urllib.request, zipfile, shutil, requests
+import os, pefile, json, urllib.request, zipfile, shutil, requests, logging
 from utilities.mod_object import ModObjectEncoder, ModObject
 
-#modlist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modlist.json")
+logger = logging.getLogger(__name__)
 
 def get_latest_2kan_version():
     """Check if a newer version of 2KAN is available"""
@@ -11,10 +11,10 @@ def get_latest_2kan_version():
     if response.status_code == 200:
         data = response.json()
         latest_version = data["tag_name"]
-        print(f"Latest 2KAN version: {latest_version}")
+        logger.info(f"Latest 2KAN version: {latest_version}")
         return latest_version
     
-    print("Could not get latest 2KAN version")
+    logger.info("Could not get latest 2KAN version")
     return None
 
 
@@ -34,22 +34,22 @@ def format_time(seconds):
 def scan_common_ksp2_installs():
     """Scan common places for KSP 2 installs"""
 
-    print("Scanning for KSP 2 installs")
+    logger.info("Scanning for KSP 2 installs")
     common_paths = ["C:\\Program Files (x86)\\Steam\\steamapps\\common\\Kerbal Space Program 2",
                     "C:\\Program Files\\Steam\\steamapps\\common\\Kerbal Space Program 2"]
     for path in common_paths:
         if os.path.exists(path):
-            print(f"Found KSP 2 install at {path}")
+            logger.info(f"Found KSP 2 install at {path}")
             return path
         
-    print("No KSP 2 install found")
+    logger.info("No KSP 2 install found")
     return None
 
 
 def detect_game_version(path):
     # Check if KSP2_x64.exe exists
     if not os.path.exists(os.path.join(path, "KSP2_x64.exe")):
-        print("Could not find KSP2_x64.exe")
+        logger.info("Could not find KSP2_x64.exe")
         return None
     
     # Use pefile to get the version info from the exe
@@ -64,7 +64,7 @@ def detect_game_version(path):
                             version = entry[1].decode('utf-8')
                             return version
                         
-    print("Could not find KSP 2 version")
+    logger.info("Could not find KSP 2 version")
     return None
 
 def create_modlist_json(modlist_path):
@@ -88,7 +88,7 @@ def add_mod_to_json(mod, modlist_path):
     # Check if mod is already in list
     for item in data["mods"]:
         if item["id"] == mod.id:
-            print(f"{mod.name} ({mod.id}) is already in the list")
+            logger.info(f"{mod.name} ({mod.id}) is already in the list")
             return
     else:
         data["mods"].append(mod.__dict__)
@@ -101,7 +101,7 @@ def remove_mod_from_json(mod, modlist_path):
     """Remove a mod from the json file"""
 
     if not os.path.exists(modlist_path):
-        print("No modlist.json file found")
+        logger.info("No modlist.json file found")
         return
 
     with open(modlist_path, "r") as f:
@@ -110,10 +110,10 @@ def remove_mod_from_json(mod, modlist_path):
     for item in data["mods"]:
         if item["id"] == mod.id:
             data["mods"].remove(item)
-            print(f"Removed {item['name']} ({item['id']}) from the list")
+            logger.info(f"Removed {item['name']} ({item['id']}) from the list")
             break
     else:
-        print(f"Could not find mod with id {mod.id} in the list")
+        logger.info(f"Could not find mod with id {mod.id} in the list")
 
     with open(modlist_path, "w") as f:
         json.dump(data, f, indent=4, cls=ModObjectEncoder)
@@ -122,7 +122,7 @@ def check_mod_in_json(mod_id, modlist_path):
     """Check if a mod is in the json file"""
 
     if not os.path.exists(modlist_path):
-        print("No modlist.json file found")
+        logger.info("No modlist.json file found")
         create_modlist_json(modlist_path)
         return False
 
@@ -139,7 +139,7 @@ def get_mod_from_json(mod, modlist_path):
     """Get a mod from the json file"""
 
     if not os.path.exists(modlist_path):
-        print("No modlist.json file found")
+        logger.info("No modlist.json file found")
         create_modlist_json(modlist_path)
         return None
 
@@ -157,11 +157,11 @@ def get_installed_mods(modlist_path):
     """Get a list of installed mods"""
 
     if not os.path.exists(modlist_path):
-        print("No modlist.json file found")
+        logger.info("No modlist.json file found")
         return []
 
     with open(modlist_path, "r") as f:
-        print("Loading modlist.json")
+        logger.info("Loading modlist.json")
         data = json.load(f)
         return [ModObject(**item) for item in data["mods"]]
 
@@ -180,12 +180,12 @@ def download_install_mod(mod, version, config_file):
         #Check if it exists in cache
         mod.filename = f"{mod.name}_{version.friendly_version}"
         if os.path.exists(f"data/cache/{mod.filename}.zip"):
-            print(f"Found {mod.filename} in cache")
+            logger.info(f"Found {mod.filename} in cache")
             install_mod(mod, config_file["KSP2"]["InstallDirectory"])
         
         else:
-            print(f"Downloading {mod.name} ({mod.id})")
-            print(f"Downloading from {version.download_path}")
+            logger.info(f"Downloading {mod.name} ({mod.id})")
+            logger.info(f"Downloading from {version.download_path}")
             
             urllib.request.urlretrieve(version.download_path, f"data/cache/{mod.filename}.zip") # Download the mod
             install_mod(mod, config_file["KSP2"]["InstallDirectory"])
@@ -194,33 +194,33 @@ def download_install_mod(mod, version, config_file):
         mod.set_installed_version(version)
 
         add_mod_to_json(mod, config_file["KSP2"]["ModlistPath"])
-        print("Installed mod!")
+        logger.info("Installed mod!")
         return True
     
     except Exception as e:
-        print(f"Error installing {mod.name} ({mod.id})")
-        print(e)
+        logger.error(f"Error installing {mod.name} ({mod.id})")
+        logger.error(e)
 
     return False
 
 
 def install_mod(mod: ModObject, installdir: str) -> bool:
     """Install a mod and check if it was successful"""
-    print(f"Installing {mod.name} ({mod.id})")
+    logger.info(f"Installing {mod.name} ({mod.id})")
     installed_files = extract_zip(f"data/cache/{mod.filename}.zip", installdir)
     if installed_files != []:
         # Save the list of installed files to a JSON file
         set_installed_files(mod, installed_files)
-        print(f"Installed {mod.name} ({mod.id})")
+        logger.info(f"Installed {mod.name} ({mod.id})")
         return True
 
-    print(f"Error installing {mod.name} ({mod.id})")
+    logger.error(f"Error installing {mod.name} ({mod.id})")
     return False
 
 
 def uninstall_mod(mod, config_file):
     excluded_dirs = ["BepInEx/", "BepInEx/plugins/", "BepInEx/config/"]
-    print(f"Uninstalling {mod.name} ({mod.id})")
+    logger.info(f"Uninstalling {mod.name} ({mod.id})")
 
     # Load the list of installed files from the JSON file
     installed_files = get_installed_files(mod)
@@ -231,25 +231,25 @@ def uninstall_mod(mod, config_file):
         # Check if the file exists
         if os.path.isfile(filepath):
             os.remove(filepath)
-            print(f"Removed file {filepath}")
+            logger.info(f"Removed file {filepath}")
 
         # Else check if the directory exists
         elif os.path.isdir(filepath):
             # Check if the directory is excluded
             if any(filepath.endswith(excluded_dir) for excluded_dir in excluded_dirs):
-                print(f"Skipping {filepath}")
+                logger.info(f"Skipping {filepath}")
             else:
                 shutil.rmtree(filepath, ignore_errors=True)
-                print(f"Removed directory {filepath}")
+                logger.info(f"Removed directory {filepath}")
         else:
-            print(f"Could not find {filepath}")
+            logger.error(f"Could not find {filepath}")
 
     # Remove the mod from the JSON file
     remove_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
 
     # Delete the JSON file containing the list of installed files
     os.remove(os.path.join("data", "logs", "install_logs", f"{mod.filename}.json"))
-    print(f"Removed {mod.filename}.json")
+    logger.info(f"Removed {mod.filename}.json")
 
     return True
 
@@ -263,15 +263,14 @@ def extract_zip(zip_path: str, destination_path: str) -> bool:
             has_bepinex = False
             for name in zip_ref.namelist():
                 if "bepinex" in name.lower():
-                    print(f"Found BepInEx in {name}")
+                    logger.info(f"Found BepInEx in {name}")
                     has_bepinex = True
                     break
 
             if has_bepinex:
-                print("First directory is BepInEx")
                 # Extract the zip file directly to the destination_path directory
                 zip_ref.extractall(destination_path)
-                print(f"Extracted {zip_path} to {destination_path}")
+                logger.info(f"Extracted {zip_path} to {destination_path}")
                 for name in zip_ref.namelist():
                     installed_files.append(os.path.join(destination_path, name))
 
@@ -279,14 +278,14 @@ def extract_zip(zip_path: str, destination_path: str) -> bool:
                 # Extract the entire directory to BepInEx/plugins within the destination_path
                 extracted_path = os.path.join(destination_path, "BepInEx", "plugins")
                 zip_ref.extractall(extracted_path)
-                print(f"Extracted {zip_path} to {extracted_path}")
+                logger.info(f"Extracted {zip_path} to {extracted_path}")
                 for name in zip_ref.namelist():
                     installed_files.append(os.path.join(extracted_path, name))
 
             return installed_files
         
     except zipfile.BadZipFile:
-        print(f"Could not extract {zip_path}")
+        logger.error(f"Could not extract {zip_path}")
 
     return []
 
@@ -301,7 +300,7 @@ def get_installed_files(mod: ModObject) -> dict:
         with open(f"data/logs/install_logs/{mod.filename}.json", "r") as f:
             installed_files = json.load(f)
     except FileNotFoundError:
-        print(f"Could not find {mod.filename}.json")
+        logger.error(f"Could not find {mod.filename}.json")
         installed_files = {}
     return installed_files
 
@@ -335,13 +334,13 @@ def build_directories():
     """Build the directory"""
     if not os.path.exists("data"):
         os.mkdir("data")
-        print("Created data directory")
+        logger.info("Created data directory")
     if not os.path.exists("data/cache"):
         os.mkdir("data/cache")
-        print("Created cache directory")
+        logger.info("Created cache directory")
     if not os.path.exists("data/logs"):
         os.mkdir("data/logs")
-        print("Created logs directory")
+        logger.info("Created logs directory")
     if not os.path.exists("data/logs/install_logs"):
         os.mkdir("data/logs/install_logs")
-        print("Created install_logs directory")
+        logger.info("Created install_logs directory")

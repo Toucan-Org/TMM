@@ -33,7 +33,6 @@ class AvailableModMenu(customtkinter.CTkFrame):
         t.start()
 
     def optionmenu_callback(self, choice):
-        print("optionmenu dropdown clicked:", choice)
         if choice == "All":
             self.get_available_mods_category("")
             self.set_header_text("Available Mods > All")
@@ -43,7 +42,6 @@ class AvailableModMenu(customtkinter.CTkFrame):
             self.set_header_text("Available Mods > Featured")
 
         elif choice == "New":
-
             self.get_available_mods_category("/new")
             self.set_header_text("Available Mods > New")
 
@@ -293,5 +291,4 @@ class ModListFrame(customtkinter.CTkScrollableFrame):
         """Event handler for when a mod is selected in the mod list.
         loads the mod's info into the control panel"""
 
-        print(f"Mod selected {item}")
         self.control_panel_frame.set_mod(item)

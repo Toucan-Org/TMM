@@ -11,6 +11,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
         super().__init__(master)
         self.grid_columnconfigure(2, weight=1)
         self.config_file = kwargs.get("config_file", None)
+        self.logger = kwargs.get("logger", None)
 
 
         # Initialize the buttons and label
@@ -47,7 +48,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
     # The functions that are called when the buttons are pressed
 
     def install_mod(self, mod, version):
-        print("Installing mod")
+        self.logger.info("Installing mod")
         if util.download_install_mod(mod, version, config_file=self.control_panel_frame.config_file):
             self.set_install_status()
             self.control_panel_frame.selected_mod.installed = True
@@ -66,7 +67,7 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
 
 
     def remove_mod(self):
-        print("Removing mod")
+        self.logger.info("Removing mod")
         if util.uninstall_mod(self.control_panel_frame.selected_mod, self.control_panel_frame.config_file):
             self.control_panel_frame.selected_mod.installed = False
 
@@ -82,28 +83,28 @@ class ControlPanelButtonFrame(customtkinter.CTkFrame):
             self.control_panel_frame.modlist_frame.populate_modlist(installed_mods)
 
         else:
-            print("Failed to remove mod")
+            self.logger.error("Failed to remove mod")
         
         self.update_appearance()
 
 
     def update_mod(self):
-        print("Updating mod")
+        self.logger.info("Updating mod")
         update_version = sdapi.check_mod_update(self.control_panel_frame.selected_mod)
         
 
         if update_version is not None:
-            print(f"Installed version was: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
+            self.logger.info(f"Installed version was: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
             # Remove the mod and then install the newest version
             self.remove_mod()
             self.install_mod(self.control_panel_frame.selected_mod, update_version)
-            print(f"New version is: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
+            self.logger.info(f"New version is: {self.control_panel_frame.selected_mod.get_installed_version().friendly_version}")
             self.status_label.configure(text=f"Version Updated to ({self.control_panel_frame.selected_mod.get_installed_version().friendly_version})")
             # Update the version radio button to the newest version
             #self.control_panel_frame.version_frame.update_version_radiobuttons()
 
         else:
-            print("No update available")
+            self.logger.info("No update available")
             self.status_label.configure(text=f"Version is Latest ({self.control_panel_frame.selected_mod.get_installed_version().friendly_version})")
 
 
@@ -120,6 +121,7 @@ class ControlPanelFrame(customtkinter.CTkScrollableFrame):
         self.selected_mod = None
         self.install_version = None
         self.config_file = kwargs.get("config_file", None)
+        self.logger = kwargs.get("logger", None)
 
         self.cp_button_frame = kwargs.get("cp_button_frame", None)
         self.modlist_frame = kwargs.get("modlist_frame", None)
@@ -231,6 +233,7 @@ class VersionFrame(customtkinter.CTkFrame):
         self.grid_columnconfigure((1,2,3,4,5), weight=1)
         self.radio_var = IntVar(self, 0) # This tracks which version radio button is selected
         self.config_file = kwargs.get("config_file", None)
+        self.logger = self.master.logger
 
         self.selected_label = customtkinter.CTkLabel(self, text="Selected", font=customtkinter.CTkFont(size=12, weight="bold"))
         self.selected_label.grid(row=0, column=0, padx=5, pady=10, sticky="w")
@@ -260,7 +263,7 @@ class VersionFrame(customtkinter.CTkFrame):
         def radiobutton_event():
             """Called when a version radio button is selected."""
             self.selected_version = mod.versions[self.radio_var.get()]
-            print(f"Selected version number: {self.selected_version}")
+            self.logger.info(f"Selected version number: {self.selected_version}")
 
 
         for i, version in enumerate(mod.versions):

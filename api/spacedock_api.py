@@ -1,10 +1,12 @@
-import requests
+import requests, logging
 
 from utilities.mod_object import ModObject, VersionObject
 import utilities.utility as util
 
 spacedock_internal_id = 22407
 categories = ["/featured", "/new"]
+
+logger = logging.getLogger(__name__)
 
 
 def get_mods(config_file, category=""):
@@ -15,9 +17,9 @@ def get_mods(config_file, category=""):
     data = response.json()
 
     if category == "":        
-        print("Getting all mods")
+        logging.info("Getting all mods")
     else:
-        print(f"Getting mods from {category}")
+        logging.info(f"Getting mods from {category}")
 
     if data:
         total_pages = data["pages"]
@@ -33,7 +35,7 @@ def get_mods(config_file, category=""):
                 if item["game_id"] == spacedock_internal_id:
                     mod = ModObject(**item)
                     if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                        print(f"{mod.name} ({mod.id}) is installed in the list")
+                        logging.info(f"{mod.name} ({mod.id}) is installed in the list")
                         mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
                     _mods.append(mod)
 
@@ -44,7 +46,7 @@ def get_mods(config_file, category=""):
 
 def search_mod(mod_name, config_file, mod_id=None):
     if mod_id:
-        print(f"Searching for {mod_id}")
+        logging.info(f"Searching for {mod_id}")
         url = f"https://spacedock.info/api/mod/{mod_id}"
         response = requests.get(url)
         data = response.json()
@@ -53,15 +55,15 @@ def search_mod(mod_name, config_file, mod_id=None):
             mod = ModObject(**data)
 
             if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                print(f"{mod.name} ({mod.id}) is installed in the list")
+                logging.info(f"{mod.name} ({mod.id}) is installed in the list")
                 mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
 
-            print(mod)
+            logging.info(mod)
 
             return mod
         
     else:
-        print(f"Searching for {mod_name}")
+        logging.info(f"Searching for {mod_name}")
         query = mod_name.replace(" ", "%20")
         url = f'https://spacedock.info/api/search/mod?query={query}'
         response = requests.get(url)
@@ -74,13 +76,13 @@ def search_mod(mod_name, config_file, mod_id=None):
                 mod = ModObject(**item)
 
                 if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                    print(f"{mod.name} ({mod.id}) is installed in the list")
+                    logging.info(f"{mod.name} ({mod.id}) is installed in the list")
                     mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
                     
                 _mods.append(mod)        
 
         if len(_mods) == 0:
-            print("No mods found")
+            logging.info("No mods found")
         
         _mods.sort()
         return _mods
@@ -104,10 +106,10 @@ def check_mod_update(mod):
         )
 
         if latest_version.friendly_version != mod.get_installed_version().friendly_version:
-            print(f"{mod.name} has an update available! Latest version: {latest_version.friendly_version}")
+            logging.info(f"{mod.name} has an update available! Latest version: {latest_version.friendly_version}")
             return latest_version
         
-    print(f"{mod.name} is up to date")
+    logging.info(f"{mod.name} is up to date")
     return None
 
 

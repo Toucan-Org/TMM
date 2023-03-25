@@ -14,6 +14,8 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.config_file = kwargs.get("config_file", None)
         self.program_version = program_version
 
+        self.logger = kwargs.get("logger", None)
+
         self.columnconfigure((2,3,4), weight=1)
 
         self.logo_image = customtkinter.CTkImage(Image.open(program_logo), size=(120, 120))
@@ -57,11 +59,10 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.check_version_update()
 
     def check_version_update(self):
-        print("Checking for update...")
+        self.logger.info("Checking for update...")
         latest_version = util.get_latest_2kan_version()
 
         if latest_version is None:
-            print("Is none")
             self.notification_label.configure(text="Failed to check for update", text_color="red")
             # Clear this after 5 seconds
             self.after(7000, lambda: self.notification_label.configure(text=""))
