@@ -31,15 +31,17 @@ class MainHeaderFrame(customtkinter.CTkFrame):
         self.install_available_switch.grid(row=0, rowspan=2, column=3, padx=10, pady=10)
         self.install_available_switch.set("Available")
 
-        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self, values=["Light", "Dark"],
-                                                                       command=self.change_appearance, width=50)
-        self.appearance_mode_optionemenu.grid(row=0, rowspan=2, column=6, padx=10, pady=10)
+        # Disabling this for now as its making things more difficult making two colour palettes
+
+        # self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self, values=["Light", "Dark"],
+        #                                                                command=self.change_appearance, width=50)
+        # self.appearance_mode_optionemenu.grid(row=0, rowspan=2, column=6, padx=10, pady=10)
 
         self.scaling_optionemenu = customtkinter.CTkOptionMenu(self, values=["80%", "90%", "100%", "120%", "140%"],
                                                                command=self.change_scaling_event, width=50)
         self.scaling_optionemenu.grid(row=0, rowspan=2, column=7, padx=10, pady=10)
 
-        self.appearance_mode_optionemenu.set("Dark")
+        #self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
 
     def change_appearance(self, new_appearance_mode: str):

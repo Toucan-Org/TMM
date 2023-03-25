@@ -131,7 +131,7 @@ class LaunchButton(customtkinter.CTkFrame):
         self.launch_image_hover = customtkinter.CTkImage(Image.open("./data/images/launch_button/launch_button_hover.png"), size=(200, 60))
 
         self.launch_button = customtkinter.CTkButton(self, image=self.launch_image, fg_color="transparent", text="", bg_color="transparent", command=self.launch, hover=False)
-        self.launch_button.grid(row=1, column=1, columnspan=2, sticky="nsew")
+        self.launch_button.grid(row=1, column=1, columnspan=2, sticky="nsew", pady=(0,20))
 
         self.launch_button.bind("<Enter>", self.on_enter)
         self.launch_button.bind("<Leave>", self.on_leave)
@@ -193,7 +193,7 @@ class SearchBarFrame(customtkinter.CTkFrame):
         self.label.grid(row=0, column=0, pady=10, sticky="w")
 
         autocomplete_mods = []
-        self.all_mods = sdapi.get_mods("")
+        self.all_mods = sdapi.get_mods(self.config_file, "")
         for mod in self.all_mods:
             autocomplete_mods.append(mod.name)
 
@@ -217,7 +217,6 @@ class SearchBarFrame(customtkinter.CTkFrame):
 
         if query == "":
             self.modlist_frame.populate_modlist(self.all_mods)
-
             return
         
         found_mods = []
