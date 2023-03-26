@@ -10,7 +10,7 @@ This current version is the ALPHA release, what you see now is essentially a pro
 Please note that there **WILL** be bugs, we are working on it.
 
 ### Disclaimer
-Currently the program is flagged by Microsoft Defender as a trojan, this is not the case and it is a false positive (definitely something a hacker would say). This is a well known issue with Pyinstaller and packaged python executables being incorrectly flagged as malware. We have submitted a request to Microsoft to have this file reviewed. This should not be an issue once we move to the C# platform.
+Currently the program is flagged by some antivirus solutions as a trojan, this is not the case and it is a false positive (definitely something a hacker would say). This is a well known issue with Pyinstaller and packaged python executables being incorrectly flagged as malware. We submitted this file for analysis to Microsoft and they have deemed it as "Not Malicious" and removed it from their threat database, if this is still flagged as a Trojan for you and you are using Microsoft Defender please let us know in the `Issues` tab.
 
 
 ### Installation:
