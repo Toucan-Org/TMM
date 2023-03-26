@@ -9,6 +9,10 @@ This current version is the ALPHA release, what you see now is essentially a pro
 
 Please note that there **WILL** be bugs, we are working on it.
 
+### Disclaimer
+Currently the program is flagged by Microsoft Defender as a trojan, this is not the case and it is a false positive (definitely something a hacker would say). This is a well known issue with Pyinstaller and packaged python executables being incorrectly flagged as malware. We have submitted a request to Microsoft to have this file reviewed. This should not be an issue once we move to the C# platform.
+
+
 ### Installation:
 1. Download the newest version of `2kan.zip` zip file from our [releases](https://github.com/Loki-Lokster/2KAN/releases) page.
 2. Extract the zip and run `2KAN.exe`.
