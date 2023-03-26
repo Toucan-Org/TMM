@@ -10,7 +10,7 @@ This current version is the ALPHA release, what you see now is essentially a pro
 Please note that there **WILL** be bugs, we are working on it.
 
 ### Installation:
-1. Download the `2kan.zip` zip file from our `releases` page.
+1. Download the newest version of `2kan.zip` zip file from our [releases](https://github.com/Loki-Lokster/2KAN/releases) page.
 2. Extract the zip and run `2KAN.exe`.
 3. The application will automatically search common install locations for KSP2. If this does not work you can manually select the location using `Browse`. Ensure that a valid game version has been detected.
 4. If this is your first time running the application, a dialog box will appear asking you to install SpaceWarp + BepInEx, select `Yes` as these are the modloaders.
