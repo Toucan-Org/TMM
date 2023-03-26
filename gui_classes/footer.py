@@ -64,7 +64,7 @@ class InstallDirectoryFrame(customtkinter.CTkFrame):
             self.game_version = util.detect_game_version(self.install_path)
             self.logger.info(f"Version: {self.game_version}")
 
-            if self.game_version:
+            if self.game_version != "":
                 self.set_game_version_label(f"Detected version: {self.game_version}")
                 self.save_config()
 

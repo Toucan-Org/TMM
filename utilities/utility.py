@@ -43,17 +43,20 @@ def scan_common_ksp2_installs():
             return path
         
     logger.info("No KSP 2 install found")
-    return None
+    return ""
 
 
 def detect_game_version(path):
     # Check if KSP2_x64.exe exists
+    if path == "":
+        logger.info("Path is empty!")
+        return ""
+
     if not os.path.exists(os.path.join(path, "KSP2_x64.exe")):
         logger.info("Could not find KSP2_x64.exe")
-        return None
+        return ""
     
     # Use pefile to get the version info from the exe
-    # (This took way too long to get working)
     pe = pefile.PE(os.path.join(path, "KSP2_x64.exe"))
     for fileinfo in pe.FileInfo:
         for info in fileinfo:
@@ -65,7 +68,7 @@ def detect_game_version(path):
                             return version
                         
     logger.info("Could not find KSP 2 version")
-    return None
+    return ""
 
 def create_modlist_json(modlist_path):
     """Create a modlist.json file"""
