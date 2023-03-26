@@ -1,0 +1,7 @@
+customtkinter==5.1.2
+Pillow==9.4.0
+beautifulsoup4==4.11.2
+requests==2.28.2
+pefile==2023.2.7
+urllib3==1.26.14
+ttkwidgets==0.13.0
