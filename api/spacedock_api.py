@@ -16,28 +16,37 @@ def get_mods(config_file, category=""):
     response = requests.get(url)
     data = response.json()
 
-    if category == "":        
-        logging.info("Getting all mods")
-    else:
-        logging.info(f"Getting mods from {category}")
-
     if data:
-        total_pages = data["pages"]
-        for page in range(1, total_pages + 1):
-            page_url = f"{url}&page={page}"
-            page_response = requests.get(page_url)
-            page_data = page_response.json()
-            if category == "":
-                mods = page_data["result"]
-            else:
-                mods = page_data
-            for item in mods:
+        if category == "":        
+            logger.info("Getting all mods")
+            total_pages = data["pages"]
+            for page in range(1, total_pages + 1):
+                page_url = f"{url}&page={page}"
+                page_response = requests.get(page_url)
+                page_data = page_response.json()
+                if category == "":
+                    mods = page_data["result"]
+                else:
+                    mods = page_data
+                for item in mods:
+                    if item["game_id"] == spacedock_internal_id:
+                        mod = ModObject(**item)
+                        if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
+                            logger.info(f"{mod.name} ({mod.id}) is installed in the list")
+                            mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
+                        _mods.append(mod)
+
+        else:
+            logger.info(f"Getting mods from {category}")
+            for item in data:
                 if item["game_id"] == spacedock_internal_id:
                     mod = ModObject(**item)
                     if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                        logging.info(f"{mod.name} ({mod.id}) is installed in the list")
+                        logger.info(f"{mod.name} ({mod.id}) is installed in the list")
                         mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
                     _mods.append(mod)
+    else:
+        logger.error("No data returned from Spacedock!")
 
     _mods.sort()
     return _mods
@@ -46,7 +55,7 @@ def get_mods(config_file, category=""):
 
 def search_mod(mod_name, config_file, mod_id=None):
     if mod_id:
-        logging.info(f"Searching for {mod_id}")
+        logger.info(f"Searching for {mod_id}")
         url = f"https://spacedock.info/api/mod/{mod_id}"
         response = requests.get(url)
         data = response.json()
@@ -55,15 +64,15 @@ def search_mod(mod_name, config_file, mod_id=None):
             mod = ModObject(**data)
 
             if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                logging.info(f"{mod.name} ({mod.id}) is installed in the list")
+                logger.info(f"{mod.name} ({mod.id}) is installed in the list")
                 mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
 
-            logging.info(mod)
+            logger.info(mod)
 
             return mod
         
     else:
-        logging.info(f"Searching for {mod_name}")
+        logger.info(f"Searching for {mod_name}")
         query = mod_name.replace(" ", "%20")
         url = f'https://spacedock.info/api/search/mod?query={query}'
         response = requests.get(url)
@@ -76,13 +85,13 @@ def search_mod(mod_name, config_file, mod_id=None):
                 mod = ModObject(**item)
 
                 if util.check_mod_in_json(mod.id, config_file["KSP2"]["ModlistPath"]):
-                    logging.info(f"{mod.name} ({mod.id}) is installed in the list")
+                    logger.info(f"{mod.name} ({mod.id}) is installed in the list")
                     mod = util.get_mod_from_json(mod, config_file["KSP2"]["ModlistPath"])
                     
                 _mods.append(mod)        
 
         if len(_mods) == 0:
-            logging.info("No mods found")
+            logger.info("No mods found")
         
         _mods.sort()
         return _mods
@@ -106,10 +115,10 @@ def check_mod_update(mod):
         )
 
         if latest_version.friendly_version != mod.get_installed_version().friendly_version:
-            logging.info(f"{mod.name} has an update available! Latest version: {latest_version.friendly_version}")
+            logger.info(f"{mod.name} has an update available! Latest version: {latest_version.friendly_version}")
             return latest_version
         
-    logging.info(f"{mod.name} is up to date")
+    logger.info(f"{mod.name} is up to date")
     return None
 
 
