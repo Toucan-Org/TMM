@@ -76,10 +76,12 @@ class App(customtkinter.CTk):
         self.install_mod_dialog = None
 
         if not util.check_bepinex_installed(self.config_file):
-            if self.install_mod_dialog is None or not self.install_mod_dialog.winfo_exists():
-                self.install_mod_dialog = InstallModDialogFrame(master=self, control_panel_frame=self.control_panel_frame)
-            else:
-                self.install_mod_dialog.focus()            
+            # Check if there is a valid game install directory
+            if self.config_file["KSP2"]["InstallDirectory"] != "":
+                if self.install_mod_dialog is None or not self.install_mod_dialog.winfo_exists():
+                    self.install_mod_dialog = InstallModDialogFrame(master=self, control_panel_frame=self.control_panel_frame)
+                else:
+                    self.install_mod_dialog.focus()        
 
 
     def load_config(self):
