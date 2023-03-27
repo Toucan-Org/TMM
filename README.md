@@ -24,3 +24,11 @@ Currently the program is flagged by some antivirus solutions as a trojan, this i
 - Huge thanks to `@calebh210` for all the work and help on this project. 
 - Shoutout to `IcyEcho249` for the name 2KAN and inspiration for our logo.
 - Thanks to Midjourney for the new and improved logo.
+
+
+### F.A.Q
+Q - **How do I remove all traces of mods from my game?**
+A - Simply navigate to your KSP2 main install directory and delete the `BepInEx` folder.
+
+Q - **I can't launch the program at all, I'm getting these weird errors?**
+A - This is most likely because of your operating system, 2KAN has currently only been tested on Windows and due to it using Python and Pyinstaller to package the executable, this may be your issue. You can always download the source code directly from GitHub, install the requirements found in `requirements.txt` and run app.py (you **must** have Python installed for this to work).
