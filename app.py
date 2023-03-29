@@ -1,4 +1,4 @@
-import customtkinter, configparser, os, json, logging
+import customtkinter, configparser, os, json, logging, sys
 
 import api.spacedock_api as sdapi
 import utilities.utility as util
@@ -16,13 +16,13 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
+        util.build_directories()
 
         logging.basicConfig(filename="./data/logs/2kan.log", level=logging.INFO, format="%(asctime)s:%(levelname)s:%(message)s")
         self.logger = logging.getLogger(__name__)
         sdapi.logger = self.logger
         util.logger = self.logger
 
-        util.build_directories()
         self.program_version = "0.1.1"
         self.program_title = "2KAN"
         self.program_label = "Kerbal Space Program 2 Mod Manager"
