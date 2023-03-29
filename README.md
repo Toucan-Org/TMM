@@ -22,7 +22,7 @@ Currently the program is flagged by some antivirus solutions as a trojan, this i
 
 ### Contributions:
 - Huge thanks to `@calebh210` for all the work and help on this project. 
-- Shoutout to `IcyEcho249` for the name 2KAN and inspiration for our logo.
+- Shoutout to `IcyEcho249` and `dragonfyre23` for the name 2KAN and inspiration for our logo.
 - Thanks to Midjourney for the new and improved logo.
 
 
