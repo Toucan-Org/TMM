@@ -1,4 +1,11 @@
+#IDE files
+.idea
+
+# files created by the app
 *.pyc
 *.zip
 *.ini
 ksp2.log
+modlist.json
+
+data/logs/*
