@@ -10,12 +10,12 @@ This current version is the ALPHA release, what you see now is essentially a pro
 Please note that there **WILL** be bugs, we are working on it.
 
 ### Disclaimer
-Currently the program is flagged by some antivirus solutions as a trojan, this is not the case and it is a false positive (definitely something a hacker would say). This is a well known issue with Pyinstaller and packaged python executables being incorrectly flagged as malware. We submitted this file for analysis to Microsoft and they have deemed it as "Not Malicious" and removed it from their threat database, if this is still flagged as a Trojan for you and you are using Microsoft Defender please see [#16](https://github.com/Loki-Lokster/2KAN/issues/16).
+Currently the program is flagged by some antivirus solutions as a trojan, this is not the case and it is a false positive (definitely something a hacker would say). This is a well known issue with Pyinstaller and packaged python executables being incorrectly flagged as malware. We submitted this file for analysis to Microsoft and they have deemed it as "Not Malicious" and removed it from their threat database, if this is still flagged as a trojan for you and you are using Microsoft Defender please see [#16](https://github.com/Loki-Lokster/2KAN/issues/16).
 
 
 ### Installation:
 1. Download the newest version of `2kan.zip` zip file from our [releases](https://github.com/Loki-Lokster/2KAN/releases) page.
-2. Extract the zip and run `2KAN.exe`.
+2. Extract the zip (if you have Microsoft Defender you can run the `update_defender_definitions.bat` file as an administrator to ensure you have the latest malware definitions from Microsoft) and run `2KAN.exe`.
 3. The application will automatically search common install locations for KSP2. If this does not work you can manually select the location using `Browse`. Ensure that a valid game version has been detected.
 4. If this is your first time running the application, a dialog box will appear asking you to install SpaceWarp + BepInEx, select `Yes` as these are the modloaders.
 
