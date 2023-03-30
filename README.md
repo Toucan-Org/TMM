@@ -1,8 +1,8 @@
 
-# 2KAN (ALPHA v0.1.1)
+# TMM (Toucan Mod Manager) - (ALPHA v0.1.1)
 ### A mod manager for Kerbal Space Program 2.
 
-![image](https://user-images.githubusercontent.com/1657477/227747846-a4f82578-c7db-4e06-9a46-d980a2b7e80c.png)
+![image](https://user-images.githubusercontent.com/1657477/228720734-053c42b8-ec57-4f24-b192-e8cfe51f3834.png)
 
 ## Description
 This current version is the ALPHA release, what you see now is essentially a prototype which we will use to get player feedback. It utilises Python with the customtkinter and tkinter GUI frameworks. Due to limitations of this framework and the current codebase design, we will be abandoning this version and rewriting it in C# armed with the knowledge and feedback gained from this initial release.
@@ -10,7 +10,7 @@ This current version is the ALPHA release, what you see now is essentially a pro
 Please note that there **WILL** be bugs, we are working on it.
 
 ## Disclaimer
-***WE ARE NOT AFFILIATED WITH CKAN! You can find their project [here](https://github.com/KSP-CKAN/CKAN) (they also support KSP2).***
+***WE ARE NOT AFFILIATED WITH CKAN! You can find their project [here](https://github.com/KSP-CKAN/CKAN) (they also support [KSP2](https://github.com/KSP-CKAN/CKAN/pull/3797)).***
 <br>
 <br>
 Currently the program is flagged by some antivirus solutions as a trojan, this is not the case and it is a false positive (definitely something a hacker would say). This is a well known issue with Pyinstaller and packaged python executables being incorrectly flagged as malware. We submitted this file for analysis to Microsoft and they have deemed it as "Not Malicious" and removed it from their threat database, if this is still flagged as a trojan for you and you are using Microsoft Defender please see [#16](https://github.com/Loki-Lokster/2KAN/issues/16).
@@ -25,7 +25,7 @@ Currently the program is flagged by some antivirus solutions as a trojan, this i
 
 ## Contributions:
 - Huge thanks to `@calebh210` for all the work and help on this project. 
-- Shoutout to `IcyEcho249` and `dragonfyre23` for the name 2KAN and inspiration for our logo.
+- Shoutout to `IcyEcho249` and `dragonfyre23` for the name and inspiration for our logo.
 - Thanks to Midjourney for the new and improved logo.
 
 
