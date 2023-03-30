@@ -24,8 +24,8 @@ class App(customtkinter.CTk):
         util.logger = self.logger
 
         self.program_version = "0.1.1"
-        self.program_title = "2KAN"
-        self.program_label = "Kerbal Space Program 2 Mod Manager"
+        self.program_title = "TMM"
+        self.program_label = "Toucan Mod Manager"
         self.program_icon = "./data/images/icon.ico"
         self.program_logo = "./data/images/2kan_logo2.png"  
 
@@ -69,7 +69,7 @@ class App(customtkinter.CTk):
 
         self.main_header = MainHeaderFrame(master=self, modlist_frame=self.modlist_frame, modlist_header_frame=self.modlist_header,
                                            footer_frame=self.footer_frame, program_version=self.program_version, program_title=self.program_title,
-                                            program_logo=self.program_logo, config_file=self.config_file, logger=self.logger)
+                                            program_logo=self.program_logo, program_label=self.program_label, config_file=self.config_file, logger=self.logger)
         self.main_header.grid(row=0, column=0, columnspan=4, sticky="nsew")
 
         self.modlist_header.available_mods_menu.optionmenu_callback("All")
