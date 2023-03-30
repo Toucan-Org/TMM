@@ -5,28 +5,35 @@ from PIL import Image
 
 
 class MainHeaderFrame(customtkinter.CTkFrame):
-    def __init__(self, master, program_logo, program_version, program_title, **kwargs):
+    def __init__(self, master, **kwargs):
         super().__init__(master)
 
         self.modlist_frame = kwargs.get("modlist_frame", None)
         self.modlist_header_frame = kwargs.get("modlist_header_frame", None)
         self.footer_frame = kwargs.get("footer_frame", None)
         self.config_file = kwargs.get("config_file", None)
-        self.program_version = program_version
+        self.program_version = kwargs.get("program_version", None)
+        self.program_logo = kwargs.get("program_logo", None)
+        self.program_title = kwargs.get("program_title", None)
+        self.program_label = kwargs.get("program_label", None)
+
 
         self.logger = kwargs.get("logger", None)
 
         self.columnconfigure((2,3,4), weight=1)
 
-        self.logo_image = customtkinter.CTkImage(Image.open(program_logo), size=(120, 120))
+        self.logo_image = customtkinter.CTkImage(Image.open(self.program_logo), size=(120, 120))
 
         self.logo_image_label = customtkinter.CTkLabel(self, image=self.logo_image, text="")
         self.logo_image_label.grid(row=0, rowspan=4, column=0, padx=10, pady=10)
 
-        self.logo_label = customtkinter.CTkLabel(self, text=program_title, font=customtkinter.CTkFont(size=20, weight="bold"))
-        self.logo_label.grid(row=1, rowspan=2, column=1, padx=20, pady=(20, 0))
+        self.logo_label = customtkinter.CTkLabel(self, text=self.program_title, font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.logo_label.grid(row=1, column=1, padx=20, pady=(20, 0))
 
-        self.version_label = customtkinter.CTkLabel(self, text=f"v{program_version}", font=customtkinter.CTkFont(size=10, weight="bold"))
+        self.program_label = customtkinter.CTkLabel(self, text=self.program_label, font=customtkinter.CTkFont(size=10))
+        self.program_label.grid(row=2, column=1, padx=20, pady=(0, 10))
+
+        self.version_label = customtkinter.CTkLabel(self, text=f"v{self.program_version}", font=customtkinter.CTkFont(size=10, weight="bold"))
         self.version_label.grid(row=3, column=1, padx=20, pady=(0, 10))
 
         self.install_available_switch_label_left = customtkinter.CTkLabel(self, text="")
