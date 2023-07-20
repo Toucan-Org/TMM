@@ -1,6 +1,8 @@
 
-# TMM (Toucan Mod Manager) - (ALPHA v0.1.1)
+# [Obsolete] Toucan Mod Manager - (ALPHA v0.1.1)
 ### A mod manager for Kerbal Space Program 2.
+
+## ***Our newest version is now available [here](https://github.com/KSP2-Toucan/ToucanModManager)***
 
 ![image](https://user-images.githubusercontent.com/1657477/228720734-053c42b8-ec57-4f24-b192-e8cfe51f3834.png)
 
